@@ -3,14 +3,16 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using KnowledgeManager.Model;
+using System.Configuration;
 
 namespace KnowledgeManager
 {
     public class SQLHelper
-    {
+    {        
+        private static readonly string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString.ToString();
         public static SqlConnection CreateConnection()
         {
-            return new SqlConnection(@"server=4RBLIOWUDMHUMSF;database=db_KnowledgeManager;uid=sa;pwd=123456");
+            return new SqlConnection(connString);
         }
 
         //继续封装，执行无参查询操作

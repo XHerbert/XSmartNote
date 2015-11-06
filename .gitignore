@@ -13,3 +13,4 @@ KownledgeManager.sln.ide/*
 *.chk
 KnowledgeManager/App.config
 
+KnowledgeManager/KnowledgeManager.csproj.user

@@ -3,7 +3,6 @@
 *.dll
 *.suo
 *.cache
-*.sln
 *.exe
 KownledgeManager.sln.ide/*
 **/obj/*

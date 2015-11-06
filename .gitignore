@@ -11,4 +11,5 @@ KownledgeManager.sln.ide/*
 *.ide
 *.jrs
 *.chk
+KnowledgeManager/App.config
 

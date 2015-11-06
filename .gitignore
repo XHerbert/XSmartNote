@@ -1,0 +1,15 @@
+*.pdb
+*.txt
+*.dll
+*.suo
+*.cache
+*.sln
+*.exe
+KownledgeManager.sln.ide/*
+**/obj/*
+**/bin/*
+*.log
+*.ide
+*.jrs
+*.chk
+

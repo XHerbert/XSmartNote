@@ -51,6 +51,7 @@
             this.panel_Main = new System.Windows.Forms.Panel();
             this.panel_List = new System.Windows.Forms.FlowLayoutPanel();
             this.panel_LabelFixed = new System.Windows.Forms.Panel();
+            this.skinLine1 = new CCWin.SkinControl.SkinLine();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_ClearFixLabel = new System.Windows.Forms.Button();
             this.btn_EditLabel = new System.Windows.Forms.Button();
@@ -280,7 +281,7 @@
             // panel_LabelFixed
             // 
             this.panel_LabelFixed.AutoScroll = true;
-            this.panel_LabelFixed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_LabelFixed.Controls.Add(this.skinLine1);
             this.panel_LabelFixed.Controls.Add(this.flowLayoutPanel2);
             this.panel_LabelFixed.Controls.Add(this.btn_ClearFixLabel);
             this.panel_LabelFixed.Controls.Add(this.btn_EditLabel);
@@ -289,10 +290,21 @@
             this.panel_LabelFixed.Size = new System.Drawing.Size(581, 66);
             this.panel_LabelFixed.TabIndex = 0;
             // 
+            // skinLine1
+            // 
+            this.skinLine1.BackColor = System.Drawing.Color.Transparent;
+            this.skinLine1.LineColor = System.Drawing.Color.Maroon;
+            this.skinLine1.LineHeight = 1;
+            this.skinLine1.Location = new System.Drawing.Point(1, -1);
+            this.skinLine1.Margin = new System.Windows.Forms.Padding(0);
+            this.skinLine1.Name = "skinLine1";
+            this.skinLine1.Size = new System.Drawing.Size(579, 2);
+            this.skinLine1.TabIndex = 6;
+            this.skinLine1.Text = "skinLine1";
+            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(511, 59);
@@ -310,7 +322,7 @@
             // 
             // btn_EditLabel
             // 
-            this.btn_EditLabel.Location = new System.Drawing.Point(520, 3);
+            this.btn_EditLabel.Location = new System.Drawing.Point(520, 7);
             this.btn_EditLabel.Name = "btn_EditLabel";
             this.btn_EditLabel.Size = new System.Drawing.Size(56, 23);
             this.btn_EditLabel.TabIndex = 12;
@@ -321,7 +333,6 @@
             // panel_Label
             // 
             this.panel_Label.AutoScroll = true;
-            this.panel_Label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Label.Controls.Add(this.flowLayoutPanel1);
             this.panel_Label.Controls.Add(this.btn_ClearLabel);
             this.panel_Label.Location = new System.Drawing.Point(3, 3);
@@ -332,7 +343,6 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(511, 59);
@@ -425,17 +435,17 @@
             // 
             this.lbl_CurrentNode.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbl_CurrentNode.ForeColor = System.Drawing.Color.Maroon;
-            this.lbl_CurrentNode.Location = new System.Drawing.Point(454, 4);
+            this.lbl_CurrentNode.Location = new System.Drawing.Point(13, 463);
             this.lbl_CurrentNode.Name = "lbl_CurrentNode";
-            this.lbl_CurrentNode.Size = new System.Drawing.Size(532, 19);
+            this.lbl_CurrentNode.Size = new System.Drawing.Size(376, 19);
             this.lbl_CurrentNode.TabIndex = 4;
-            this.lbl_CurrentNode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbl_CurrentNode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(999, 462);
+            this.ClientSize = new System.Drawing.Size(999, 493);
             this.Controls.Add(this.lbl_CurrentNode);
             this.Controls.Add(this.panel_Main);
             this.Controls.Add(this.panel_Article);
@@ -443,9 +453,15 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "万象知识管理 v8.88 - 加勒比海喵 极致奢华  钻石定制版";
+            this.ShadowRectangle = new System.Drawing.Rectangle(30, 30, 30, 30);
+            this.ShadowWidth = 6;
+            this.Text = "万象知识管理 v8.88 ";
+            this.TitleCenter = true;
+            this.TitleColor = System.Drawing.Color.DarkSlateBlue;
+            this.TitleOffset = new System.Drawing.Point(10, -3);
+            this.TitleSuitColor = true;
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel_Tree.ResumeLayout(false);
@@ -502,6 +518,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel panel_List;
         private System.Windows.Forms.Label lbl_CurrentNode;
+        private CCWin.SkinControl.SkinLine skinLine1;
     }
 }
 

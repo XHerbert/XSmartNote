@@ -6,10 +6,11 @@ using System.Diagnostics;
 using KnowledgeManager.Model;
 using System.Collections.Generic;
 using System.Text;
+using CCWin.SkinControl;
 
 namespace KnowledgeManager
 {
-    public partial class MainForm : Form
+    public partial class MainForm : CCWin.Skin_Color//CCWin.Skin_Mac//CCWin.Skin_DevExpress
     {
         #region PARAMS
         private const int WIDTH = 0x004A;//74
@@ -88,7 +89,7 @@ namespace KnowledgeManager
         private void BuildTree(TreeView tv, DataSet ds)
         {
             tv.Nodes.Clear();
-            TreeNode root = new TreeNode("文件系统", 2, 2);
+            TreeNode root = new TreeNode("知识体系", 2, 2);
             root.Tag = Enums.ROOT;
             tv.Nodes.Add(root);//添加根节点
             foreach (DataRow item in ds.Tables[0].Rows)//将一级节点的父节点设置为NULL
@@ -754,6 +755,24 @@ namespace KnowledgeManager
         }
         #endregion
 
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            //当前节点提示框所在Location
+            this.lbl_CurrentNode.Location = new Point(10,this.Height-this.lbl_CurrentNode.Height-5);
+            //MainPanel宽度随主窗体变化
+            this.panel_Main.Width = this.Width - this.panel_Main.Location.X-10;
+            //MainPanel中各个组件随着MainPanel的宽度变化而变化
+            this.skinLine1.Width = this.panel_Main.Width - this.skinLine1.Location.X-10;
+            this.panel_LabelFixed.Width = this.panel_Main.Width - this.panel_LabelFixed.Location.X;
+            this.panel_List.Width = this.panel_Main.Width - this.panel_List.Location.X;
+            this.btn_ClearLabel.Location =new Point(this.panel_Main.Width - this.btn_ClearLabel.Width - 10,2);
+            this.panel_Label.Width = this.panel_Main.Width - this.panel_Label.Location.X;
+            this.panel_LabelFixed.Width = this.panel_Main.Width - this.panel_LabelFixed.Location.X;
+            this.btn_ClearFixLabel.Location = new Point(this.panel_Main.Width-this.btn_ClearFixLabel.Width-10,39);
+            this.btn_EditLabel.Location = new Point(this.panel_Main.Width - this.btn_EditLabel.Width - 10, 7);
+            //this.flowLayoutPanel2.Width = this.Width - this.flowLayoutPanel2.Location.X - 10;
+
+        }
     }
 
     public static class Extension

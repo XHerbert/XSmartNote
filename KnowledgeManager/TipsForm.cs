@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -29,6 +30,7 @@ namespace KnowledgeManager
                 if (this.Opacity >= 1)
                 {
                     bIsFade = false;
+                    Thread.Sleep(2000);
                 }
             }
             else
@@ -51,7 +53,7 @@ namespace KnowledgeManager
             this.Show();
             //设置timer1的时间间隔
             this.timerSlide.Interval = 50;
-            //使记时器timer开始工作
+            //使计时器timer开始工作
             this.timerSlide.Enabled = true;
             this.lbl_Msg.Text = message;
             this.timerSlide.Start();

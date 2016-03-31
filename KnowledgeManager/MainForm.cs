@@ -179,9 +179,9 @@ namespace KnowledgeManager
         private void Form1_Resize(object sender, EventArgs e)
         {
 
-            if (this.Height < 498)
+            if (this.Height < 550)//498
             {
-                this.Height = 498;
+                this.Height = 550;
             }
             if (this.Width < 1015)
             {
@@ -247,9 +247,14 @@ namespace KnowledgeManager
             ShowLabelsList(isRegisterEvent);
         }
 
-        //单击
+        /// <summary>
+        /// 单击结构树
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tv_Folder_Click(object sender, EventArgs e)
         {
+            
             MouseEventArgs me = e as MouseEventArgs;
             if (me == null)
             {
@@ -345,8 +350,13 @@ namespace KnowledgeManager
                     //isClickOnNode = false;
                 }
             }
+            KeepSizeWithMainForm(this.panel_List);
         }
-        //双击
+        /// <summary>
+        /// 双击结构树并将数据显示在文本域中
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tv_Folder_DoubleClick(object sender, EventArgs e)
         {
             MouseEventArgs me = e as MouseEventArgs;
@@ -374,7 +384,11 @@ namespace KnowledgeManager
                 }
             }
         }
-        //选择标签
+        /// <summary>
+        /// 选择标签
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_ChooseLabel_Click(object sender, EventArgs e)
         {
             
@@ -386,7 +400,11 @@ namespace KnowledgeManager
             }
             ShowLabelsList(isRegisterEvent);
         }
-        //新增文章
+        /// <summary>
+        /// 新增文章
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Add_Click(object sender, EventArgs e)
         {
             TipsForm tf = new TipsForm();
@@ -409,7 +427,11 @@ namespace KnowledgeManager
             this.txt_Content.Text = string.Empty;
 
         }
-        //保存文章
+        /// <summary>
+        /// 保存文章
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Save_Click(object sender, EventArgs e)
         {
             TreeNode node = tv_Folder.SelectedNode;
@@ -435,6 +457,26 @@ namespace KnowledgeManager
                 }
             }
         }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            //当前节点提示框所在Location
+            this.lbl_CurrentNode.Location = new Point(10, this.Height - this.lbl_CurrentNode.Height - 5);
+            //MainPanel宽度随主窗体变化
+            this.panel_Main.Width = this.Width - this.panel_Main.Location.X - 10;
+            //MainPanel中各个组件随着MainPanel的宽度变化而变化
+            this.skinLine1.Width = this.panel_Main.Width - this.skinLine1.Location.X - 10;
+            this.skinLine2.Width = this.Width - this.skinLine2.Location.X - 14;
+            this.panel_LabelFixed.Width = this.panel_Main.Width - this.panel_LabelFixed.Location.X;
+            this.panel_List.Width = this.panel_Main.Width - this.panel_List.Location.X;
+            this.btn_ClearLabel.Location = new Point(this.panel_Main.Width - this.btn_ClearLabel.Width - 10, 2);
+            this.panel_Label.Width = this.panel_Main.Width - this.panel_Label.Location.X;
+            this.panel_LabelFixed.Width = this.panel_Main.Width - this.panel_LabelFixed.Location.X;
+            this.btn_ClearFixLabel.Location = new Point(this.panel_Main.Width - this.btn_ClearFixLabel.Width - 10, 39);
+            this.btn_EditLabel.Location = new Point(this.panel_Main.Width - this.btn_EditLabel.Width - 10, 7);
+            KeepSizeWithMainForm(this.panel_List);
+            //MessageBox.Show(this.skinLine1.Parent.Name);
+        }
         #endregion
 
         #region DELEGATE
@@ -443,7 +485,10 @@ namespace KnowledgeManager
         #endregion
 
         #region COMMON METHOD
-        //清除LabelWithCheck控件
+        /// <summary>
+        /// 移除LabelWithCheck控件
+        /// </summary>
+        /// <param name="flp"></param>
         private void ClearControls(FlowLayoutPanel flp)
         {
             //最有效的删除控件方式
@@ -456,6 +501,16 @@ namespace KnowledgeManager
                 }
             }
         }       //添加LabelWithCheck控件
+
+        /// <summary>
+        /// 将Note添加在面板的指定位置(重载)
+        /// </summary>
+        /// <param name="flp"></param>
+        /// <param name="column"></param>
+        /// <param name="tag"></param>
+        /// <param name="Id"></param>
+        /// <param name="ischecked"></param>
+        /// <param name="registerEvent"></param>
         public void AddLabelToLocation(FlowLayoutPanel flp, int column, string tag, int Id, bool ischecked,bool registerEvent)
         {
             //int flag = 0;
@@ -491,7 +546,11 @@ namespace KnowledgeManager
                 flagForPanelEdit = 0;
             }
         }
-        //选择标签，用于“选中标签”并同步到数据库
+        /// <summary>
+        /// 选择标签，用于“选中标签”并同步到数据库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Label_LabelCheckedEvent(object sender, LabelWithCheckEventArgs e)
         {
             TipsForm tf = new TipsForm();
@@ -545,12 +604,21 @@ namespace KnowledgeManager
             txt_SelectedLabel.Text = ShowLabel(labelDic);
         }
 
-        //选择标签，用于“编辑”过滤F区域文章
+        /// <summary>
+        /// 选择标签，用于“编辑”过滤F区域文章
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Label_LabelSelectEvent(object sender, LabelWithCheckEventArgs e)
         {
-            AddLabelToLocation(flowLayoutPanel2,6,e.LabelText,e.Id,false,false); //Stack Overflow 重复绑定重复执行 形成无限循环导致
+            //AddLabelToLocation(flowLayoutPanel2,6,e.LabelText,e.Id,false,false); //Stack Overflow 重复绑定重复执行 形成无限循环导致
         }
 
+        /// <summary>
+        /// 将Note展示在Panel面板上
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="flp"></param>
         public void ShowListOnPanel(DataTable dt, FlowLayoutPanel flp)
         {
             foreach (DataRow item in dt.Rows)
@@ -559,6 +627,11 @@ namespace KnowledgeManager
             }
         }
 
+        /// <summary>
+        /// 将Note添加在面板的指定位置
+        /// </summary>
+        /// <param name="flp"></param>
+        /// <param name="text"></param>
         public static void AddLabelToLocation(FlowLayoutPanel flp, string text)
         {
             int labelCount = flp.Controls.Count;
@@ -590,6 +663,11 @@ namespace KnowledgeManager
             flp.ScrollControlIntoView(le);
         }
 
+        /// <summary>
+        /// 更新文件夹树
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="name"></param>
         private static void UpdateFolder(TreeNode node, string name)
         {
             //这里写你想更新到数据库的内容和相关的方法
@@ -599,7 +677,11 @@ namespace KnowledgeManager
             Debug.WriteLine(node.Text + "  " + name);
         }
 
-        //文本框显示为文章添加的标签
+        /// <summary>
+        /// 文本框显示为文章添加的标签
+        /// </summary>
+        /// <param name="dic"></param>
+        /// <returns></returns>
         private static string ShowLabel(Dictionary<int, string> dic)
         {
             StringBuilder labels = new StringBuilder();
@@ -611,7 +693,10 @@ namespace KnowledgeManager
             return labels.ToString();
         }
 
-        //打开标签库
+        /// <summary>
+        /// 打开标签库
+        /// </summary>
+        /// <param name="isRegisterEvent"></param>
         private void ShowLabelsList(bool isRegisterEvent)
         {
             TagSelector tag = new TagSelector();
@@ -622,6 +707,23 @@ namespace KnowledgeManager
             }
             tag.Show();
         }
+
+        /// <summary>
+        /// 使得FlowLayoutPanel上的LabelEx组件随窗体的变化而变化，保证控件的宽度自适应
+        /// </summary>
+        /// <param name="flp"></param>
+        private void KeepSizeWithMainForm(FlowLayoutPanel flp)
+        {
+            foreach (Control label in flp.Controls)
+            {
+                if (label is LabelEx)
+                {
+                    LabelEx lbl = label as LabelEx;
+                    lbl.Width = this.Width - this.panel_Main.Location.X - 45;
+                }
+            }
+        }
+
         #endregion
 
         #region CONTEXTMENUTRIPS
@@ -755,24 +857,6 @@ namespace KnowledgeManager
         }
         #endregion
 
-        private void MainForm_SizeChanged(object sender, EventArgs e)
-        {
-            //当前节点提示框所在Location
-            this.lbl_CurrentNode.Location = new Point(10,this.Height-this.lbl_CurrentNode.Height-5);
-            //MainPanel宽度随主窗体变化
-            this.panel_Main.Width = this.Width - this.panel_Main.Location.X-10;
-            //MainPanel中各个组件随着MainPanel的宽度变化而变化
-            this.skinLine1.Width = this.panel_Main.Width - this.skinLine1.Location.X-10;
-            this.panel_LabelFixed.Width = this.panel_Main.Width - this.panel_LabelFixed.Location.X;
-            this.panel_List.Width = this.panel_Main.Width - this.panel_List.Location.X;
-            this.btn_ClearLabel.Location =new Point(this.panel_Main.Width - this.btn_ClearLabel.Width - 10,2);
-            this.panel_Label.Width = this.panel_Main.Width - this.panel_Label.Location.X;
-            this.panel_LabelFixed.Width = this.panel_Main.Width - this.panel_LabelFixed.Location.X;
-            this.btn_ClearFixLabel.Location = new Point(this.panel_Main.Width-this.btn_ClearFixLabel.Width-10,39);
-            this.btn_EditLabel.Location = new Point(this.panel_Main.Width - this.btn_EditLabel.Width - 10, 7);
-            //this.flowLayoutPanel2.Width = this.Width - this.flowLayoutPanel2.Location.X - 10;
-
-        }
     }
 
     public static class Extension

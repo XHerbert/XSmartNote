@@ -68,6 +68,8 @@
             this.删除文章ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重命名ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_CurrentNode = new System.Windows.Forms.Label();
+            this.theme = new System.Windows.Forms.ToolStripMenuItem();
+            this.skinLine2 = new CCWin.SkinControl.SkinLine();
             this.menuStrip1.SuspendLayout();
             this.panel_Tree.SuspendLayout();
             this.panel_Article.SuspendLayout();
@@ -84,10 +86,11 @@
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
-            this.设置ToolStripMenuItem});
+            this.设置ToolStripMenuItem,
+            this.theme});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(94, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(137, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -134,7 +137,7 @@
             // 
             this.字体大小ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("字体大小ToolStripMenuItem.Image")));
             this.字体大小ToolStripMenuItem.Name = "字体大小ToolStripMenuItem";
-            this.字体大小ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.字体大小ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.字体大小ToolStripMenuItem.Text = "字体大小";
             this.字体大小ToolStripMenuItem.Click += new System.EventHandler(this.字体大小ToolStripMenuItem_Click);
             // 
@@ -271,7 +274,6 @@
             // panel_List
             // 
             this.panel_List.AutoScroll = true;
-            this.panel_List.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_List.Location = new System.Drawing.Point(3, 147);
             this.panel_List.Name = "panel_List";
             this.panel_List.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
@@ -441,11 +443,30 @@
             this.lbl_CurrentNode.TabIndex = 4;
             this.lbl_CurrentNode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // theme
+            // 
+            this.theme.Name = "theme";
+            this.theme.Size = new System.Drawing.Size(43, 20);
+            this.theme.Text = "主题";
+            // 
+            // skinLine2
+            // 
+            this.skinLine2.BackColor = System.Drawing.Color.Transparent;
+            this.skinLine2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.skinLine2.LineHeight = 1;
+            this.skinLine2.Location = new System.Drawing.Point(403, 170);
+            this.skinLine2.Margin = new System.Windows.Forms.Padding(0);
+            this.skinLine2.Name = "skinLine2";
+            this.skinLine2.Size = new System.Drawing.Size(579, 2);
+            this.skinLine2.TabIndex = 7;
+            this.skinLine2.Text = "skinLine2";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(999, 493);
+            this.Controls.Add(this.skinLine2);
             this.Controls.Add(this.lbl_CurrentNode);
             this.Controls.Add(this.panel_Main);
             this.Controls.Add(this.panel_Article);
@@ -519,6 +540,8 @@
         private System.Windows.Forms.FlowLayoutPanel panel_List;
         private System.Windows.Forms.Label lbl_CurrentNode;
         private CCWin.SkinControl.SkinLine skinLine1;
+        private System.Windows.Forms.ToolStripMenuItem theme;
+        private CCWin.SkinControl.SkinLine skinLine2;
     }
 }
 

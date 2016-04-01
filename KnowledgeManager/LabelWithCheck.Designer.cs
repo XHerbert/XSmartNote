@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lb = new System.Windows.Forms.Label();
-            this.ck = new System.Windows.Forms.CheckBox();
+            this.ck = new CCWin.SkinControl.SkinCheckBox();
             this.SuspendLayout();
             // 
             // lb
@@ -46,13 +46,20 @@
             // ck
             // 
             this.ck.AutoSize = true;
-            this.ck.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ck.Location = new System.Drawing.Point(56, 4);
+            this.ck.BackColor = System.Drawing.Color.Transparent;
+            this.ck.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.ck.DownBack = null;
+            this.ck.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ck.Location = new System.Drawing.Point(55, 4);
+            this.ck.MouseBack = null;
             this.ck.Name = "ck";
+            this.ck.NormlBack = null;
+            this.ck.SelectedDownBack = null;
+            this.ck.SelectedMouseBack = null;
+            this.ck.SelectedNormlBack = null;
             this.ck.Size = new System.Drawing.Size(15, 14);
             this.ck.TabIndex = 1;
-            this.ck.UseVisualStyleBackColor = true;
-            this.ck.CheckedChanged += new System.EventHandler(this.ck_CheckedChanged);
+            this.ck.UseVisualStyleBackColor = false;
             // 
             // LabelWithCheck
             // 
@@ -71,6 +78,6 @@
         #endregion
 
         private System.Windows.Forms.Label lb;
-        private System.Windows.Forms.CheckBox ck;
+        private CCWin.SkinControl.SkinCheckBox ck;
     }
 }

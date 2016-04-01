@@ -7,10 +7,12 @@ using KnowledgeManager.Model;
 using System.Collections.Generic;
 using System.Text;
 using CCWin.SkinControl;
+using CCWin;
+
 
 namespace KnowledgeManager
 {
-    public partial class MainForm : CCWin.Skin_Color//CCWin.Skin_Mac//CCWin.Skin_DevExpress
+    public partial class MainForm : Skin_DevExpress//CCWin.Skin_Mac//CCWin.Skin_DevExpress
     {
         #region PARAMS
         private const int WIDTH = 0x004A;//74
@@ -223,19 +225,29 @@ namespace KnowledgeManager
                 }
             }
         }
-
+        /// <summary>
+        /// Unchecked复选框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_ClearFixLabel_Click(object sender, EventArgs e)
         {
-            //ClearControls(flowLayoutPanel2);
-            foreach (LabelWithCheck item in flowLayoutPanel2.Controls)
+            foreach (Control item in flowLayoutPanel2.Controls)
             {
-                if (item.LabelChecked)
+                LabelWithCheck lc;
+                if(item is LabelWithCheck)
                 {
-                    item.LabelChecked = false;
+                    lc = item as LabelWithCheck;
+                    if (lc.LabelChecked)
+                        lc.LabelChecked = false;
                 }
             }
         }
-        //
+        /// <summary>
+        /// 编辑按钮列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_EditLabel_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -407,18 +419,17 @@ namespace KnowledgeManager
         /// <param name="e"></param>
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            TipsForm tf = new TipsForm();
             //添加文章，直接在文本框中输入标题内容，再选择节点（右侧直接出现该节点下所有文章）和标签
             //点击添加后，右侧尾部追加该文章
             if (string.IsNullOrEmpty(txt_Content.Text) || string.IsNullOrEmpty(txt_Title.Text))
             {
-                tf.Show("标题或内容不能为空！");
+                MessageBoxEx.Show("标题或内容不能为空！", "注意", MessageBoxButtons.OK);
                 return;
             }
             TreeNode curNode = tv_Folder.SelectedNode;
             if (curNode == null)
             {
-                tf.Show("请为该文章分配目录！");
+                MessageBoxEx.Show("请为该文章分配目录！", "注意", MessageBoxButtons.OK);
                 return;
             }
 
@@ -435,7 +446,6 @@ namespace KnowledgeManager
         private void btn_Save_Click(object sender, EventArgs e)
         {
             TreeNode node = tv_Folder.SelectedNode;
-            TipsForm tf = new TipsForm();
             if (node == null)
             {
                 return;
@@ -453,11 +463,15 @@ namespace KnowledgeManager
                 BuildTree(this.tv_Folder, GetFolderSet());
                 if (i > 0)
                 {
-                    tf.Show("保存成功！");
+                    MessageBoxEx.Show("保存成功！", "提示", MessageBoxButtons.OK);
                 }
             }
         }
-
+        /// <summary>
+        /// 组件自适应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
             //当前节点提示框所在Location
@@ -553,7 +567,6 @@ namespace KnowledgeManager
         /// <param name="e"></param>
         private void Label_LabelCheckedEvent(object sender, LabelWithCheckEventArgs e)
         {
-            TipsForm tf = new TipsForm();
             CheckBox lc = (CheckBox)sender;
             CheckState cs = lc.CheckState;
             if (cs.ToString() == "Checked")
@@ -562,7 +575,7 @@ namespace KnowledgeManager
                 labelsId = e.Id;
                 if (labelDic.ContainsValue(labels))
                 {
-                    tf.Show("不能重复添加标签！");
+                    MessageBoxEx.Show("不能重复添加标签！", "注意", MessageBoxButtons.OK);
                     return;
                 }
                 labelDic.Add(labelsId, labels);
@@ -570,7 +583,7 @@ namespace KnowledgeManager
                 curNode = tv_Folder.SelectedNode;
                 if (curNode == null)
                 {
-                    tf.Show("请选择文章节点！");
+                    MessageBoxEx.Show("请选择文章节点！", "注意", MessageBoxButtons.OK);
                     return;
                 }
                 if (curNode.Tag.ToString() == Enums.LEAVES.ToString())
@@ -578,7 +591,7 @@ namespace KnowledgeManager
                     int i = SQLHelper.AddRelations(curNode.Name.ToInt(), e.Id);
                     if (i < 0)
                     {
-                        tf.Show("关联ID出错");
+                        MessageBoxEx.Show("关联ID出错！", "注意", MessageBoxButtons.OK);
                     }
                 }
             }
@@ -589,7 +602,7 @@ namespace KnowledgeManager
                 curNode = tv_Folder.SelectedNode;
                 if (curNode == null)
                 {
-                    tf.Show("尚未选择文章！");
+                    MessageBoxEx.Show("尚未选择文章！", "注意", MessageBoxButtons.OK);
                     return;
                 }
                 if (curNode.Tag.ToString() == Enums.LEAVES.ToString())
@@ -597,7 +610,7 @@ namespace KnowledgeManager
                     int i = SQLHelper.RemoveRelations(curNode.Name.ToInt(), e.Id);
                     if (i < 0)
                     {
-                        tf.Show("移除关联ID出错");
+                        MessageBoxEx.Show("移除关联ID出错！", "注意", MessageBoxButtons.OK);
                     }
                 }
             }
@@ -744,7 +757,7 @@ namespace KnowledgeManager
         private void 新建子文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode tn = tv_Folder.SelectedNode;
-            TipsForm tf = new TipsForm();
+           // TipsForm tf = new TipsForm();
             PostContent post = null;
             int flag = -1;
 
@@ -789,7 +802,7 @@ namespace KnowledgeManager
                 }
                 else
                 {
-                    tf.Show("插入失败！");
+                    MessageBoxEx.Show("数据插入失败！", "注意", MessageBoxButtons.OK);
                 }
 
             }
@@ -811,7 +824,6 @@ namespace KnowledgeManager
         private void 添加新文章ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode tn = tv_Folder.SelectedNode;
-            TipsForm tf = new TipsForm();
             PostContent post = null;
             int flag = -1;
             if (tn != null)
@@ -847,7 +859,7 @@ namespace KnowledgeManager
                 }
                 else
                 {
-                    tf.Show("插入失败！");
+                    MessageBoxEx.Show("数据插入失败！", "注意", MessageBoxButtons.OK);
                 }
             }
         }
@@ -856,7 +868,6 @@ namespace KnowledgeManager
             重命名文件夹ToolStripMenuItem_Click(sender, e);
         }
         #endregion
-
     }
 
     public static class Extension

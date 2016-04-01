@@ -60,6 +60,7 @@
             this.ck.Size = new System.Drawing.Size(15, 14);
             this.ck.TabIndex = 1;
             this.ck.UseVisualStyleBackColor = false;
+            this.ck.CheckedChanged += new System.EventHandler(this.ck_CheckedChanged);
             // 
             // LabelWithCheck
             // 

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Domain" namespace="Domain">
+  <class name="Tag" table="T_Tag" lazy="true" >
+    <id name="Id" column="TagId" type="Guid" >
+      <generator class="assigned" />
+    </id>
+    <property name="Title" type="string">
+      <column name="Title" length="500"/>
+    </property>
+  </class>
+</hibernate-mapping>

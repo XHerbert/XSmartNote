@@ -43,6 +43,7 @@ namespace KnowledgeManager
             //当窗体大小发生改变时，Panel自动变化
             this.Resize += Form1_Resize;
             this.RenameFolder += UpdateFolder;
+            FitScreen();
         }
         #endregion
 
@@ -737,6 +738,31 @@ namespace KnowledgeManager
             }
         }
 
+        /// <summary>
+        /// 获取当前屏幕大小，并设置宽高参数为当前屏幕的80%
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private void GetScreenSize(out int x,out int y)
+        {
+            x = Screen.PrimaryScreen.Bounds.Width;
+            y = Screen.PrimaryScreen.Bounds.Height;
+            x = x * 4/5;
+            y = y * 4/5;
+            //Console.WriteLine(string.Format("X:{0}", x));
+            //Console.WriteLine(string.Format("Y:{0}", y));
+        }
+
+        /// <summary>
+        /// 设置窗体宽度高度为屏幕的80%
+        /// </summary>
+        private void FitScreen()
+        {
+            int X, Y = 0;
+            GetScreenSize(out X, out Y);
+            this.Width = X;
+            this.Height = Y;
+        }
         #endregion
 
         #region CONTEXTMENUTRIPS

@@ -51,6 +51,7 @@
             this.txt_Content = new CCWin.SkinControl.SkinTextBox();
             this.panel_Main = new System.Windows.Forms.Panel();
             this.panel_List = new System.Windows.Forms.FlowLayoutPanel();
+            this.txHtmlEditor1 = new TX.Framework.WindowUI.Controls.TXHtmlEditor();
             this.panel_LabelFixed = new System.Windows.Forms.Panel();
             this.skinLine1 = new CCWin.SkinControl.SkinLine();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -70,7 +71,7 @@
             this.重命名ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_CurrentNode = new System.Windows.Forms.Label();
             this.skinLine2 = new CCWin.SkinControl.SkinLine();
-            this.txHtmlEditor1 = new TX.Framework.WindowUI.Controls.TXHtmlEditor();
+            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel_Tree.SuspendLayout();
             this.panel_Article.SuspendLayout();
@@ -89,10 +90,11 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
             this.设置ToolStripMenuItem,
-            this.theme});
+            this.theme,
+            this.关于ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(137, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(180, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -376,6 +378,16 @@
             this.panel_List.Size = new System.Drawing.Size(581, 271);
             this.panel_List.TabIndex = 1;
             // 
+            // txHtmlEditor1
+            // 
+            this.txHtmlEditor1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(168)))), ((int)(((byte)(192)))));
+            this.txHtmlEditor1.HeightLightBolorColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(67)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.txHtmlEditor1.Location = new System.Drawing.Point(3, 8);
+            this.txHtmlEditor1.Name = "txHtmlEditor1";
+            this.txHtmlEditor1.Padding = new System.Windows.Forms.Padding(3);
+            this.txHtmlEditor1.Size = new System.Drawing.Size(564, 146);
+            this.txHtmlEditor1.TabIndex = 1;
+            // 
             // panel_LabelFixed
             // 
             this.panel_LabelFixed.AutoScroll = true;
@@ -572,15 +584,11 @@
             this.skinLine2.TabIndex = 7;
             this.skinLine2.Text = "skinLine2";
             // 
-            // txHtmlEditor1
+            // 关于ToolStripMenuItem
             // 
-            this.txHtmlEditor1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(168)))), ((int)(((byte)(192)))));
-            this.txHtmlEditor1.HeightLightBolorColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(67)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.txHtmlEditor1.Location = new System.Drawing.Point(3, 8);
-            this.txHtmlEditor1.Name = "txHtmlEditor1";
-            this.txHtmlEditor1.Padding = new System.Windows.Forms.Padding(3);
-            this.txHtmlEditor1.Size = new System.Drawing.Size(564, 146);
-            this.txHtmlEditor1.TabIndex = 1;
+            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.关于ToolStripMenuItem.Text = "关于";
             // 
             // MainForm
             // 
@@ -672,6 +680,7 @@
         private CCWin.SkinControl.SkinTextBox txt_Title;
         private CCWin.SkinControl.SkinTextBox txt_Content;
         private TX.Framework.WindowUI.Controls.TXHtmlEditor txHtmlEditor1;
+        private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
     }
 }
 

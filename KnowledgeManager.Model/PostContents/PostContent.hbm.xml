@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Domain" namespace="Domain">
+  <class name="PostContent" table="T_PostContent" lazy="true" >
+    <id name="Id" column="Id" type="Guid" >
+      <generator class="assigned" />
+    </id>
+    <property name="ParentId" type="Guid">
+      <column name="ParentId" length="50"/>
+    </property>
+    <property name="Type" type="YesNo">
+      <column name="Type" length="10"/>
+    </property>
+    <property name="Title" type="string">
+      <column name="Title" length="5000"/>
+    </property>
+    <property name="Content" type="string">
+      <column name="Content" length="5000"/>
+    </property>
+    <property name="CreateDate" type="DateTime">
+      <column name="CreateDate" length="50"/>
+    </property>
+    <property name="ModifyDate" type="DateTime">
+      <column name="ModifyDate" length="50"/>
+    </property>
+    <property name="Enable" type="YesNo">
+      <column name="Enable" length="10"/>
+    </property>
+  </class>
+</hibernate-mapping>

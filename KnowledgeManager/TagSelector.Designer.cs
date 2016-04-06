@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TagSelector));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_Add = new System.Windows.Forms.Button();
             this.txt_Tag = new System.Windows.Forms.TextBox();
@@ -80,9 +81,13 @@
             this.ClientSize = new System.Drawing.Size(339, 262);
             this.Controls.Add(this.panel_Tags);
             this.Controls.Add(this.panel1);
+            this.EffectBack = System.Drawing.Color.DarkRed;
+            this.EffectWidth = 3;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TagSelector";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "标签选择器";
+            this.TitleColor = System.Drawing.Color.Maroon;
+            this.TopMost = true;
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TagSelector_MouseClick);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -6,11 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CCWin;
 using System.Windows.Forms;
 
 namespace KnowledgeManager
 {
-    public partial class TagSelector : Form
+    public partial class TagSelector :Skin_Mac
     {
         #region CONSTRUCTOR
         public TagSelector()
@@ -31,7 +32,7 @@ namespace KnowledgeManager
         #region EVENTS
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            TipsForm tf = new TipsForm();
+            //TipsForm tf = new TipsForm();
             #region MyRegion
             //int labelCount = this.panel_Tags.Controls.Count;
             //int lines = labelCount / 4;
@@ -56,7 +57,8 @@ namespace KnowledgeManager
             }
             else
             {
-                tf.Show(string.Format("请输入标签或\r\n确保标签唯一!", txt_Tag.Text));
+                MessageBoxEx.Show(string.Format("请输入标签或\r\n确保标签唯一!", txt_Tag.Text),"注意",MessageBoxButtons.OK);
+                txt_Tag.Text = string.Empty;
                 return;
             }
         }
@@ -68,7 +70,7 @@ namespace KnowledgeManager
 
         private void TagSelector_MouseClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show(this.ClientSize.Width.ToString());
+            //MessageBox.Show(this.ClientSize.Width.ToString());
         }
         #endregion
 

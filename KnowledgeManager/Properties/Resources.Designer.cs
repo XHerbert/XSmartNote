@@ -101,6 +101,16 @@ namespace KnowledgeManager.Properties {
         }
         
         /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon Note_ {
+            get {
+                object obj = ResourceManager.GetObject("Note_", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap page_2 {
@@ -137,6 +147,16 @@ namespace KnowledgeManager.Properties {
             get {
                 object obj = ResourceManager.GetObject("style", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon StyleSheet {
+            get {
+                object obj = ResourceManager.GetObject("StyleSheet", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

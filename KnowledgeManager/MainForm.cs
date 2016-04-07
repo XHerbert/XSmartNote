@@ -460,8 +460,8 @@ namespace KnowledgeManager
                 {
 
                 }
-                //同时重新加载Treeview
-                BuildTree(this.tv_Folder, GetFolderSet());
+                //同时重新加载Treeview。已注掉，暂时没有必要Reload
+                //BuildTree(this.tv_Folder, GetFolderSet());
                 if (i > 0)
                 {
                     MessageBoxEx.Show("保存成功！", "提示", MessageBoxButtons.OK);
@@ -747,14 +747,14 @@ namespace KnowledgeManager
         {
             x = Screen.PrimaryScreen.Bounds.Width;
             y = Screen.PrimaryScreen.Bounds.Height;
-            x = x * 4/5;
-            y = y * 4/5;
+            x = x * 9/10;
+            y = y * 9/10;
             //Console.WriteLine(string.Format("X:{0}", x));
             //Console.WriteLine(string.Format("Y:{0}", y));
         }
 
         /// <summary>
-        /// 设置窗体宽度高度为屏幕的80%
+        /// 设置窗体宽度高度为屏幕的80%，可配置
         /// </summary>
         private void FitScreen()
         {
@@ -773,10 +773,14 @@ namespace KnowledgeManager
             //fontDialog.ShowDialog();
             if (fontDialog.ShowDialog() != DialogResult.Cancel)
             {
-
-                foreach (LabelEx item in this.panel_List.Controls)
+                //要判断Panel上是否有其他控件，增强代码的健壮性
+                foreach (Control item in this.panel_List.Controls)
                 {
-                    item.Font = fontDialog.Font;//将当前选定的文字改变字体　
+                    if(item is LabelEx)
+                    {
+                        item.Font = fontDialog.Font;//将当前选定的文字改变字体　
+                    }
+
                 }
             }
         }
@@ -855,6 +859,7 @@ namespace KnowledgeManager
             if (tn != null)
             {
                 TreeNode node = new TreeNode("新建文章");
+                node.BeginEdit();
                 node.ImageIndex = 0;
                 node.SelectedImageIndex = 0;
                 node.Tag = Enums.LEAVES;
@@ -865,7 +870,7 @@ namespace KnowledgeManager
                 post.Type = true;//目录 非文章
                 post.ModifyDate = DateTime.Now;
                 post.CreateDate = DateTime.Now;
-                post.Content = "请输入内容";
+                //post.Content = "请输入内容";
 
                 //if (tn.Tag.ToString() == Enums.ROOT.ToString())//如果是根节点
                 //{
@@ -885,7 +890,7 @@ namespace KnowledgeManager
                 }
                 else
                 {
-                    MessageBoxEx.Show("数据插入失败！", "注意", MessageBoxButtons.OK);
+                    MessageBoxEx.Show("添加随笔失败！", "注意", MessageBoxButtons.OK);
                 }
             }
         }

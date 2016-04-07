@@ -38,6 +38,7 @@
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.字体大小ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.theme = new System.Windows.Forms.ToolStripMenuItem();
+            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Tree = new System.Windows.Forms.Panel();
             this.tv_Folder = new System.Windows.Forms.TreeView();
             this.images = new System.Windows.Forms.ImageList(this.components);
@@ -71,7 +72,7 @@
             this.重命名ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_CurrentNode = new System.Windows.Forms.Label();
             this.skinLine2 = new CCWin.SkinControl.SkinLine();
-            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel_Tree.SuspendLayout();
             this.panel_Article.SuspendLayout();
@@ -91,10 +92,11 @@
             this.文件ToolStripMenuItem,
             this.设置ToolStripMenuItem,
             this.theme,
+            this.帮助ToolStripMenuItem,
             this.关于ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(180, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(223, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -150,6 +152,12 @@
             this.theme.Name = "theme";
             this.theme.Size = new System.Drawing.Size(43, 20);
             this.theme.Text = "主题";
+            // 
+            // 关于ToolStripMenuItem
+            // 
+            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.关于ToolStripMenuItem.Text = "关于";
             // 
             // panel_Tree
             // 
@@ -584,11 +592,11 @@
             this.skinLine2.TabIndex = 7;
             this.skinLine2.Text = "skinLine2";
             // 
-            // 关于ToolStripMenuItem
+            // 帮助ToolStripMenuItem
             // 
-            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.关于ToolStripMenuItem.Text = "关于";
+            this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.帮助ToolStripMenuItem.Text = "帮助";
             // 
             // MainForm
             // 
@@ -681,6 +689,7 @@
         private CCWin.SkinControl.SkinTextBox txt_Content;
         private TX.Framework.WindowUI.Controls.TXHtmlEditor txHtmlEditor1;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
     }
 }
 

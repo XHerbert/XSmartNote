@@ -42,6 +42,7 @@
             this.lb.Size = new System.Drawing.Size(56, 17);
             this.lb.TabIndex = 0;
             this.lb.Text = "输入标签";
+            this.lb.Click += new System.EventHandler(this.lb_Click);
             // 
             // ck
             // 

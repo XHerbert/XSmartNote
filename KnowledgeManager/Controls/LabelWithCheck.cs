@@ -15,12 +15,14 @@ namespace KnowledgeManager
         #region PARAMS
         private string labelText;
         private int labelWidth = 74;
-        private bool labelChecked = false;
         int width = 0;
         int height = 0;
         #endregion
 
         #region ATTRIBUTES
+        [Category("XHB.Controls")]
+        [Browsable(true)]
+        [Description("设置或获取LabelText文本")]
         public string LabelText
         {
             get
@@ -48,7 +50,9 @@ namespace KnowledgeManager
 
             }
         }
-
+        [Category("XHB.Controls")]
+        [Browsable(true)]
+        [Description("设置或获取LabelText宽度")]
         public int LabelWidth
         {
             get
@@ -62,7 +66,10 @@ namespace KnowledgeManager
                 this.Refresh();
             }
         }
-
+        [Category("XHB.Controls")]
+        [Browsable(true)]
+        [Description("指示LabelText是否被选中")]
+        [DefaultValue(false)]
         public bool LabelChecked
         {
             get
@@ -89,6 +96,7 @@ namespace KnowledgeManager
         #region OVERRIDE
         protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);
             Graphics g = e.Graphics;
             int x = this.Width;
             int y = this.Height;
@@ -124,19 +132,32 @@ namespace KnowledgeManager
             {
                 g.FillRectangle(new SolidBrush(Color.Black), new Rectangle(x - 1, i, 1, 2));
             }
-            base.OnPaint(e);
         }
         #endregion
 
         #region EVENT
         public delegate void LabelWithCheckSelectedHandler(object sender, LabelWithCheckEventArgs e);
         public event LabelWithCheckSelectedHandler LabelCheckedEvent;
-        private void ck_CheckedChanged(object sender, EventArgs e)//checkBox原型
+        /// <summary>
+        /// CheckBox变化时触发LabelCheckedEvent事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ck_CheckedChanged(object sender, EventArgs e)
         {
             if (LabelCheckedEvent != null)
             {
                 LabelCheckedEvent(sender, new LabelWithCheckEventArgs(this._Id,this.LabelText));
             }
+        }
+        /// <summary>
+        /// 单击Label也可以触发CheckBox的选中事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lb_Click(object sender, EventArgs e)
+        {
+            ck.Checked = ck.Checked ? false : true;
         }
 
         #endregion

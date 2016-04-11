@@ -55,6 +55,7 @@ namespace KnowledgeManager
         #region OVERRIDE
         protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);//解决了文字不显示的问题
             Graphics g = e.Graphics;
             int x = this.Width;
             int y = this.Height;
@@ -67,7 +68,6 @@ namespace KnowledgeManager
             g.DrawLine(new Pen(Color.White), leftBottom, rightBottom);
             g.DrawLine(new Pen(Color.White), leftTop, leftBottom);
             g.DrawLine(new Pen(Color.White), rightTop, rightBottom);
-
             //画上边缘
             for (int i = 0; i < x - 1; i += 3)
             {
@@ -91,7 +91,6 @@ namespace KnowledgeManager
             {
                 g.FillRectangle(new SolidBrush(Color.Black), new Rectangle(x - 1, i, 1, 2));
             }
-            base.OnPaint(e);//解决了文字不显示的问题
         }
 
         public override bool AutoSize

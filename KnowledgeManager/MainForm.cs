@@ -649,7 +649,7 @@ namespace KnowledgeManager
         public static void AddLabelToLocation(FlowLayoutPanel flp, string text)
         {
             int labelCount = flp.Controls.Count;
-            LabelEx le = new LabelEx();
+            LabelExSolidBorder le = new LabelExSolidBorder();//此处可变更LabelEx样式，可配置
             int flag = 0;
             int X = LOCATION_X;
             int Y = CONTENT_MARGIN;

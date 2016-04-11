@@ -38,6 +38,7 @@
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.字体大小ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.theme = new System.Windows.Forms.ToolStripMenuItem();
+            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Tree = new System.Windows.Forms.Panel();
             this.tv_Folder = new System.Windows.Forms.TreeView();
@@ -72,7 +73,6 @@
             this.重命名ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_CurrentNode = new System.Windows.Forms.Label();
             this.skinLine2 = new CCWin.SkinControl.SkinLine();
-            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel_Tree.SuspendLayout();
             this.panel_Article.SuspendLayout();
@@ -152,6 +152,12 @@
             this.theme.Name = "theme";
             this.theme.Size = new System.Drawing.Size(43, 20);
             this.theme.Text = "主题";
+            // 
+            // 帮助ToolStripMenuItem
+            // 
+            this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.帮助ToolStripMenuItem.Text = "帮助";
             // 
             // 关于ToolStripMenuItem
             // 
@@ -591,12 +597,6 @@
             this.skinLine2.Size = new System.Drawing.Size(579, 2);
             this.skinLine2.TabIndex = 7;
             this.skinLine2.Text = "skinLine2";
-            // 
-            // 帮助ToolStripMenuItem
-            // 
-            this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.帮助ToolStripMenuItem.Text = "帮助";
             // 
             // MainForm
             // 

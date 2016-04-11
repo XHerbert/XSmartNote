@@ -52,7 +52,8 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>Note#.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSkin">
@@ -75,23 +76,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorManager.cs" />
+    <Compile Include="Controls\LabelWithCheckSolidBorder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\LabelWithCheckSolidBorder.Designer.cs">
+      <DependentUpon>LabelWithCheckSolidBorder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enums.cs" />
+    <Compile Include="Controls\LabelExSolidBorder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LabelExSolidBorder.Designer.cs">
+      <DependentUpon>LabelExSolidBorder.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LabelEx.cs">
+    <Compile Include="Controls\LabelEx.cs">
       <SubType>component</SubType>
     </Compile>
-    <Compile Include="LabelEx.Designer.cs">
+    <Compile Include="Controls\LabelEx.Designer.cs">
       <DependentUpon>LabelEx.cs</DependentUpon>
     </Compile>
-    <Compile Include="LabelWithCheck.cs">
+    <Compile Include="Controls\LabelWithCheck.cs">
       <SubType>usercontrol</SubType>
     </Compile>
-    <Compile Include="LabelWithCheck.Designer.cs">
+    <Compile Include="Controls\LabelWithCheck.Designer.cs">
       <DependentUpon>LabelWithCheck.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -112,7 +125,7 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LabelWithCheck.resx">
+    <EmbeddedResource Include="Controls\LabelWithCheck.resx">
       <DependentUpon>LabelWithCheck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -181,7 +194,6 @@
     <None Include="Resources\StyleSheet.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Note#.ico" />
     <Content Include="Resources\Note#.ico" />
     <None Include="Resources\Note_.ico" />
   </ItemGroup>

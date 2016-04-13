@@ -164,7 +164,9 @@ namespace KnowledgeManager
 
 
     }
-
+    /// <summary>
+    /// 事件参数包含的信息
+    /// </summary>
     public class LabelWithCheckEventArgs :EventArgs
     {
         private string _LabelText;

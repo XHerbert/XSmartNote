@@ -38,6 +38,12 @@ namespace KnowledgeManager
         }
         #endregion
 
+
+        #region Property
+        public Color NormalBorderColor { get; set; }
+        public Color HighLightBorderColor { get; set; }
+        #endregion
+        private int State { get; set; }
         #region EVENTS
         private void LabelEx_TextChanged(object sender, EventArgs e)
         {

@@ -52,8 +52,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\fav.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSkin">
@@ -122,6 +121,12 @@
     <Compile Include="TipsForm.Designer.cs">
       <DependentUpon>TipsForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\LabelEx.resx">
+      <DependentUpon>LabelEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LabelExSolidBorder.resx">
+      <DependentUpon>LabelExSolidBorder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +199,7 @@
     <None Include="Resources\StyleSheet.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\fav.ico" />
     <Content Include="Resources\Note#.ico" />
     <None Include="Resources\Note_.ico" />
   </ItemGroup>

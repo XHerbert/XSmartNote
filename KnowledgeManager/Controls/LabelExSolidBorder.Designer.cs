@@ -28,8 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.SuspendLayout();
+            // 
+            // LabelExSolidBorder
+            // 
+            this.MouseEnter += new System.EventHandler(this.LabelExSolidBorder_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.LabelExSolidBorder_MouseLeave);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

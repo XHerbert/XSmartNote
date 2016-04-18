@@ -346,7 +346,6 @@ namespace KnowledgeManager
                             this.lbl_CurrentNode.Text = "当前节点：" + node.Text;
                             ClearControls(flowLayoutPanel1);
                             int cid = node.Name.ToInt();
-                            //new TipsForm().Show(cid.ToString());
                             DataTable labels = SQLHelper.GetTagsByPostId(cid);//取得一篇文章里的所有书签
                             if (labels.Rows.Count > 0)
                             {
@@ -762,6 +761,17 @@ namespace KnowledgeManager
             GetScreenSize(out X, out Y);
             this.Width = X;
             this.Height = Y;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="title"></param>
+        public void SetText(string text,string title)
+        {
+            this.txt_Content.Text = text;
+            this.txt_Title.Text = title;
         }
         #endregion
 

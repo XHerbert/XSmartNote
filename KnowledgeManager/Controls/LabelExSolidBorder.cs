@@ -12,6 +12,10 @@ namespace KnowledgeManager
 {
     public partial class LabelExSolidBorder : LabelEx
     {
+        #region PARAMS
+        public event Action<string,string> ShowNote;
+        #endregion
+
         #region CONSTRUCTOR      
         public LabelExSolidBorder()
             :base()
@@ -21,7 +25,7 @@ namespace KnowledgeManager
         }
         #endregion
 
-        #region Property
+        #region PROPERTY
         private int State { get; set; }
         #endregion
 
@@ -153,5 +157,18 @@ namespace KnowledgeManager
             this.Invalidate();
         }
         #endregion
+
+        /// <summary>
+        /// 鼠标单击后，把当前Note内容显示在左侧的文本区域，观察者模式
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LabelExSolidBorder_Click(object sender, EventArgs e)
+        {
+            MainForm mf = (MainForm)this.TopLevelControl;
+            ShowNote += mf.SetText;//绑定事件
+            if (ShowNote != null)
+                ShowNote(this.Text, "TITLE");//此处后续完善
+        }
     }
 }

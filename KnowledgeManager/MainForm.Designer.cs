@@ -38,6 +38,13 @@
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.字体大小ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.theme = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bg_Line = new System.Windows.Forms.ToolStripMenuItem();
+            this.roseRed = new System.Windows.Forms.ToolStripMenuItem();
+            this.stoneBlue = new System.Windows.Forms.ToolStripMenuItem();
+            this.lightGreen = new System.Windows.Forms.ToolStripMenuItem();
+            this.yellow = new System.Windows.Forms.ToolStripMenuItem();
+            this.bone = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Tree = new System.Windows.Forms.Panel();
@@ -149,9 +156,65 @@
             // 
             // theme
             // 
+            this.theme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.bg_Line});
             this.theme.Name = "theme";
             this.theme.Size = new System.Drawing.Size(43, 20);
             this.theme.Text = "主题";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(122, 22);
+            this.toolStripMenuItem2.Text = "主题";
+            // 
+            // bg_Line
+            // 
+            this.bg_Line.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.roseRed,
+            this.stoneBlue,
+            this.lightGreen,
+            this.yellow,
+            this.bone});
+            this.bg_Line.Name = "bg_Line";
+            this.bg_Line.Size = new System.Drawing.Size(122, 22);
+            this.bg_Line.Text = "背景纹理";
+            // 
+            // roseRed
+            // 
+            this.roseRed.Name = "roseRed";
+            this.roseRed.Size = new System.Drawing.Size(110, 22);
+            this.roseRed.Text = "玫瑰红";
+            this.roseRed.Click += new System.EventHandler(this.roseRed_Click);
+            // 
+            // stoneBlue
+            // 
+            this.stoneBlue.Name = "stoneBlue";
+            this.stoneBlue.Size = new System.Drawing.Size(110, 22);
+            this.stoneBlue.Text = "宝石蓝";
+            this.stoneBlue.Click += new System.EventHandler(this.stoneBlue_Click);
+            // 
+            // lightGreen
+            // 
+            this.lightGreen.Name = "lightGreen";
+            this.lightGreen.Size = new System.Drawing.Size(110, 22);
+            this.lightGreen.Text = "青葱绿";
+            this.lightGreen.Click += new System.EventHandler(this.lightGreen_Click);
+            // 
+            // yellow
+            // 
+            this.yellow.Name = "yellow";
+            this.yellow.Size = new System.Drawing.Size(110, 22);
+            this.yellow.Text = "小鸭黄";
+            this.yellow.Click += new System.EventHandler(this.yellow_Click);
+            // 
+            // bone
+            // 
+            this.bone.Name = "bone";
+            this.bone.Size = new System.Drawing.Size(110, 22);
+            this.bone.Text = "青花瓷";
+            this.bone.Click += new System.EventHandler(this.bone_Click);
             // 
             // 帮助ToolStripMenuItem
             // 
@@ -177,7 +240,7 @@
             // 
             // tv_Folder
             // 
-            this.tv_Folder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tv_Folder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tv_Folder.ImageIndex = 0;
             this.tv_Folder.ImageList = this.images;
             this.tv_Folder.Indent = 19;
@@ -185,7 +248,7 @@
             this.tv_Folder.Location = new System.Drawing.Point(3, 3);
             this.tv_Folder.Name = "tv_Folder";
             this.tv_Folder.SelectedImageIndex = 1;
-            this.tv_Folder.Size = new System.Drawing.Size(166, 388);
+            this.tv_Folder.Size = new System.Drawing.Size(166, 422);
             this.tv_Folder.TabIndex = 0;
             this.tv_Folder.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tv_Folder_AfterLabelEdit);
             this.tv_Folder.Click += new System.EventHandler(this.tv_Folder_Click);
@@ -212,6 +275,7 @@
             this.btn_Add.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_Add.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_Add.DownBack = null;
+            this.btn_Add.ForeColor = System.Drawing.Color.DimGray;
             this.btn_Add.Location = new System.Drawing.Point(3, 396);
             this.btn_Add.MouseBack = null;
             this.btn_Add.Name = "btn_Add";
@@ -220,10 +284,12 @@
             this.btn_Add.TabIndex = 19;
             this.btn_Add.Text = "添加文章";
             this.btn_Add.UseVisualStyleBackColor = false;
+            this.btn_Add.Visible = false;
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // panel_Article
             // 
+            this.panel_Article.BackColor = System.Drawing.Color.Transparent;
             this.panel_Article.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Article.Controls.Add(this.panel_SeleSave);
             this.panel_Article.Controls.Add(this.txt_Title);
@@ -258,6 +324,8 @@
             this.btn_ChooseLabel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_ChooseLabel.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_ChooseLabel.DownBack = null;
+            this.btn_ChooseLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.btn_ChooseLabel.GlowColor = System.Drawing.Color.Blue;
             this.btn_ChooseLabel.Location = new System.Drawing.Point(1, 3);
             this.btn_ChooseLabel.MouseBack = null;
             this.btn_ChooseLabel.Name = "btn_ChooseLabel";
@@ -275,6 +343,8 @@
             this.btn_Save.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_Save.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_Save.DownBack = null;
+            this.btn_Save.ForeColor = System.Drawing.Color.DimGray;
+            this.btn_Save.GlowColor = System.Drawing.Color.DarkGreen;
             this.btn_Save.Location = new System.Drawing.Point(1, 59);
             this.btn_Save.MouseBack = null;
             this.btn_Save.Name = "btn_Save";
@@ -372,6 +442,7 @@
             // 
             // panel_Main
             // 
+            this.panel_Main.BackColor = System.Drawing.Color.SeaShell;
             this.panel_Main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Main.Controls.Add(this.panel_List);
             this.panel_Main.Controls.Add(this.panel_LabelFixed);
@@ -401,6 +472,7 @@
             this.txHtmlEditor1.Padding = new System.Windows.Forms.Padding(3);
             this.txHtmlEditor1.Size = new System.Drawing.Size(564, 146);
             this.txHtmlEditor1.TabIndex = 1;
+            this.txHtmlEditor1.Visible = false;
             // 
             // panel_LabelFixed
             // 
@@ -441,6 +513,8 @@
             this.btn_EditLabel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_EditLabel.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_EditLabel.DownBack = null;
+            this.btn_EditLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.btn_EditLabel.GlowColor = System.Drawing.Color.Maroon;
             this.btn_EditLabel.Location = new System.Drawing.Point(520, 7);
             this.btn_EditLabel.MouseBack = null;
             this.btn_EditLabel.Name = "btn_EditLabel";
@@ -458,6 +532,8 @@
             this.btn_ClearFixLabel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_ClearFixLabel.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_ClearFixLabel.DownBack = null;
+            this.btn_ClearFixLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.btn_ClearFixLabel.GlowColor = System.Drawing.Color.DarkOrchid;
             this.btn_ClearFixLabel.Location = new System.Drawing.Point(520, 39);
             this.btn_ClearFixLabel.MouseBack = null;
             this.btn_ClearFixLabel.Name = "btn_ClearFixLabel";
@@ -493,6 +569,8 @@
             this.btn_ClearLabel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_ClearLabel.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_ClearLabel.DownBack = null;
+            this.btn_ClearLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.btn_ClearLabel.GlowColor = System.Drawing.Color.Maroon;
             this.btn_ClearLabel.Location = new System.Drawing.Point(520, 2);
             this.btn_ClearLabel.MouseBack = null;
             this.btn_ClearLabel.Name = "btn_ClearLabel";
@@ -578,6 +656,7 @@
             // 
             // lbl_CurrentNode
             // 
+            this.lbl_CurrentNode.BackColor = System.Drawing.Color.Transparent;
             this.lbl_CurrentNode.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbl_CurrentNode.ForeColor = System.Drawing.Color.Maroon;
             this.lbl_CurrentNode.Location = new System.Drawing.Point(13, 463);
@@ -590,11 +669,11 @@
             // 
             this.skinLine2.BackColor = System.Drawing.Color.Transparent;
             this.skinLine2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.skinLine2.LineHeight = 1;
+            this.skinLine2.LineHeight = 2;
             this.skinLine2.Location = new System.Drawing.Point(403, 170);
             this.skinLine2.Margin = new System.Windows.Forms.Padding(0);
             this.skinLine2.Name = "skinLine2";
-            this.skinLine2.Size = new System.Drawing.Size(579, 2);
+            this.skinLine2.Size = new System.Drawing.Size(579, 1);
             this.skinLine2.TabIndex = 7;
             this.skinLine2.Text = "skinLine2";
             // 
@@ -602,6 +681,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::KnowledgeManager.Properties.Resources.bg_10_03;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Tile;
             this.ClientSize = new System.Drawing.Size(999, 493);
             this.Controls.Add(this.skinLine2);
             this.Controls.Add(this.lbl_CurrentNode);
@@ -690,6 +771,13 @@
         private TX.Framework.WindowUI.Controls.TXHtmlEditor txHtmlEditor1;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem bg_Line;
+        private System.Windows.Forms.ToolStripMenuItem roseRed;
+        private System.Windows.Forms.ToolStripMenuItem stoneBlue;
+        private System.Windows.Forms.ToolStripMenuItem lightGreen;
+        private System.Windows.Forms.ToolStripMenuItem yellow;
+        private System.Windows.Forms.ToolStripMenuItem bone;
     }
 }
 

@@ -110,27 +110,27 @@ namespace KnowledgeManager
             g.DrawLine(new Pen(Color.White), leftTop, leftBottom);
             g.DrawLine(new Pen(Color.White), rightTop, rightBottom);
             //画上边缘
-            for (int i = 0; i < x - 1; i += 3)
+            for (int i = 0; i < x - 1; i ++)
             {
-                g.FillRectangle(new SolidBrush(Color.Black), new Rectangle(i, 0, 2, 1));
+                g.FillRectangle(new SolidBrush(Color.Orange), new Rectangle(i, 0, 1, 1));
             }
 
             //画下边缘
-            for (int m = 0; m < x - 1; m += 3)
+            for (int i = 0; i < x ; i ++)
             {
-                g.FillRectangle(new SolidBrush(Color.Black), new Rectangle(m, y - 1, 2, 1));
+                g.FillRectangle(new SolidBrush(Color.Orange), new Rectangle(i, y - 1, 1, 1));
             }
 
             //画左边缘
-            for (int i = 0; i < y - 1; i += 3)
+            for (int i = 0; i < y - 1; i ++)
             {
-                g.FillRectangle(new SolidBrush(Color.Black), new Rectangle(0, i, 1, 2));
+                g.FillRectangle(new SolidBrush(Color.Orange), new Rectangle(0, i, 1, 1));
             }
 
             //画右边缘
-            for (int i = 0; i < y - 1; i += 3)
+            for (int i = 0; i < y - 1; i ++)
             {
-                g.FillRectangle(new SolidBrush(Color.Black), new Rectangle(x - 1, i, 1, 2));
+                g.FillRectangle(new SolidBrush(Color.Orange), new Rectangle(x - 1, i, 1, 1));
             }
         }
         #endregion

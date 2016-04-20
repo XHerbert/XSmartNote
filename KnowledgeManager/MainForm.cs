@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using CCWin.SkinControl;
 using CCWin;
-
+using KnowledgeManager.Properties;
 
 namespace KnowledgeManager
 {
@@ -35,11 +35,22 @@ namespace KnowledgeManager
 
         public MainForm()
         {
-            this.SetStyle(ControlStyles.UserPaint, true);
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            //this.SetStyle(ControlStyles.UserPaint, true);
+            //this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            //this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             //this.SetStyle(ControlStyles.DoubleBuffer, true);// 双缓冲
+            
             InitializeComponent();
+            SetStyle(ControlStyles.OptimizedDoubleBuffer |
+                ControlStyles.ResizeRedraw |
+                ControlStyles.UserPaint |
+                ControlStyles.DoubleBuffer |
+                ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.Selectable, false);
+            //this.SetStyle(ControlStyles.UserPaint, true);
+            //this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            //this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            //this.SetStyle(ControlStyles.DoubleBuffer, true);// 双缓冲
             //当窗体大小发生改变时，Panel自动变化
             this.Resize += Form1_Resize;
             this.RenameFolder += UpdateFolder;
@@ -192,7 +203,7 @@ namespace KnowledgeManager
             }
             //Panel_Tree
             panel_Tree.Height = this.Height - 75;
-            this.tv_Folder.Height = panel_Tree.Height - 14 - this.btn_Add.Height;
+            this.tv_Folder.Height = panel_Tree.Height - 8;
             this.btn_Add.Location = new Point(3, tv_Folder.Height + 9);
 
             //Panel_Article
@@ -909,6 +920,32 @@ namespace KnowledgeManager
             重命名文件夹ToolStripMenuItem_Click(sender, e);
         }
         #endregion
+
+        private void roseRed_Click(object sender, EventArgs e)
+        {
+            this.BackgroundImage = Resources.bg_10_03;
+            this.Invalidate();
+        }
+
+        private void stoneBlue_Click(object sender, EventArgs e)
+        {
+            this.BackgroundImage = Resources.bg_10_04;
+        }
+
+        private void lightGreen_Click(object sender, EventArgs e)
+        {
+            this.BackgroundImage = Resources.bg_10_02;
+        }
+
+        private void yellow_Click(object sender, EventArgs e)
+        {
+            this.BackgroundImage = Resources.bg_10_01;
+        }
+
+        private void bone_Click(object sender, EventArgs e)
+        {
+            this.BackgroundImage = Resources.bg_10_05;
+        }
     }
 
     public static class Extension

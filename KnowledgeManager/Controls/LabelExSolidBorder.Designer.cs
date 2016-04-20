@@ -32,6 +32,7 @@
             // 
             // LabelExSolidBorder
             // 
+            this.ForeColor = System.Drawing.Color.DimGray;
             this.Click += new System.EventHandler(this.LabelExSolidBorder_Click);
             this.MouseEnter += new System.EventHandler(this.LabelExSolidBorder_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.LabelExSolidBorder_MouseLeave);

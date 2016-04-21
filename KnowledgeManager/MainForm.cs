@@ -9,6 +9,7 @@ using System.Text;
 using CCWin.SkinControl;
 using CCWin;
 using KnowledgeManager.Properties;
+using KnowledgeManager.Model;
 
 namespace KnowledgeManager
 {
@@ -103,7 +104,7 @@ namespace KnowledgeManager
         private void BuildTree(TreeView tv, DataSet ds)
         {
             tv.Nodes.Clear();
-            TreeNode root = new TreeNode("知识体系", 2, 2);
+            TreeNode root = new TreeNode(Constant.KM_KNOWLEDGESYSTEM, 2, 2);
             root.Tag = Enums.ROOT;
             tv.Nodes.Add(root);//添加根节点
             foreach (DataRow item in ds.Tables[0].Rows)//将一级节点的父节点设置为NULL
@@ -192,42 +193,30 @@ namespace KnowledgeManager
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-
-            if (this.Height < 550)//498
+            if (this.Height < Constant.KM_MIN_HIGHT)
             {
-                this.Height = 550;
+                this.Height = Constant.KM_MIN_HIGHT;
             }
-            if (this.Width < 1015)
+            if (this.Width < Constant.KM_MIN_WIDTH)
             {
-                this.Width = 1015;
+                this.Width = Constant.KM_MIN_WIDTH;
             }
             //Panel_Tree
-            panel_Tree.Height = this.Height - 75;
-            this.tv_Folder.Height = panel_Tree.Height - 8;
-            this.btn_Add.Location = new Point(3, tv_Folder.Height + 9);
+            panel_Tree.Height = this.Height - Constant.KM_TREE_LESS_MAIN;
+            this.tv_Folder.Height = panel_Tree.Height - Constant.KM_TREE_ADJUST_TVFOLDER;
 
             //Panel_Article
-            panel_Article.Height = this.Height - 75;
-            txt_Content.Height = panel_Article.Height - txt_Content.Location.Y - panel_SeleSave.Height - 14;
-            panel_SeleSave.Location = new Point(3, txt_Content.Height + txt_Content.Location.Y + 5);
+            panel_Article.Height = this.Height - Constant.KM_ARTICLE_LESS_MAIN;
+            txt_Content.Height = panel_Article.Height - txt_Content.Location.Y - panel_SeleSave.Height - Constant.KM_ARTICLE_ADJUST_CONTENT;
+            panel_SeleSave.Location = new Point(Constant.KM_PANELSELECTSAVE_X, txt_Content.Height + txt_Content.Location.Y + Constant.KM_PANELSELECTSAVE_Y);
 
             //Panel_Main
-            panel_Main.Height = this.Height - 75;
-            panel_List.Height = panel_Main.Height - panel_LabelFixed.Location.Y - panel_LabelFixed.Height - 14;
+            panel_Main.Height = this.Height - Constant.KM_PANELMAIN_LESS_MAIN;
+            panel_List.Height = panel_Main.Height - panel_LabelFixed.Location.Y - panel_LabelFixed.Height - Constant.KM_PANELLIST_HEIGHT;
 
-
-            //int vCommonWidth = this.Width - panel_Main.Location.X -14;
-            ////this.panel_Main.Width = vCommonWidth-4;
-            //this.panel_Label.Width = vCommonWidth-4;
-            //this.panel_LabelFixed.Width = vCommonWidth;
-            //this.panel_List.Width = vCommonWidth;
-            ////int vCommonWidth = this.Width - panel_Article.Location.X - panel_Article.Width - 24;
-            //this.panel_Main.Width = vCommonWidth - 24;
-            //this.panel_Label.Width = this.panel_Main.Width - 4;
         }
         private void btn_ClearLabel_Click(object sender, EventArgs e)
         {
-            //ClearControls(flowLayoutPanel1);
             //清空控件的选择状态，而不是清空控件
             foreach (LabelWithCheck item in flowLayoutPanel1.Controls)
             {
@@ -344,7 +333,7 @@ namespace KnowledgeManager
                                         {
                                             foreach (DataRow aticle in labels.Rows)
                                             {
-                                                AddLabelToLocation(flowLayoutPanel1, 6, aticle["tagContent"].ToString(), aticle["tagId"].ToInt(), false,false);
+                                                AddLabelToLocation(flowLayoutPanel1, Constant.KM_PANELLIST_COLUMN, aticle["tagContent"].ToString(), aticle["tagId"].ToInt(), false,false);
                                             }
                                         }
                                     }
@@ -362,7 +351,7 @@ namespace KnowledgeManager
                             {
                                 foreach (DataRow aticle in labels.Rows)
                                 {
-                                    AddLabelToLocation(flowLayoutPanel1, 6, aticle["tagContent"].ToString(), aticle["tagId"].ToInt(), true,false);
+                                    AddLabelToLocation(flowLayoutPanel1, Constant.KM_PANELLIST_COLUMN, aticle["tagContent"].ToString(), aticle["tagId"].ToInt(), true,false);
                                 }
                             }
                         }
@@ -434,13 +423,13 @@ namespace KnowledgeManager
             //点击添加后，右侧尾部追加该文章
             if (string.IsNullOrEmpty(txt_Content.Text) || string.IsNullOrEmpty(txt_Title.Text))
             {
-                MessageBoxEx.Show("标题或内容不能为空！", "注意", MessageBoxButtons.OK);
+                MessageBoxEx.Show(Constant.KM_WN_TITLE_OR_CONTENT_NOT_NULL, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                 return;
             }
             TreeNode curNode = tv_Folder.SelectedNode;
             if (curNode == null)
             {
-                MessageBoxEx.Show("请为该文章分配目录！", "注意", MessageBoxButtons.OK);
+                MessageBoxEx.Show(Constant.KM_WN_DISPATCH_DIR, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                 return;
             }
 
@@ -474,7 +463,7 @@ namespace KnowledgeManager
                 //BuildTree(this.tv_Folder, GetFolderSet());
                 if (i > 0)
                 {
-                    MessageBoxEx.Show("保存成功！", "提示", MessageBoxButtons.OK);
+                    MessageBoxEx.Show(Constant.KM_INFO_SAVE_OK,Constant.KM_TYPE_INFO , MessageBoxButtons.OK);
                 }
             }
         }
@@ -586,7 +575,7 @@ namespace KnowledgeManager
                 labelsId = e.Id;
                 if (labelDic.ContainsValue(labels))
                 {
-                    MessageBoxEx.Show("不能重复添加标签！", "注意", MessageBoxButtons.OK);
+                    MessageBoxEx.Show(Constant.KM_WN_ADD_EXIST_LABEL_NOT_ALLOWED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                     return;
                 }
                 labelDic.Add(labelsId, labels);
@@ -594,7 +583,7 @@ namespace KnowledgeManager
                 curNode = tv_Folder.SelectedNode;
                 if (curNode == null)
                 {
-                    MessageBoxEx.Show("请选择文章节点！", "注意", MessageBoxButtons.OK);
+                    MessageBoxEx.Show(Constant.KM_WN_NODE_NOT_SELECTED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                     return;
                 }
                 if (curNode.Tag.ToString() == Enums.LEAVES.ToString())
@@ -602,7 +591,7 @@ namespace KnowledgeManager
                     int i = SQLHelper.AddRelations(curNode.Name.ToInt(), e.Id);
                     if (i < 0)
                     {
-                        MessageBoxEx.Show("关联ID出错！", "注意", MessageBoxButtons.OK);
+                        MessageBoxEx.Show(Constant.KM_ER_REFERENCE_ID_WRONG, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                     }
                 }
             }
@@ -613,7 +602,7 @@ namespace KnowledgeManager
                 curNode = tv_Folder.SelectedNode;
                 if (curNode == null)
                 {
-                    MessageBoxEx.Show("尚未选择文章！", "注意", MessageBoxButtons.OK);
+                    MessageBoxEx.Show(Constant.KM_WN_NOTE_NOT_SELECTED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                     return;
                 }
                 if (curNode.Tag.ToString() == Enums.LEAVES.ToString())
@@ -621,7 +610,7 @@ namespace KnowledgeManager
                     int i = SQLHelper.RemoveRelations(curNode.Name.ToInt(), e.Id);
                     if (i < 0)
                     {
-                        MessageBoxEx.Show("移除关联ID出错！", "注意", MessageBoxButtons.OK);
+                        MessageBoxEx.Show(Constant.KM_REMOVE_REFERENCE_WRONG, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                     }
                 }
             }
@@ -814,7 +803,7 @@ namespace KnowledgeManager
 
             if (tn != null)
             {
-                TreeNode node = new TreeNode("新建文件夹");
+                TreeNode node = new TreeNode(Constant.KM_DEFAULT_FOLDERNAME);
                 node.ImageIndex = 1;
                 node.Tag = Enums.FOLDER;
                 TreeNodeCollection tc = tn.Nodes;
@@ -853,7 +842,7 @@ namespace KnowledgeManager
                 }
                 else
                 {
-                    MessageBoxEx.Show("数据插入失败！", "注意", MessageBoxButtons.OK);
+                    MessageBoxEx.Show(Constant.KM_ER_DATA_SAVE_FAILED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                 }
 
             }
@@ -879,12 +868,12 @@ namespace KnowledgeManager
             int flag = -1;
             if (tn != null)
             {
-                TreeNode node = new TreeNode("新建文章");
+                TreeNode node = new TreeNode(Constant.KM_DEFAULT_NOTENAME);
                 node.BeginEdit();
                 node.ImageIndex = 0;
                 node.SelectedImageIndex = 0;
                 node.Tag = Enums.LEAVES;
-                //node.Name = (SQLHelper.GetMaxID(Enums.tagContent.ToString(),"Id") +1).ToString();
+
                 node.Name = (SQLHelper.GetMaxID(Enums.Table_Content.ToString(), "Id") + 1).ToString();
                 post = new PostContent();
                 post.Title = node.Text;
@@ -911,7 +900,7 @@ namespace KnowledgeManager
                 }
                 else
                 {
-                    MessageBoxEx.Show("添加随笔失败！", "注意", MessageBoxButtons.OK);
+                    MessageBoxEx.Show(Constant.KM_ER_NOTE_SAVE_FAILED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                 }
             }
         }
@@ -962,8 +951,7 @@ namespace KnowledgeManager
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show("convert failed," + ex.ToString());
+                MessageBoxEx.Show(Constant.KM_ER_CONVERT_FAIL);
             }
             return i;
         }

@@ -43,6 +43,8 @@
             this.lb.TabIndex = 0;
             this.lb.Text = "输入标签";
             this.lb.Click += new System.EventHandler(this.lb_Click);
+            this.lb.MouseEnter += new System.EventHandler(this.lb_MouseEnter);
+            this.lb.MouseLeave += new System.EventHandler(this.lb_MouseLeave);
             // 
             // ck
             // 
@@ -62,6 +64,8 @@
             this.ck.TabIndex = 1;
             this.ck.UseVisualStyleBackColor = false;
             this.ck.CheckedChanged += new System.EventHandler(this.ck_CheckedChanged);
+            this.ck.MouseEnter += new System.EventHandler(this.ck_MouseEnter);
+            this.ck.MouseLeave += new System.EventHandler(this.ck_MouseLeave);
             // 
             // LabelWithCheck
             // 
@@ -72,6 +76,8 @@
             this.Controls.Add(this.lb);
             this.Name = "LabelWithCheck";
             this.Size = new System.Drawing.Size(74, 22);
+            this.MouseEnter += new System.EventHandler(this.LabelWithCheck_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.LabelWithCheck_MouseLeave);
             this.ResumeLayout(false);
             this.PerformLayout();
 

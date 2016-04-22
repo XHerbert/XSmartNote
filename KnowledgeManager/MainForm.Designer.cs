@@ -31,22 +31,21 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.字体大小ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.NewMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.SetMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.FontSizeMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.theme = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.bg_Line = new System.Windows.Forms.ToolStripMenuItem();
             this.roseRed = new System.Windows.Forms.ToolStripMenuItem();
             this.stoneBlue = new System.Windows.Forms.ToolStripMenuItem();
             this.lightGreen = new System.Windows.Forms.ToolStripMenuItem();
             this.yellow = new System.Windows.Forms.ToolStripMenuItem();
             this.bone = new System.Windows.Forms.ToolStripMenuItem();
-            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelpMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Tree = new System.Windows.Forms.Panel();
             this.tv_Folder = new System.Windows.Forms.TreeView();
             this.images = new System.Windows.Forms.ImageList(this.components);
@@ -57,7 +56,6 @@
             this.btn_ChooseLabel = new CCWin.SkinControl.SkinButton();
             this.btn_Save = new CCWin.SkinControl.SkinButton();
             this.txt_Title = new CCWin.SkinControl.SkinTextBox();
-            this.txt_Content = new CCWin.SkinControl.SkinTextBox();
             this.panel_Main = new System.Windows.Forms.Panel();
             this.panel_List = new System.Windows.Forms.FlowLayoutPanel();
             this.txHtmlEditor1 = new TX.Framework.WindowUI.Controls.TXHtmlEditor();
@@ -70,16 +68,17 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_ClearLabel = new CCWin.SkinControl.SkinButton();
             this.tree_folder = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.新建子文件夹ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除该文件夹ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.添加新文章ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.重命名文件夹ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Tree_NewSubFolderMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Tree_DeleteFolderMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Tree_NewNoteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Tree_RenameFolderMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tree_article = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.编辑文章ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除文章ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.重命名ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Tree_EditNoteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Tree_DeleteNoteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Tree_RenameNoteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_CurrentNode = new System.Windows.Forms.Label();
             this.skinLine2 = new CCWin.SkinControl.SkinLine();
+            this.txt_Content = new CCWin.SkinControl.SkinTextBox();
             this.menuStrip1.SuspendLayout();
             this.panel_Tree.SuspendLayout();
             this.panel_Article.SuspendLayout();
@@ -96,78 +95,70 @@
             // 
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.文件ToolStripMenuItem,
-            this.设置ToolStripMenuItem,
+            this.FileMenu,
+            this.SetMenu,
             this.theme,
-            this.帮助ToolStripMenuItem,
-            this.关于ToolStripMenuItem});
+            this.HelpMenu,
+            this.AboutMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(223, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(315, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 文件ToolStripMenuItem
+            // FileMenu
             // 
-            this.文件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新建ToolStripMenuItem,
-            this.打开ToolStripMenuItem,
-            this.保存ToolStripMenuItem});
-            this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.文件ToolStripMenuItem.Text = "文件";
+            this.FileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NewMenu,
+            this.OpenMenu,
+            this.SaveMenu});
+            this.FileMenu.Name = "FileMenu";
+            this.FileMenu.Size = new System.Drawing.Size(43, 20);
+            this.FileMenu.Text = "文件";
             // 
-            // 新建ToolStripMenuItem
+            // NewMenu
             // 
-            this.新建ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("新建ToolStripMenuItem.Image")));
-            this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.新建ToolStripMenuItem.Text = "新建";
+            this.NewMenu.Image = ((System.Drawing.Image)(resources.GetObject("NewMenu.Image")));
+            this.NewMenu.Name = "NewMenu";
+            this.NewMenu.Size = new System.Drawing.Size(98, 22);
+            this.NewMenu.Text = "新建";
             // 
-            // 打开ToolStripMenuItem
+            // OpenMenu
             // 
-            this.打开ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("打开ToolStripMenuItem.Image")));
-            this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
-            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.打开ToolStripMenuItem.Text = "打开";
+            this.OpenMenu.Image = ((System.Drawing.Image)(resources.GetObject("OpenMenu.Image")));
+            this.OpenMenu.Name = "OpenMenu";
+            this.OpenMenu.Size = new System.Drawing.Size(98, 22);
+            this.OpenMenu.Text = "打开";
             // 
-            // 保存ToolStripMenuItem
+            // SaveMenu
             // 
-            this.保存ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("保存ToolStripMenuItem.Image")));
-            this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.保存ToolStripMenuItem.Text = "保存";
+            this.SaveMenu.Image = ((System.Drawing.Image)(resources.GetObject("SaveMenu.Image")));
+            this.SaveMenu.Name = "SaveMenu";
+            this.SaveMenu.Size = new System.Drawing.Size(98, 22);
+            this.SaveMenu.Text = "保存";
             // 
-            // 设置ToolStripMenuItem
+            // SetMenu
             // 
-            this.设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.字体大小ToolStripMenuItem});
-            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
-            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.设置ToolStripMenuItem.Text = "设置";
+            this.SetMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FontSizeMenu});
+            this.SetMenu.Name = "SetMenu";
+            this.SetMenu.Size = new System.Drawing.Size(43, 20);
+            this.SetMenu.Text = "设置";
             // 
-            // 字体大小ToolStripMenuItem
+            // FontSizeMenu
             // 
-            this.字体大小ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("字体大小ToolStripMenuItem.Image")));
-            this.字体大小ToolStripMenuItem.Name = "字体大小ToolStripMenuItem";
-            this.字体大小ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.字体大小ToolStripMenuItem.Text = "字体大小";
-            this.字体大小ToolStripMenuItem.Click += new System.EventHandler(this.字体大小ToolStripMenuItem_Click);
+            this.FontSizeMenu.Name = "FontSizeMenu";
+            this.FontSizeMenu.Size = new System.Drawing.Size(122, 22);
+            this.FontSizeMenu.Text = "字体大小";
+            this.FontSizeMenu.Click += new System.EventHandler(this.FontSizeMenu_Click);
             // 
             // theme
             // 
             this.theme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
             this.bg_Line});
             this.theme.Name = "theme";
             this.theme.Size = new System.Drawing.Size(43, 20);
             this.theme.Text = "主题";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(122, 22);
-            this.toolStripMenuItem2.Text = "主题";
             // 
             // bg_Line
             // 
@@ -178,8 +169,8 @@
             this.yellow,
             this.bone});
             this.bg_Line.Name = "bg_Line";
-            this.bg_Line.Size = new System.Drawing.Size(122, 22);
-            this.bg_Line.Text = "背景纹理";
+            this.bg_Line.Size = new System.Drawing.Size(152, 22);
+            this.bg_Line.Text = "主题纹理";
             // 
             // roseRed
             // 
@@ -216,17 +207,17 @@
             this.bone.Text = "青花瓷";
             this.bone.Click += new System.EventHandler(this.bone_Click);
             // 
-            // 帮助ToolStripMenuItem
+            // HelpMenu
             // 
-            this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.帮助ToolStripMenuItem.Text = "帮助";
+            this.HelpMenu.Name = "HelpMenu";
+            this.HelpMenu.Size = new System.Drawing.Size(43, 20);
+            this.HelpMenu.Text = "帮助";
             // 
-            // 关于ToolStripMenuItem
+            // AboutMenu
             // 
-            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.关于ToolStripMenuItem.Text = "关于";
+            this.AboutMenu.Name = "AboutMenu";
+            this.AboutMenu.Size = new System.Drawing.Size(43, 20);
+            this.AboutMenu.Text = "关于";
             // 
             // panel_Tree
             // 
@@ -240,6 +231,7 @@
             // 
             // tv_Folder
             // 
+            this.tv_Folder.BackColor = System.Drawing.Color.MistyRose;
             this.tv_Folder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tv_Folder.ImageIndex = 0;
             this.tv_Folder.ImageList = this.images;
@@ -312,6 +304,7 @@
             // 
             // txt_SelectedLabel
             // 
+            this.txt_SelectedLabel.BackColor = System.Drawing.Color.MistyRose;
             this.txt_SelectedLabel.Location = new System.Drawing.Point(1, 32);
             this.txt_SelectedLabel.Name = "txt_SelectedLabel";
             this.txt_SelectedLabel.Size = new System.Drawing.Size(192, 21);
@@ -357,7 +350,7 @@
             // 
             // txt_Title
             // 
-            this.txt_Title.BackColor = System.Drawing.Color.Transparent;
+            this.txt_Title.BackColor = System.Drawing.Color.MistyRose;
             this.txt_Title.DownBack = null;
             this.txt_Title.Icon = null;
             this.txt_Title.IconIsButton = false;
@@ -398,52 +391,9 @@
             this.txt_Title.WaterText = "请输入标题";
             this.txt_Title.WordWrap = true;
             // 
-            // txt_Content
-            // 
-            this.txt_Content.BackColor = System.Drawing.Color.Transparent;
-            this.txt_Content.DownBack = null;
-            this.txt_Content.Icon = null;
-            this.txt_Content.IconIsButton = false;
-            this.txt_Content.IconMouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txt_Content.IsPasswordChat = '\0';
-            this.txt_Content.IsSystemPasswordChar = false;
-            this.txt_Content.Lines = new string[0];
-            this.txt_Content.Location = new System.Drawing.Point(3, 40);
-            this.txt_Content.Margin = new System.Windows.Forms.Padding(0);
-            this.txt_Content.MaxLength = 32767;
-            this.txt_Content.MinimumSize = new System.Drawing.Size(28, 28);
-            this.txt_Content.MouseBack = null;
-            this.txt_Content.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txt_Content.Multiline = true;
-            this.txt_Content.Name = "txt_Content";
-            this.txt_Content.NormlBack = null;
-            this.txt_Content.Padding = new System.Windows.Forms.Padding(5);
-            this.txt_Content.ReadOnly = false;
-            this.txt_Content.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txt_Content.Size = new System.Drawing.Size(194, 286);
-            // 
-            // 
-            // 
-            this.txt_Content.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_Content.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Content.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.txt_Content.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.txt_Content.SkinTxt.Multiline = true;
-            this.txt_Content.SkinTxt.Name = "BaseText";
-            this.txt_Content.SkinTxt.Size = new System.Drawing.Size(184, 276);
-            this.txt_Content.SkinTxt.TabIndex = 0;
-            this.txt_Content.SkinTxt.WaterColor = System.Drawing.Color.Maroon;
-            this.txt_Content.SkinTxt.WaterText = "请输入内容...";
-            this.txt_Content.TabIndex = 8;
-            this.txt_Content.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txt_Content.WaterColor = System.Drawing.Color.Maroon;
-            this.txt_Content.WaterText = "请输入内容...";
-            this.txt_Content.WordWrap = true;
-            // 
             // panel_Main
             // 
-            this.panel_Main.BackColor = System.Drawing.Color.SeaShell;
-            this.panel_Main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_Main.BackColor = System.Drawing.Color.MistyRose;
             this.panel_Main.Controls.Add(this.panel_List);
             this.panel_Main.Controls.Add(this.panel_LabelFixed);
             this.panel_Main.Controls.Add(this.panel_Label);
@@ -584,75 +534,78 @@
             // tree_folder
             // 
             this.tree_folder.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新建子文件夹ToolStripMenuItem,
-            this.删除该文件夹ToolStripMenuItem,
-            this.添加新文章ToolStripMenuItem,
-            this.重命名文件夹ToolStripMenuItem});
+            this.Tree_NewSubFolderMenuItem,
+            this.Tree_DeleteFolderMenuItem,
+            this.Tree_NewNoteMenuItem,
+            this.Tree_RenameFolderMenuItem});
             this.tree_folder.Name = "tree_MenuStrip";
             this.tree_folder.Size = new System.Drawing.Size(147, 92);
             // 
-            // 新建子文件夹ToolStripMenuItem
+            // Tree_NewSubFolderMenuItem
             // 
-            this.新建子文件夹ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("新建子文件夹ToolStripMenuItem.Image")));
-            this.新建子文件夹ToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.新建子文件夹ToolStripMenuItem.Name = "新建子文件夹ToolStripMenuItem";
-            this.新建子文件夹ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.新建子文件夹ToolStripMenuItem.Text = "新建子文件夹";
-            this.新建子文件夹ToolStripMenuItem.Click += new System.EventHandler(this.新建子文件夹ToolStripMenuItem_Click);
+            this.Tree_NewSubFolderMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_NewSubFolderMenuItem.Image")));
+            this.Tree_NewSubFolderMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.Tree_NewSubFolderMenuItem.Name = "Tree_NewSubFolderMenuItem";
+            this.Tree_NewSubFolderMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.Tree_NewSubFolderMenuItem.Text = "新建子文件夹";
+            this.Tree_NewSubFolderMenuItem.Click += new System.EventHandler(this.Tree_NewSubFolderMenuItem_Click);
             // 
-            // 删除该文件夹ToolStripMenuItem
+            // Tree_DeleteFolderMenuItem
             // 
-            this.删除该文件夹ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("删除该文件夹ToolStripMenuItem.Image")));
-            this.删除该文件夹ToolStripMenuItem.Name = "删除该文件夹ToolStripMenuItem";
-            this.删除该文件夹ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.删除该文件夹ToolStripMenuItem.Text = "删除该文件夹";
+            this.Tree_DeleteFolderMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_DeleteFolderMenuItem.Image")));
+            this.Tree_DeleteFolderMenuItem.Name = "Tree_DeleteFolderMenuItem";
+            this.Tree_DeleteFolderMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.Tree_DeleteFolderMenuItem.Text = "删除该文件夹";
+            this.Tree_DeleteFolderMenuItem.Click += new System.EventHandler(this.Tree_DeleteFolderMenuItem_Click);
             // 
-            // 添加新文章ToolStripMenuItem
+            // Tree_NewNoteMenuItem
             // 
-            this.添加新文章ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("添加新文章ToolStripMenuItem.Image")));
-            this.添加新文章ToolStripMenuItem.Name = "添加新文章ToolStripMenuItem";
-            this.添加新文章ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.添加新文章ToolStripMenuItem.Text = "添加新文章";
-            this.添加新文章ToolStripMenuItem.Click += new System.EventHandler(this.添加新文章ToolStripMenuItem_Click);
+            this.Tree_NewNoteMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_NewNoteMenuItem.Image")));
+            this.Tree_NewNoteMenuItem.Name = "Tree_NewNoteMenuItem";
+            this.Tree_NewNoteMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.Tree_NewNoteMenuItem.Text = "添加新文章";
+            this.Tree_NewNoteMenuItem.Click += new System.EventHandler(this.Tree_NewNoteMenuItem_Click);
             // 
-            // 重命名文件夹ToolStripMenuItem
+            // Tree_RenameFolderMenuItem
             // 
-            this.重命名文件夹ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("重命名文件夹ToolStripMenuItem.Image")));
-            this.重命名文件夹ToolStripMenuItem.Name = "重命名文件夹ToolStripMenuItem";
-            this.重命名文件夹ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.重命名文件夹ToolStripMenuItem.Text = "重命名文件夹";
-            this.重命名文件夹ToolStripMenuItem.Click += new System.EventHandler(this.重命名文件夹ToolStripMenuItem_Click);
+            this.Tree_RenameFolderMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_RenameFolderMenuItem.Image")));
+            this.Tree_RenameFolderMenuItem.Name = "Tree_RenameFolderMenuItem";
+            this.Tree_RenameFolderMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.Tree_RenameFolderMenuItem.Text = "重命名文件夹";
+            this.Tree_RenameFolderMenuItem.Click += new System.EventHandler(this.Tree_RenameFolderMenuItem_Click);
             // 
             // tree_article
             // 
             this.tree_article.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.编辑文章ToolStripMenuItem,
-            this.删除文章ToolStripMenuItem,
-            this.重命名ToolStripMenuItem});
+            this.Tree_EditNoteMenuItem,
+            this.Tree_DeleteNoteMenuItem,
+            this.Tree_RenameNoteMenuItem});
             this.tree_article.Name = "tree_article";
             this.tree_article.Size = new System.Drawing.Size(123, 70);
             // 
-            // 编辑文章ToolStripMenuItem
+            // Tree_EditNoteMenuItem
             // 
-            this.编辑文章ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("编辑文章ToolStripMenuItem.Image")));
-            this.编辑文章ToolStripMenuItem.Name = "编辑文章ToolStripMenuItem";
-            this.编辑文章ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.编辑文章ToolStripMenuItem.Text = "编辑文章";
+            this.Tree_EditNoteMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_EditNoteMenuItem.Image")));
+            this.Tree_EditNoteMenuItem.Name = "Tree_EditNoteMenuItem";
+            this.Tree_EditNoteMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.Tree_EditNoteMenuItem.Text = "编辑文章";
+            this.Tree_EditNoteMenuItem.Click += new System.EventHandler(this.Tree_EditNoteMenuItem_Click);
             // 
-            // 删除文章ToolStripMenuItem
+            // Tree_DeleteNoteMenuItem
             // 
-            this.删除文章ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("删除文章ToolStripMenuItem.Image")));
-            this.删除文章ToolStripMenuItem.Name = "删除文章ToolStripMenuItem";
-            this.删除文章ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.删除文章ToolStripMenuItem.Text = "删除文章";
+            this.Tree_DeleteNoteMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_DeleteNoteMenuItem.Image")));
+            this.Tree_DeleteNoteMenuItem.Name = "Tree_DeleteNoteMenuItem";
+            this.Tree_DeleteNoteMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.Tree_DeleteNoteMenuItem.Text = "删除文章";
+            this.Tree_DeleteNoteMenuItem.Click += new System.EventHandler(this.Tree_DeleteNoteMenuItem_Click);
             // 
-            // 重命名ToolStripMenuItem
+            // Tree_RenameNoteMenuItem
             // 
-            this.重命名ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("重命名ToolStripMenuItem.Image")));
-            this.重命名ToolStripMenuItem.Name = "重命名ToolStripMenuItem";
-            this.重命名ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.重命名ToolStripMenuItem.Text = "重命名";
-            this.重命名ToolStripMenuItem.Click += new System.EventHandler(this.重命名ToolStripMenuItem_Click);
+            this.Tree_RenameNoteMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_RenameNoteMenuItem.Image")));
+            this.Tree_RenameNoteMenuItem.Name = "Tree_RenameNoteMenuItem";
+            this.Tree_RenameNoteMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.Tree_RenameNoteMenuItem.Text = "重命名";
+            this.Tree_RenameNoteMenuItem.Click += new System.EventHandler(this.Tree_RenameNoteMenuItem_Click);
             // 
             // lbl_CurrentNode
             // 
@@ -661,7 +614,7 @@
             this.lbl_CurrentNode.ForeColor = System.Drawing.Color.Maroon;
             this.lbl_CurrentNode.Location = new System.Drawing.Point(13, 463);
             this.lbl_CurrentNode.Name = "lbl_CurrentNode";
-            this.lbl_CurrentNode.Size = new System.Drawing.Size(376, 19);
+            this.lbl_CurrentNode.Size = new System.Drawing.Size(336, 19);
             this.lbl_CurrentNode.TabIndex = 4;
             this.lbl_CurrentNode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -676,6 +629,48 @@
             this.skinLine2.Size = new System.Drawing.Size(579, 1);
             this.skinLine2.TabIndex = 7;
             this.skinLine2.Text = "skinLine2";
+            // 
+            // txt_Content
+            // 
+            this.txt_Content.BackColor = System.Drawing.Color.MistyRose;
+            this.txt_Content.DownBack = null;
+            this.txt_Content.Icon = null;
+            this.txt_Content.IconIsButton = false;
+            this.txt_Content.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txt_Content.IsPasswordChat = '\0';
+            this.txt_Content.IsSystemPasswordChar = false;
+            this.txt_Content.Lines = new string[0];
+            this.txt_Content.Location = new System.Drawing.Point(3, 40);
+            this.txt_Content.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_Content.MaxLength = 32767;
+            this.txt_Content.MinimumSize = new System.Drawing.Size(28, 28);
+            this.txt_Content.MouseBack = null;
+            this.txt_Content.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.txt_Content.Multiline = true;
+            this.txt_Content.Name = "txt_Content";
+            this.txt_Content.NormlBack = null;
+            this.txt_Content.Padding = new System.Windows.Forms.Padding(5);
+            this.txt_Content.ReadOnly = false;
+            this.txt_Content.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_Content.Size = new System.Drawing.Size(194, 286);
+            // 
+            // 
+            // 
+            this.txt_Content.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_Content.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Content.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.txt_Content.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.txt_Content.SkinTxt.Multiline = true;
+            this.txt_Content.SkinTxt.Name = "BaseText";
+            this.txt_Content.SkinTxt.Size = new System.Drawing.Size(184, 276);
+            this.txt_Content.SkinTxt.TabIndex = 0;
+            this.txt_Content.SkinTxt.WaterColor = System.Drawing.Color.Maroon;
+            this.txt_Content.SkinTxt.WaterText = "请输入内容...";
+            this.txt_Content.TabIndex = 8;
+            this.txt_Content.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txt_Content.WaterColor = System.Drawing.Color.Maroon;
+            this.txt_Content.WaterText = "请输入内容...";
+            this.txt_Content.WordWrap = true;
             // 
             // MainForm
             // 
@@ -729,12 +724,12 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 新建ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 打开ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 字体大小ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FileMenu;
+        private System.Windows.Forms.ToolStripMenuItem NewMenu;
+        private System.Windows.Forms.ToolStripMenuItem OpenMenu;
+        private System.Windows.Forms.ToolStripMenuItem SaveMenu;
+        private System.Windows.Forms.ToolStripMenuItem SetMenu;
+        private System.Windows.Forms.ToolStripMenuItem FontSizeMenu;
         private System.Windows.Forms.Panel panel_Tree;
         private System.Windows.Forms.Panel panel_Article;
         private System.Windows.Forms.Panel panel_Main;
@@ -745,13 +740,13 @@
         private System.Windows.Forms.TextBox txt_SelectedLabel;
         private System.Windows.Forms.ContextMenuStrip tree_folder;
         private System.Windows.Forms.ContextMenuStrip tree_article;
-        private System.Windows.Forms.ToolStripMenuItem 新建子文件夹ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 删除该文件夹ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 添加新文章ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 重命名文件夹ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 编辑文章ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 删除文章ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 重命名ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Tree_NewSubFolderMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Tree_DeleteFolderMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Tree_NewNoteMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Tree_RenameFolderMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Tree_EditNoteMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Tree_DeleteNoteMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Tree_RenameNoteMenuItem;
         private System.Windows.Forms.ImageList images;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
@@ -767,17 +762,16 @@
         private CCWin.SkinControl.SkinButton btn_EditLabel;
         private CCWin.SkinControl.SkinButton btn_ClearFixLabel;
         private CCWin.SkinControl.SkinTextBox txt_Title;
-        private CCWin.SkinControl.SkinTextBox txt_Content;
         private TX.Framework.WindowUI.Controls.TXHtmlEditor txHtmlEditor1;
-        private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem AboutMenu;
+        private System.Windows.Forms.ToolStripMenuItem HelpMenu;
         private System.Windows.Forms.ToolStripMenuItem bg_Line;
         private System.Windows.Forms.ToolStripMenuItem roseRed;
         private System.Windows.Forms.ToolStripMenuItem stoneBlue;
         private System.Windows.Forms.ToolStripMenuItem lightGreen;
         private System.Windows.Forms.ToolStripMenuItem yellow;
         private System.Windows.Forms.ToolStripMenuItem bone;
+        private CCWin.SkinControl.SkinTextBox txt_Content;
     }
 }
 

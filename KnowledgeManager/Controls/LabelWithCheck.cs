@@ -15,6 +15,8 @@ namespace KnowledgeManager
         #region PARAMS
         private string labelText;
         private int labelWidth = 74;
+        private Color labelWithCheckColor;
+        private Color DefaultColor = Color.Maroon;
         int width = 0;
         int height = 0;
         #endregion
@@ -82,12 +84,31 @@ namespace KnowledgeManager
                 ck.Checked = value;
             }
         }
+        
+        public Color LabelWithCheckColor
+        {
+            get
+            {
+                return this.labelWithCheckColor;
+            }
+            set
+            {
+                this.labelWithCheckColor = value;
+            }
+        }
         #endregion
 
         #region CONSTRUCTOR
         public LabelWithCheck()
         {
+            SetStyle(ControlStyles.OptimizedDoubleBuffer |
+                ControlStyles.ResizeRedraw |
+                ControlStyles.UserPaint |
+                ControlStyles.DoubleBuffer |
+                ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.Selectable, false);
             InitializeComponent();
+            LabelWithCheckColor = DefaultColor;
             width = lb.Width + 6 + ck.Width;
             height = lb.Height + 6;
         }
@@ -112,25 +133,25 @@ namespace KnowledgeManager
             //画上边缘
             for (int i = 0; i < x - 1; i ++)
             {
-                g.FillRectangle(new SolidBrush(Color.Orange), new Rectangle(i, 0, 1, 1));
+                g.FillRectangle(new SolidBrush(LabelWithCheckColor), new Rectangle(i, 0, 1, 1));
             }
 
             //画下边缘
             for (int i = 0; i < x ; i ++)
             {
-                g.FillRectangle(new SolidBrush(Color.Orange), new Rectangle(i, y - 1, 1, 1));
+                g.FillRectangle(new SolidBrush(LabelWithCheckColor), new Rectangle(i, y - 1, 1, 1));
             }
 
             //画左边缘
             for (int i = 0; i < y - 1; i ++)
             {
-                g.FillRectangle(new SolidBrush(Color.Orange), new Rectangle(0, i, 1, 1));
+                g.FillRectangle(new SolidBrush(LabelWithCheckColor), new Rectangle(0, i, 1, 1));
             }
 
             //画右边缘
             for (int i = 0; i < y - 1; i ++)
             {
-                g.FillRectangle(new SolidBrush(Color.Orange), new Rectangle(x - 1, i, 1, 1));
+                g.FillRectangle(new SolidBrush(LabelWithCheckColor), new Rectangle(x - 1, i, 1, 1));
             }
         }
         #endregion
@@ -160,9 +181,53 @@ namespace KnowledgeManager
             ck.Checked = ck.Checked ? false : true;
         }
 
+
         #endregion
 
+        private void LabelWithCheck_MouseEnter(object sender, EventArgs e)
+        {
+            HighLightControl();
+        }
 
+        private void LabelWithCheck_MouseLeave(object sender, EventArgs e)
+        {
+            NormalControl();
+        }
+
+        private void lb_MouseEnter(object sender, EventArgs e)
+        {
+            HighLightControl();
+        }
+
+        private void lb_MouseLeave(object sender, EventArgs e)
+        {
+            NormalControl();
+        }
+
+        private void ck_MouseEnter(object sender, EventArgs e)
+        {
+            HighLightControl();
+        }
+
+
+        private void HighLightControl()
+        {
+            this.LabelWithCheckColor = Color.Orange;
+            this.Invalidate();
+        }
+
+        private void ck_MouseLeave(object sender, EventArgs e)
+        {
+            NormalControl();
+        }
+
+        private void NormalControl()
+        {
+            this.LabelWithCheckColor = Color.Maroon;
+            this.Invalidate();
+        }
+
+       
     }
     /// <summary>
     /// 事件参数包含的信息

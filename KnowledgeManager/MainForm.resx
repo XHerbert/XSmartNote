@@ -121,7 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="新建ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="NewMenu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABj0lEQVQ4T5XSzyuDcRwH8Off
@@ -134,7 +134,7 @@
         Yu6EY+NiOXt2FNAxsGGR4J/5njK0T0nPL5qdH7+yAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="打开ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="OpenMenu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAp0lEQVQ4T6XPsQoCMQwG4IKT
@@ -143,7 +143,7 @@
         XowxUo+vgDmGJoRAPUYBUw2N9556jAKmUof/I/cGEVd4HxnHwDgAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="保存ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="SaveMenu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACIklEQVQ4T3XSXUhTYRgHcKGr
@@ -159,24 +159,6 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="字体大小ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACs0lEQVQ4T3VSS0wTURR9iQvX
-        LkxckLjQsHNRaEncyMYdflrQEALshGhcQGMiRJMiCbgATXQCsZ1pCzGVz/DrNGIB+6GhCVGhKPItxETZ
-        GBYmLFy1M8d7X1slRhdv3pv37j33nnOuACBMMyd3y7JEX/LwjPF2MwOL/mGKPN9zTB4y5u8lYOXpkCMQ
-        U+6RRPbowZMYOjtxSibSvZWnJeP+AWCVqtPial0DKbh7FxBObc/DLNwLiBP/BeCPibzI0R6ObobaeuIE
-        MIdHg2lwd0ZyH/3+ZTAYF/gnALdIEaJPW0Yknj1s65lHW28UUwtf7tXcCqG6aRjq7Lvy44ncGXclQOLk
-        YAkODkx+hvI4c7rzaQztRMPTl4atToWt1kfA+3lOYGFZ4IJmZklEUwT0FRjR3YPp1NcOr56RNC43heCo
-        DcJ+PYirrSNUmCtzInfBwlpCmISmD32/0K8uIZLc+RFJbB0Z0b2DO54oLt4MosLpg8MZQNU1L4yF3XUJ
-        QoklUYvVVxGe2xgziUoJven+DK7cncCl5mFU1Gq0Amh5+JqeLBK9GEfFhZHKEt8YBl+uYTp+0MGXRmwn
-        7nAO4XbXLOrbw6isC6LS6ScqfoxHvjl/W8oAjMiH48ja6Bo8Shq69N8SNa0TqLzhQxV10q0sUkiBBu/y
-        s4fzJ0u2qLGP5dWNIXieJeDXP4HBmt1h2J0q7K4A7ASiKHtlnMdzQQB/VOU9Mpf9We+ehEqu+MZX8UJ/
-        D21sndzwFgBIVJVc4oKcU6TA/kL4B7bOulp0GIsb+0yLLWNaTKX7eVrq4HBpqG4Iwfdm5hzPUAGAArmd
-        wMgabC4/FC1ZxgA8YFIfeptObHfbXESj6Ih3NEPX1IH0lAJ6lCV6pKmr09DYbsCY3/ggqVGBcGx3rME9
-        RUJqsgN2iIfL/2oFvwCJmsMl2c3z4AAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="images.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>367, 17</value>
   </metadata>
@@ -185,7 +167,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC6
-        DwAAAk1TRnQBSQFMAgEBCQEAAWABBgFgAQYBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DwAAAk1TRnQBSQFMAgEBCQEAAYgBBgGIAQYBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAATADAAEBAQABCAYAAQwYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -258,7 +240,7 @@
   <metadata name="tree_folder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>136, 17</value>
   </metadata>
-  <data name="新建子文件夹ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Tree_NewSubFolderMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFYSURBVDhPldO/SwJhHMfxm8OlpaktGgqCiqAoyZZ+QEGI
@@ -270,7 +252,7 @@
         SqBFd6b2yZqmfQPFKlQmsX6NpgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="删除该文件夹ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Tree_DeleteFolderMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACTElEQVQ4T22La0hTYRzGX+ir
@@ -286,7 +268,7 @@
         kqS0myTQm5onHPebVcdTc12JaJMkeWGmIZxDn7Wy/9T4D+kdKozUAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="添加新文章ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Tree_NewNoteMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABj0lEQVQ4T5XSzyuDcRwH8Off
@@ -299,7 +281,7 @@
         Yu6EY+NiOXt2FNAxsGGR4J/5njK0T0nPL5qdH7+yAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="重命名文件夹ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Tree_RenameFolderMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABLElEQVQ4T43Rr0vEYBzH8ecf
@@ -314,7 +296,7 @@
   <metadata name="tree_article.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>251, 17</value>
   </metadata>
-  <data name="编辑文章ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Tree_EditNoteMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACDUlEQVQ4T5WQ32vTYBSG8394
@@ -329,7 +311,7 @@
         +oEHe392+X9Y6CNmXnTZArfbLVvBf0aeF13CPrNVEC5y9S5bAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="删除文章ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Tree_DeleteNoteMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACTElEQVQ4T22La0hTYRzGX+ir
@@ -345,7 +327,7 @@
         kqS0myTQm5onHPebVcdTc12JaJMkeWGmIZxDn7Wy/9T4D+kdKozUAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="重命名ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Tree_RenameNoteMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABLElEQVQ4T43Rr0vEYBzH8ecf

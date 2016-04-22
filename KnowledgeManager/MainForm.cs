@@ -42,6 +42,7 @@ namespace KnowledgeManager
             //this.SetStyle(ControlStyles.DoubleBuffer, true);// 双缓冲
             
             InitializeComponent();
+            
             SetStyle(ControlStyles.OptimizedDoubleBuffer |
                 ControlStyles.ResizeRedraw |
                 ControlStyles.UserPaint |
@@ -773,31 +774,82 @@ namespace KnowledgeManager
             this.txt_Content.Text = text;
             this.txt_Title.Text = title;
         }
+
+        public void SetTheme(ThemeManager.ThemeEnums.ThemeEnum enums)
+        {
+            switch (enums)
+            {
+                case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_MISTYROSE:
+                    this.BackgroundImage = Resources.bg_10_03;
+                    this.panel_Main.BackColor = Color.MistyRose;
+                    this.tv_Folder.BackColor = Color.MistyRose;
+                    this.Invalidate();
+                    break;
+                case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_ALICEBLUE:
+                    this.BackgroundImage = Resources.bg_10_04;
+                    this.panel_Main.BackColor = Color.AliceBlue;
+                    this.tv_Folder.BackColor = Color.AliceBlue;
+                    break;
+                case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_HONEYDEW:
+                    this.BackgroundImage = Resources.bg_10_02;
+                    this.panel_Main.BackColor = Color.Honeydew;
+                    this.tv_Folder.BackColor = Color.Honeydew;
+                    break;
+                case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_LEMONCHIFFON:
+                    this.BackgroundImage = Resources.bg_10_01;
+                    this.panel_Main.BackColor = Color.LemonChiffon;
+                    this.tv_Folder.BackColor = Color.LemonChiffon;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         #endregion
 
         #region CONTEXTMENUTRIPS
-
-        private void 字体大小ToolStripMenuItem_Click(object sender, EventArgs e)
+      
+        private void tv_Folder_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
-            FontDialog fontDialog = new FontDialog();
-            //fontDialog.ShowDialog();
-            if (fontDialog.ShowDialog() != DialogResult.Cancel)
-            {
-                //要判断Panel上是否有其他控件，增强代码的健壮性
-                foreach (Control item in this.panel_List.Controls)
-                {
-                    if(item is LabelEx)
-                    {
-                        item.Font = fontDialog.Font;//将当前选定的文字改变字体　
-                    }
-
-                }
-            }
+            //相应的判断逻辑
+            UpdateFolder(e.Node, e.Label);
         }
-        private void 新建子文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
+
+        #endregion
+
+        private void roseRed_Click(object sender, EventArgs e)
+        {
+            ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
+            manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_MISTYROSE);
+        }
+
+        private void stoneBlue_Click(object sender, EventArgs e)
+        {
+            ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
+            manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_ALICEBLUE);
+        }
+
+        private void lightGreen_Click(object sender, EventArgs e)
+        {
+            ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
+            manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_HONEYDEW);
+        }
+
+        private void yellow_Click(object sender, EventArgs e)
+        {
+            ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
+            manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_LEMONCHIFFON);
+        }
+
+        private void bone_Click(object sender, EventArgs e)
+        {
+            this.BackgroundImage = Resources.bg_10_05;
+        }
+
+        private void Tree_NewSubFolderMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode tn = tv_Folder.SelectedNode;
-           // TipsForm tf = new TipsForm();
+            // TipsForm tf = new TipsForm();
             PostContent post = null;
             int flag = -1;
 
@@ -847,21 +899,13 @@ namespace KnowledgeManager
 
             }
         }
-        private void tv_Folder_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+
+        private void Tree_DeleteFolderMenuItem_Click(object sender, EventArgs e)
         {
-            //相应的判断逻辑
-            UpdateFolder(e.Node, e.Label);
+
         }
-        private void 重命名文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TreeNode node = tv_Folder.SelectedNode;
-            string newName = string.Empty;
-            if (node != null)
-            {
-                node.BeginEdit();
-            }
-        }
-        private void 添加新文章ToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void Tree_NewNoteMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode tn = tv_Folder.SelectedNode;
             PostContent post = null;
@@ -904,36 +948,48 @@ namespace KnowledgeManager
                 }
             }
         }
-        private void 重命名ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            重命名文件夹ToolStripMenuItem_Click(sender, e);
-        }
-        #endregion
 
-        private void roseRed_Click(object sender, EventArgs e)
+        private void Tree_RenameFolderMenuItem_Click(object sender, EventArgs e)
         {
-            this.BackgroundImage = Resources.bg_10_03;
-            this.Invalidate();
-        }
-
-        private void stoneBlue_Click(object sender, EventArgs e)
-        {
-            this.BackgroundImage = Resources.bg_10_04;
+            TreeNode node = tv_Folder.SelectedNode;
+            string newName = string.Empty;
+            if (node != null)
+            {
+                node.BeginEdit();
+            }
         }
 
-        private void lightGreen_Click(object sender, EventArgs e)
+        private void Tree_RenameNoteMenuItem_Click(object sender, EventArgs e)
         {
-            this.BackgroundImage = Resources.bg_10_02;
+            Tree_RenameFolderMenuItem_Click(sender, e);
         }
 
-        private void yellow_Click(object sender, EventArgs e)
+        private void Tree_DeleteNoteMenuItem_Click(object sender, EventArgs e)
         {
-            this.BackgroundImage = Resources.bg_10_01;
+
         }
 
-        private void bone_Click(object sender, EventArgs e)
+        private void Tree_EditNoteMenuItem_Click(object sender, EventArgs e)
         {
-            this.BackgroundImage = Resources.bg_10_05;
+
+        }
+
+        private void FontSizeMenu_Click(object sender, EventArgs e)
+        {
+            FontDialog fontDialog = new FontDialog();
+            //fontDialog.ShowDialog();
+            if (fontDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                //要判断Panel上是否有其他控件，增强代码的健壮性
+                foreach (Control item in this.panel_List.Controls)
+                {
+                    if (item is LabelEx)
+                    {
+                        item.Font = fontDialog.Font;//将当前选定的文字改变字体　
+                    }
+
+                }
+            }
         }
     }
 

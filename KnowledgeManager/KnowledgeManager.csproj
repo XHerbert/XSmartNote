@@ -75,6 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorManager.cs" />
+    <Compile Include="Controls\CCSkinTextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CCSkinTextBoxEx.Designer.cs">
+      <DependentUpon>CCSkinTextBoxEx.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LabelWithCheckSolidBorder.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     <Compile Include="TagSelector.Designer.cs">
       <DependentUpon>TagSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThemeManager\IThemeManager.cs" />
+    <Compile Include="ThemeManager\ThemeEnums.cs" />
+    <Compile Include="ThemeManager\ThemeManager.cs" />
     <Compile Include="TipsForm.cs">
       <SubType>Form</SubType>
     </Compile>

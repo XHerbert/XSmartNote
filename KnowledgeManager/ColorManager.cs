@@ -23,7 +23,7 @@ namespace KnowledgeManager
             f5e0fd = 10,
             f1fefe = 11,
             f0fde6 = 12,
-             fdeef3= 13,
+            fdeef3 = 13,
             f3f3fc = 14,
             dcf09b = 15,
             ffe0c3 = 16,

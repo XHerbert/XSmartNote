@@ -15,5 +15,17 @@ namespace KnowledgeManager.ThemeManager
             KM_THEME_HONEYDEW=2,
             KM_THEME_LEMONCHIFFON=3
         }
+
+        public enum ColorTable
+        {
+            //蓝色焦点状态
+            KM_C_A2C3E7=0,//Out
+            KM_C_2F85B8=1,//In
+            KM_C_EADDE2=2,//四角颜色
+
+            //普通状态
+            KM_C_9AB6C7=3,//边
+            KM_C_E6EDF1=4,//角
+        }
     }
 }

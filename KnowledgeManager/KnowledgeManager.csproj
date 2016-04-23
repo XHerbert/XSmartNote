@@ -87,6 +87,12 @@
     <Compile Include="Controls\LabelWithCheckSolidBorder.Designer.cs">
       <DependentUpon>LabelWithCheckSolidBorder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TextBoxEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TextBoxEx.Designer.cs">
+      <DependentUpon>TextBoxEx.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enums.cs" />
     <Compile Include="Controls\LabelExSolidBorder.cs">
       <SubType>Component</SubType>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\LabelExSolidBorder.resx">
       <DependentUpon>LabelExSolidBorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TextBoxEx.resx">
+      <DependentUpon>TextBoxEx.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

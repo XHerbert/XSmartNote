@@ -319,7 +319,7 @@ namespace KnowledgeManager
                             this.lbl_CurrentNode.Text = "当前节点：" + node.Text;
                             ClearControls(panel_List);
                             ClearControls(flowLayoutPanel1);//清除Labels
-                            txt_SelectedLabel.Text = string.Empty;
+                            txt_SelectedLabel.ControlText = string.Empty;
                             int id = node.Name.ToInt();
                             DataTable articles = SQLHelper.GetListByFolderId(id);
                             if (articles.Rows.Count > 0)
@@ -456,7 +456,7 @@ namespace KnowledgeManager
                 //同时更新标题和内容
                 int i = SQLHelper.UpdateContent(node.Name.ToInt(), txt_Title.Text, txt_Content.Text);
                 //同时更新文章标签
-                if (!string.IsNullOrEmpty(txt_SelectedLabel.Text))
+                if (!string.IsNullOrEmpty(txt_SelectedLabel.ControlText))
                 {
 
                 }
@@ -615,7 +615,7 @@ namespace KnowledgeManager
                     }
                 }
             }
-            txt_SelectedLabel.Text = ShowLabel(labelDic);
+            txt_SelectedLabel.ControlText = ShowLabel(labelDic);
         }
 
         /// <summary>
@@ -771,8 +771,8 @@ namespace KnowledgeManager
         /// <param name="title"></param>
         public void SetText(string text,string title)
         {
-            this.txt_Content.Text = text;
-            this.txt_Title.Text = title;
+            this.txt_Content.ControlText = text;
+            this.txt_Title.ControlText = title;
         }
 
         public void SetTheme(ThemeManager.ThemeEnums.ThemeEnum enums)

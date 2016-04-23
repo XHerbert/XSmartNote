@@ -52,13 +52,10 @@
             this.btn_Add = new CCWin.SkinControl.SkinButton();
             this.panel_Article = new System.Windows.Forms.Panel();
             this.panel_SeleSave = new System.Windows.Forms.Panel();
-            this.txt_SelectedLabel = new System.Windows.Forms.TextBox();
             this.btn_ChooseLabel = new CCWin.SkinControl.SkinButton();
             this.btn_Save = new CCWin.SkinControl.SkinButton();
-            this.txt_Title = new CCWin.SkinControl.SkinTextBox();
             this.panel_Main = new System.Windows.Forms.Panel();
             this.panel_List = new System.Windows.Forms.FlowLayoutPanel();
-            this.txHtmlEditor1 = new TX.Framework.WindowUI.Controls.TXHtmlEditor();
             this.panel_LabelFixed = new System.Windows.Forms.Panel();
             this.skinLine1 = new CCWin.SkinControl.SkinLine();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -78,13 +75,14 @@
             this.Tree_RenameNoteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_CurrentNode = new System.Windows.Forms.Label();
             this.skinLine2 = new CCWin.SkinControl.SkinLine();
-            this.txt_Content = new CCWin.SkinControl.SkinTextBox();
+            this.txt_Content = new KnowledgeManager.Controls.TextBoxEx();
+            this.txt_Title = new KnowledgeManager.Controls.TextBoxEx();
+            this.txt_SelectedLabel = new KnowledgeManager.Controls.TextBoxEx();
             this.menuStrip1.SuspendLayout();
             this.panel_Tree.SuspendLayout();
             this.panel_Article.SuspendLayout();
             this.panel_SeleSave.SuspendLayout();
             this.panel_Main.SuspendLayout();
-            this.panel_List.SuspendLayout();
             this.panel_LabelFixed.SuspendLayout();
             this.panel_Label.SuspendLayout();
             this.tree_folder.SuspendLayout();
@@ -102,7 +100,7 @@
             this.AboutMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(315, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(223, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -120,21 +118,21 @@
             // 
             this.NewMenu.Image = ((System.Drawing.Image)(resources.GetObject("NewMenu.Image")));
             this.NewMenu.Name = "NewMenu";
-            this.NewMenu.Size = new System.Drawing.Size(98, 22);
+            this.NewMenu.Size = new System.Drawing.Size(152, 22);
             this.NewMenu.Text = "新建";
             // 
             // OpenMenu
             // 
             this.OpenMenu.Image = ((System.Drawing.Image)(resources.GetObject("OpenMenu.Image")));
             this.OpenMenu.Name = "OpenMenu";
-            this.OpenMenu.Size = new System.Drawing.Size(98, 22);
+            this.OpenMenu.Size = new System.Drawing.Size(152, 22);
             this.OpenMenu.Text = "打开";
             // 
             // SaveMenu
             // 
             this.SaveMenu.Image = ((System.Drawing.Image)(resources.GetObject("SaveMenu.Image")));
             this.SaveMenu.Name = "SaveMenu";
-            this.SaveMenu.Size = new System.Drawing.Size(98, 22);
+            this.SaveMenu.Size = new System.Drawing.Size(152, 22);
             this.SaveMenu.Text = "保存";
             // 
             // SetMenu
@@ -169,7 +167,7 @@
             this.yellow,
             this.bone});
             this.bg_Line.Name = "bg_Line";
-            this.bg_Line.Size = new System.Drawing.Size(152, 22);
+            this.bg_Line.Size = new System.Drawing.Size(122, 22);
             this.bg_Line.Text = "主题纹理";
             // 
             // roseRed
@@ -283,9 +281,9 @@
             // 
             this.panel_Article.BackColor = System.Drawing.Color.Transparent;
             this.panel_Article.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_Article.Controls.Add(this.panel_SeleSave);
-            this.panel_Article.Controls.Add(this.txt_Title);
             this.panel_Article.Controls.Add(this.txt_Content);
+            this.panel_Article.Controls.Add(this.txt_Title);
+            this.panel_Article.Controls.Add(this.panel_SeleSave);
             this.panel_Article.Location = new System.Drawing.Point(192, 27);
             this.panel_Article.Name = "panel_Article";
             this.panel_Article.Size = new System.Drawing.Size(200, 423);
@@ -302,14 +300,6 @@
             this.panel_SeleSave.Size = new System.Drawing.Size(194, 86);
             this.panel_SeleSave.TabIndex = 5;
             // 
-            // txt_SelectedLabel
-            // 
-            this.txt_SelectedLabel.BackColor = System.Drawing.Color.MistyRose;
-            this.txt_SelectedLabel.Location = new System.Drawing.Point(1, 32);
-            this.txt_SelectedLabel.Name = "txt_SelectedLabel";
-            this.txt_SelectedLabel.Size = new System.Drawing.Size(192, 21);
-            this.txt_SelectedLabel.TabIndex = 6;
-            // 
             // btn_ChooseLabel
             // 
             this.btn_ChooseLabel.BackColor = System.Drawing.Color.Transparent;
@@ -317,6 +307,7 @@
             this.btn_ChooseLabel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_ChooseLabel.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_ChooseLabel.DownBack = null;
+            this.btn_ChooseLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_ChooseLabel.ForeColor = System.Drawing.Color.DimGray;
             this.btn_ChooseLabel.GlowColor = System.Drawing.Color.Blue;
             this.btn_ChooseLabel.Location = new System.Drawing.Point(1, 3);
@@ -336,6 +327,7 @@
             this.btn_Save.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_Save.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_Save.DownBack = null;
+            this.btn_Save.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_Save.ForeColor = System.Drawing.Color.DimGray;
             this.btn_Save.GlowColor = System.Drawing.Color.DarkGreen;
             this.btn_Save.Location = new System.Drawing.Point(1, 59);
@@ -347,49 +339,6 @@
             this.btn_Save.Text = "保存";
             this.btn_Save.UseVisualStyleBackColor = false;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
-            // 
-            // txt_Title
-            // 
-            this.txt_Title.BackColor = System.Drawing.Color.MistyRose;
-            this.txt_Title.DownBack = null;
-            this.txt_Title.Icon = null;
-            this.txt_Title.IconIsButton = false;
-            this.txt_Title.IconMouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txt_Title.IsPasswordChat = '\0';
-            this.txt_Title.IsSystemPasswordChar = false;
-            this.txt_Title.Lines = new string[0];
-            this.txt_Title.Location = new System.Drawing.Point(3, 3);
-            this.txt_Title.Margin = new System.Windows.Forms.Padding(0);
-            this.txt_Title.MaxLength = 32767;
-            this.txt_Title.MinimumSize = new System.Drawing.Size(28, 28);
-            this.txt_Title.MouseBack = null;
-            this.txt_Title.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txt_Title.Multiline = true;
-            this.txt_Title.Name = "txt_Title";
-            this.txt_Title.NormlBack = null;
-            this.txt_Title.Padding = new System.Windows.Forms.Padding(5);
-            this.txt_Title.ReadOnly = false;
-            this.txt_Title.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txt_Title.Size = new System.Drawing.Size(194, 31);
-            // 
-            // 
-            // 
-            this.txt_Title.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_Title.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Title.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.txt_Title.SkinTxt.ForeColor = System.Drawing.Color.Silver;
-            this.txt_Title.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.txt_Title.SkinTxt.Multiline = true;
-            this.txt_Title.SkinTxt.Name = "BaseText";
-            this.txt_Title.SkinTxt.Size = new System.Drawing.Size(184, 21);
-            this.txt_Title.SkinTxt.TabIndex = 0;
-            this.txt_Title.SkinTxt.WaterColor = System.Drawing.Color.Maroon;
-            this.txt_Title.SkinTxt.WaterText = "请输入标题";
-            this.txt_Title.TabIndex = 6;
-            this.txt_Title.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txt_Title.WaterColor = System.Drawing.Color.Maroon;
-            this.txt_Title.WaterText = "请输入标题";
-            this.txt_Title.WordWrap = true;
             // 
             // panel_Main
             // 
@@ -406,23 +355,11 @@
             // panel_List
             // 
             this.panel_List.AutoScroll = true;
-            this.panel_List.Controls.Add(this.txHtmlEditor1);
             this.panel_List.Location = new System.Drawing.Point(3, 147);
             this.panel_List.Name = "panel_List";
             this.panel_List.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.panel_List.Size = new System.Drawing.Size(581, 271);
             this.panel_List.TabIndex = 1;
-            // 
-            // txHtmlEditor1
-            // 
-            this.txHtmlEditor1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(168)))), ((int)(((byte)(192)))));
-            this.txHtmlEditor1.HeightLightBolorColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(67)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.txHtmlEditor1.Location = new System.Drawing.Point(3, 8);
-            this.txHtmlEditor1.Name = "txHtmlEditor1";
-            this.txHtmlEditor1.Padding = new System.Windows.Forms.Padding(3);
-            this.txHtmlEditor1.Size = new System.Drawing.Size(564, 146);
-            this.txHtmlEditor1.TabIndex = 1;
-            this.txHtmlEditor1.Visible = false;
             // 
             // panel_LabelFixed
             // 
@@ -463,6 +400,7 @@
             this.btn_EditLabel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_EditLabel.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_EditLabel.DownBack = null;
+            this.btn_EditLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_EditLabel.ForeColor = System.Drawing.Color.DimGray;
             this.btn_EditLabel.GlowColor = System.Drawing.Color.Maroon;
             this.btn_EditLabel.Location = new System.Drawing.Point(520, 7);
@@ -482,6 +420,7 @@
             this.btn_ClearFixLabel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_ClearFixLabel.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_ClearFixLabel.DownBack = null;
+            this.btn_ClearFixLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_ClearFixLabel.ForeColor = System.Drawing.Color.DimGray;
             this.btn_ClearFixLabel.GlowColor = System.Drawing.Color.DarkOrchid;
             this.btn_ClearFixLabel.Location = new System.Drawing.Point(520, 39);
@@ -519,6 +458,7 @@
             this.btn_ClearLabel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_ClearLabel.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_ClearLabel.DownBack = null;
+            this.btn_ClearLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_ClearLabel.ForeColor = System.Drawing.Color.DimGray;
             this.btn_ClearLabel.GlowColor = System.Drawing.Color.Maroon;
             this.btn_ClearLabel.Location = new System.Drawing.Point(520, 2);
@@ -633,44 +573,47 @@
             // txt_Content
             // 
             this.txt_Content.BackColor = System.Drawing.Color.MistyRose;
-            this.txt_Content.DownBack = null;
-            this.txt_Content.Icon = null;
-            this.txt_Content.IconIsButton = false;
-            this.txt_Content.IconMouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txt_Content.IsPasswordChat = '\0';
-            this.txt_Content.IsSystemPasswordChar = false;
-            this.txt_Content.Lines = new string[0];
-            this.txt_Content.Location = new System.Drawing.Point(3, 40);
+            this.txt_Content.BorderColor = System.Drawing.Color.Empty;
+            this.txt_Content.BoxBackColor = System.Drawing.Color.MistyRose;
+            this.txt_Content.ControlText = "请输入内容...";
+            this.txt_Content.Location = new System.Drawing.Point(2, 40);
             this.txt_Content.Margin = new System.Windows.Forms.Padding(0);
-            this.txt_Content.MaxLength = 32767;
-            this.txt_Content.MinimumSize = new System.Drawing.Size(28, 28);
-            this.txt_Content.MouseBack = null;
-            this.txt_Content.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.txt_Content.Multiline = true;
             this.txt_Content.Name = "txt_Content";
-            this.txt_Content.NormlBack = null;
             this.txt_Content.Padding = new System.Windows.Forms.Padding(5);
-            this.txt_Content.ReadOnly = false;
-            this.txt_Content.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txt_Content.Size = new System.Drawing.Size(194, 286);
-            // 
-            // 
-            // 
-            this.txt_Content.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_Content.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Content.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.txt_Content.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.txt_Content.SkinTxt.Multiline = true;
-            this.txt_Content.SkinTxt.Name = "BaseText";
-            this.txt_Content.SkinTxt.Size = new System.Drawing.Size(184, 276);
-            this.txt_Content.SkinTxt.TabIndex = 0;
-            this.txt_Content.SkinTxt.WaterColor = System.Drawing.Color.Maroon;
-            this.txt_Content.SkinTxt.WaterText = "请输入内容...";
-            this.txt_Content.TabIndex = 8;
-            this.txt_Content.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txt_Content.TabIndex = 0;
             this.txt_Content.WaterColor = System.Drawing.Color.Maroon;
             this.txt_Content.WaterText = "请输入内容...";
-            this.txt_Content.WordWrap = true;
+            // 
+            // txt_Title
+            // 
+            this.txt_Title.BackColor = System.Drawing.Color.White;
+            this.txt_Title.BorderColor = System.Drawing.Color.Empty;
+            this.txt_Title.BoxBackColor = System.Drawing.Color.MistyRose;
+            this.txt_Title.ControlText = "请输入标题";
+            this.txt_Title.Location = new System.Drawing.Point(2, 3);
+            this.txt_Title.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_Title.Name = "txt_Title";
+            this.txt_Title.Padding = new System.Windows.Forms.Padding(5);
+            this.txt_Title.Size = new System.Drawing.Size(194, 31);
+            this.txt_Title.TabIndex = 0;
+            this.txt_Title.WaterColor = System.Drawing.Color.Maroon;
+            this.txt_Title.WaterText = "请输入标题";
+            // 
+            // txt_SelectedLabel
+            // 
+            this.txt_SelectedLabel.BackColor = System.Drawing.Color.White;
+            this.txt_SelectedLabel.BorderColor = System.Drawing.Color.Empty;
+            this.txt_SelectedLabel.BoxBackColor = System.Drawing.Color.MistyRose;
+            this.txt_SelectedLabel.ControlText = "";
+            this.txt_SelectedLabel.Location = new System.Drawing.Point(1, 30);
+            this.txt_SelectedLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_SelectedLabel.Name = "txt_SelectedLabel";
+            this.txt_SelectedLabel.Padding = new System.Windows.Forms.Padding(5);
+            this.txt_SelectedLabel.Size = new System.Drawing.Size(192, 26);
+            this.txt_SelectedLabel.TabIndex = 22;
+            this.txt_SelectedLabel.WaterColor = System.Drawing.Color.Empty;
+            this.txt_SelectedLabel.WaterText = null;
             // 
             // MainForm
             // 
@@ -709,9 +652,7 @@
             this.panel_Tree.ResumeLayout(false);
             this.panel_Article.ResumeLayout(false);
             this.panel_SeleSave.ResumeLayout(false);
-            this.panel_SeleSave.PerformLayout();
             this.panel_Main.ResumeLayout(false);
-            this.panel_List.ResumeLayout(false);
             this.panel_LabelFixed.ResumeLayout(false);
             this.panel_Label.ResumeLayout(false);
             this.tree_folder.ResumeLayout(false);
@@ -737,7 +678,6 @@
         private System.Windows.Forms.Panel panel_LabelFixed;
         private System.Windows.Forms.Panel panel_Label;
         private System.Windows.Forms.Panel panel_SeleSave;
-        private System.Windows.Forms.TextBox txt_SelectedLabel;
         private System.Windows.Forms.ContextMenuStrip tree_folder;
         private System.Windows.Forms.ContextMenuStrip tree_article;
         private System.Windows.Forms.ToolStripMenuItem Tree_NewSubFolderMenuItem;
@@ -761,8 +701,6 @@
         private CCWin.SkinControl.SkinButton btn_Save;
         private CCWin.SkinControl.SkinButton btn_EditLabel;
         private CCWin.SkinControl.SkinButton btn_ClearFixLabel;
-        private CCWin.SkinControl.SkinTextBox txt_Title;
-        private TX.Framework.WindowUI.Controls.TXHtmlEditor txHtmlEditor1;
         private System.Windows.Forms.ToolStripMenuItem AboutMenu;
         private System.Windows.Forms.ToolStripMenuItem HelpMenu;
         private System.Windows.Forms.ToolStripMenuItem bg_Line;
@@ -771,7 +709,9 @@
         private System.Windows.Forms.ToolStripMenuItem lightGreen;
         private System.Windows.Forms.ToolStripMenuItem yellow;
         private System.Windows.Forms.ToolStripMenuItem bone;
-        private CCWin.SkinControl.SkinTextBox txt_Content;
+        private Controls.TextBoxEx txt_Title;
+        private Controls.TextBoxEx txt_Content;
+        private Controls.TextBoxEx txt_SelectedLabel;
     }
 }
 

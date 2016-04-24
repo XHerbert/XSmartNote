@@ -390,8 +390,8 @@ namespace KnowledgeManager
                         {
                             //显示文章到C区域
                             int Id = node.Name.ToInt();
-                            txt_Content.Text = SQLHelper.GetContentById(Id);
-                            txt_Title.Text = node.Text;
+                            txt_Content.ControlText = SQLHelper.GetContentById(Id);
+                            txt_Title.ControlText = node.Text;
                         }
                     }
                 }
@@ -764,6 +764,15 @@ namespace KnowledgeManager
             this.Height = Y;
         }
         
+        private void SetThemeColor(Color color)
+        {
+            this.panel_Main.BackColor = color;
+            this.tv_Folder.BackColor =color;
+            this.txt_Title.BoxBackColor = color;
+            this.txt_Content.BoxBackColor =color;
+            this.txt_SelectedLabel.BoxBackColor = color;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -781,24 +790,20 @@ namespace KnowledgeManager
             {
                 case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_MISTYROSE:
                     this.BackgroundImage = Resources.bg_10_03;
-                    this.panel_Main.BackColor = Color.MistyRose;
-                    this.tv_Folder.BackColor = Color.MistyRose;
+                    SetThemeColor(Color.MistyRose);
                     this.Invalidate();
                     break;
                 case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_ALICEBLUE:
                     this.BackgroundImage = Resources.bg_10_04;
-                    this.panel_Main.BackColor = Color.AliceBlue;
-                    this.tv_Folder.BackColor = Color.AliceBlue;
+                    SetThemeColor(Color.AliceBlue);
                     break;
                 case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_HONEYDEW:
                     this.BackgroundImage = Resources.bg_10_02;
-                    this.panel_Main.BackColor = Color.Honeydew;
-                    this.tv_Folder.BackColor = Color.Honeydew;
+                    SetThemeColor(Color.Honeydew);
                     break;
                 case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_LEMONCHIFFON:
                     this.BackgroundImage = Resources.bg_10_01;
-                    this.panel_Main.BackColor = Color.LemonChiffon;
-                    this.tv_Folder.BackColor = Color.LemonChiffon;
+                    SetThemeColor(Color.LemonChiffon);
                     break;
                 default:
                     break;

@@ -39,8 +39,22 @@ namespace KnowledgeManager
                 lb.Text = value;
             }
         }
-        private int _Id;
-        public int Id
+        //private int _Id;
+        //public int Id
+        //{
+        //    get
+        //    {
+        //        return _Id;
+        //    }
+        //    set
+        //    {
+        //        _Id = value;
+
+        //    }
+        //}
+
+        private Guid _Id;
+        public Guid Id
         {
             get
             {
@@ -49,9 +63,9 @@ namespace KnowledgeManager
             set
             {
                 _Id = value;
-
             }
         }
+        
         [Category("XHB.Controls")]
         [Browsable(true)]
         [Description("设置或获取LabelText宽度")]
@@ -235,8 +249,8 @@ namespace KnowledgeManager
     public class LabelWithCheckEventArgs :EventArgs
     {
         private string _LabelText;
-        private int _Id;
-        public LabelWithCheckEventArgs(int id,string labelText)
+        private Guid _Id;
+        public LabelWithCheckEventArgs(Guid id,string labelText)
         {
             this._LabelText = labelText;
             this._Id = id;
@@ -254,7 +268,7 @@ namespace KnowledgeManager
             }
         }
 
-        public int Id
+        public Guid Id
         {
             get
             {

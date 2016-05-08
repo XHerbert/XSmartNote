@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace KnowledgeManager.Model.PostContents
 {
     public class PostContent
     {
+
+        /* 实体属性 */
         /// <summary>
         /// Note ID
         /// </summary>
@@ -40,5 +44,18 @@ namespace KnowledgeManager.Model.PostContents
         /// Note Is Enable Or Not
         /// </summary>
         public virtual bool Enable { get; set; }
+        /// <summary>
+        /// Line Number
+        /// </summary>
+        public virtual int LineNum { get; set; }
+
+
+        /* 关系 */
+
+        public virtual IList<Relations.Relation> Relation { get; set; }
+        /// <summary>
+        /// One Post Has Many Tags
+        /// </summary>
+        public virtual IList<Tags.Tag> Tags { get; set; }
     }
 }

@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Domain" namespace="Domain">
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="KnowledgeManager.Model" namespace="KnowledgeManager.Model.Tags">
   <class name="Tag" table="T_Tag" lazy="true" >
-    <id name="Id" column="TagId" type="Guid" >
+    <id name="TagId" column="TagId" type="Guid" >
       <generator class="assigned" />
     </id>
-    <property name="Title" type="string">
-      <column name="Title" length="500"/>
+    <property name="TagContent" type="string">
+      <column name="TagContent" length="500"/>
     </property>
+
+    <!--Tag Post Many to Many-->
+    <bag name="Posts" generic="true" table="T_Relation">
+      <key column="TagId" foreign-key="FK_Tag_Post" />
+      <many-to-many column="PostId" class="KnowledgeManager.Model.PostContents.PostContent" foreign-key="FK_Post_Tag"/>
+    </bag>
   </class>
 </hibernate-mapping>

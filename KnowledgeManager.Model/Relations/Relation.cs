@@ -20,5 +20,9 @@ namespace KnowledgeManager.Model.Relations
         /// Tag ID
         /// </summary>
         public virtual Guid TagId { get; set; }
+
+        public virtual PostContents.PostContent Post { get; set; }
+
+
     }
 }

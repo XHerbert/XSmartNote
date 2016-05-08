@@ -52,8 +52,8 @@ namespace KnowledgeManager
            
             if (!string.IsNullOrEmpty(txt_Tag.Text)&&!IsContainInputLabel(txt_Tag.Text))
             {
-                new MainForm().AddLabelToLocation(this.panel_Tags, 4, txt_Tag.Text,SQLHelper.GetMaxID(Enums.Table_Tag.ToString(),"tagId"),false,true);
-                SQLHelper.InsertTag(txt_Tag.Text);
+                //new MainForm().AddLabelToLocation(this.panel_Tags, 4, txt_Tag.Text,SQLHelper.GetMaxID(Enums.Table_Tag.ToString(),"tagId"),false,true);
+                //SQLHelper.InsertTag(txt_Tag.Text);
             }
             else
             {

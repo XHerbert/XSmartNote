@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Domain" namespace="Domain">
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="KnowledgeManager.Model" namespace="KnowledgeManager.Model.Relations">
   <class name="Relation" table="T_Relation" lazy="true" >
-    <id name="Id" column="RelationId" type="Guid" >
+    <id name="RelationId" column="RelationId" type="Guid" >
       <generator class="assigned" />
     </id>
     <property name="PostId" type="Guid">

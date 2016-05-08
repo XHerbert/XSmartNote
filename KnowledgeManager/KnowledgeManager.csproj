@@ -58,6 +58,10 @@
     <Reference Include="CSkin">
       <HintPath>..\KnowledgeManager.Libs\CSkin.dll</HintPath>
     </Reference>
+    <Reference Include="KnowledgeManager.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\KnowledgeManager.DAL\bin\Debug\KnowledgeManager.DAL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -217,6 +221,15 @@
     <None Include="Resources\StyleSheet.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\hibernate.cfg.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="LinFu.DynamicProxy.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NHibernate.ByteCode.LinFu.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\bg.png" />
     <None Include="Resources\bg_10_02.gif" />
     <None Include="Resources\bg_10_01.gif" />

@@ -78,7 +78,8 @@ namespace KnowledgeManager
         //获取文件夹列表
         public static DataSet GetFoldersSet()
         {
-            StringBuilder cmd = new StringBuilder("SELECT Id,ParentId,Title,Content,Type FROM Table_Content");
+            //StringBuilder cmd = new StringBuilder("SELECT Id,ParentId,Title,Content,Type FROM Table_Content");
+            StringBuilder cmd = new StringBuilder("SELECT LineNum,Id,ParentId,Title,Content,Type FROM T_PostContent");
             return QuerySet(cmd);
         }
 
@@ -189,14 +190,14 @@ namespace KnowledgeManager
             }
         }
 
-        public static int AddRelations(int contentId,int tagId)
+        public static int AddRelations(int contentId,Guid tagId)
         {
             StringBuilder cmd = new StringBuilder(string.Format("insert into Table_Content_tag values({0},{1})", contentId, tagId));
             int result = -1;
             return NonQuery(cmd, result);
         }
 
-        public static int RemoveRelations(int contentId, int tagId)
+        public static int RemoveRelations(int contentId, Guid tagId)
         {
             StringBuilder cmd = new StringBuilder(string.Format("delete from Table_Content_tag where postId={0} and tagId={1}", contentId, tagId));
             int result = -1;

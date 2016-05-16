@@ -239,6 +239,10 @@
     <Content Include="NHibernate.ByteCode.LinFu.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\__TemplateIcon.ico" />
+    <None Include="Resources\q.png" />
+    <None Include="Resources\y.png" />
+    <None Include="Resources\b.png" />
     <Content Include="Resources\bg.png" />
     <None Include="Resources\bg_10_02.gif" />
     <None Include="Resources\bg_10_01.gif" />
@@ -246,6 +250,8 @@
     <None Include="Resources\bg_10_04.gif" />
     <None Include="Resources\bg_10_05.gif" />
     <Content Include="Resources\fav.ico" />
+    <None Include="Resources\h.png" />
+    <None Include="Resources\g.png" />
     <Content Include="Resources\Note#.ico" />
     <None Include="Resources\Note_.ico" />
   </ItemGroup>

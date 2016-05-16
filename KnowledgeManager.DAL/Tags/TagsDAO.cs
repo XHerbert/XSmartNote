@@ -97,5 +97,67 @@ namespace KnowledgeManager.DAL.Tags
             }
             return tags;
         }
+
+        public bool IsExistTag(string text)
+        {
+            IList<Tag> tag = null;
+            using (ISession session = sessionFactory.OpenSession())
+            {
+                ITransaction trans = session.BeginTransaction();
+                try
+                {
+                    tag=session.CreateCriteria(typeof(Tag)).Add(Restrictions.Eq("TagContent", text.Trim())).List<Tag>();
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                    throw;
+                }
+                if (tag.Count > 0)
+                    return true;
+                return false;
+            }
+        }
+
+        public Tag GetTagByName(string text)
+        {
+            IList<Tag> tag = null;
+            using (ISession session = sessionFactory.OpenSession())
+            {
+                ITransaction trans = session.BeginTransaction();
+                try
+                {
+                    tag = session.CreateCriteria(typeof(Tag)).Add(Restrictions.Eq("TagContent", text.Trim())).List<Tag>();
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                    throw;
+                }
+            }
+            if (tag.Count > 0)
+                return tag[0];
+            return null;
+        }
+
+        public object Save(Tag tag)
+        {
+            Guid id = Guid.Empty;
+            using (ISession session = sessionFactory.OpenSession())
+            {
+                ITransaction trans = session.BeginTransaction();
+                try
+                {
+                    //tag = session.CreateCriteria(typeof(Tag)).Add(Restrictions.Eq("TagContent", text.Trim())).List<Tag>();
+                    id=(Guid)session.Save(tag);//数据没有进数据库？
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                    throw;
+                }
+            }
+            return id;
+        }
     }
 }

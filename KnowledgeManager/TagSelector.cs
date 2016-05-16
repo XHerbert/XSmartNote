@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using CCWin;
 using System.Windows.Forms;
+using KnowledgeManager.DAL;
+using KnowledgeManager.DAL.Tags;
+using KnowledgeManager.Model;
 
 namespace KnowledgeManager
 {
@@ -52,7 +55,19 @@ namespace KnowledgeManager
            
             if (!string.IsNullOrEmpty(txt_Tag.Text)&&!IsContainInputLabel(txt_Tag.Text))
             {
-                //new MainForm().AddLabelToLocation(this.panel_Tags, 4, txt_Tag.Text,SQLHelper.GetMaxID(Enums.Table_Tag.ToString(),"tagId"),false,true);
+                //Model.Tags.Tag tag = TagsDAO.CreateTagsDAO().GetTagByName(txt_Tag.Text.Trim());
+                Model.Tags.Tag tag = new Model.Tags.Tag();
+                tag.TagId = Guid.NewGuid();
+                tag.TagContent = txt_Tag.Text;
+                Guid gid=(Guid)TagsDAO.CreateTagsDAO().Save(tag);
+                if (gid == Guid.Empty)
+                {
+                    MessageBoxEx.Show("未知错误",Constant.KM_TYPE_ERROR);
+                    return;
+                }
+                    
+                new MainForm().AddLabelToLocation(this.panel_Tags, 4, txt_Tag.Text,tag.TagId,false,true);
+                this.txt_Tag.Text = string.Empty;
                 //SQLHelper.InsertTag(txt_Tag.Text);
             }
             else
@@ -77,7 +92,8 @@ namespace KnowledgeManager
         #region COMMON METHOD
         private bool IsContainInputLabel(string txt)
         {
-            isContain = SQLHelper.CheckOverrideName(txt.Trim());
+            //isContain = SQLHelper.CheckOverrideName(txt.Trim());
+            isContain = TagsDAO.CreateTagsDAO().IsExistTag(txt);
             return isContain;
         }
         #endregion

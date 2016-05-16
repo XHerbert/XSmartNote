@@ -63,9 +63,29 @@ namespace KnowledgeManager.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap @__TemplateIcon {
+            get {
+                object obj = ResourceManager.GetObject("__TemplateIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_redo {
             get {
                 object obj = ResourceManager.GetObject("arrow_redo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap b {
+            get {
+                object obj = ResourceManager.GetObject("b", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,6 +183,26 @@ namespace KnowledgeManager.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap g {
+            get {
+                object obj = ResourceManager.GetObject("g", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap h {
+            get {
+                object obj = ResourceManager.GetObject("h", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap page_2 {
             get {
                 object obj = ResourceManager.GetObject("page_2", resourceCulture);
@@ -176,6 +216,16 @@ namespace KnowledgeManager.Properties {
         internal static System.Drawing.Bitmap page_white_edit {
             get {
                 object obj = ResourceManager.GetObject("page_white_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap q {
+            get {
+                object obj = ResourceManager.GetObject("q", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +266,16 @@ namespace KnowledgeManager.Properties {
         internal static System.Drawing.Bitmap text_dropcaps {
             get {
                 object obj = ResourceManager.GetObject("text_dropcaps", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap y {
+            get {
+                object obj = ResourceManager.GetObject("y", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

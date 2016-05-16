@@ -78,6 +78,7 @@
             this.skinLine2 = new CCWin.SkinControl.SkinLine();
             this.txt_Content = new KnowledgeManager.Controls.TextBoxEx();
             this.txt_Title = new KnowledgeManager.Controls.TextBoxEx();
+            this.extends = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel_Tree.SuspendLayout();
             this.panel_Article.SuspendLayout();
@@ -91,16 +92,18 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Maroon;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenu,
             this.SetMenu,
             this.theme,
+            this.extends,
             this.HelpMenu,
             this.AboutMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(223, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(358, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -110,6 +113,7 @@
             this.NewMenu,
             this.OpenMenu,
             this.SaveMenu});
+            this.FileMenu.ForeColor = System.Drawing.Color.Silver;
             this.FileMenu.Name = "FileMenu";
             this.FileMenu.Size = new System.Drawing.Size(43, 20);
             this.FileMenu.Text = "文件";
@@ -139,12 +143,14 @@
             // 
             this.SetMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FontSizeMenu});
+            this.SetMenu.ForeColor = System.Drawing.Color.Silver;
             this.SetMenu.Name = "SetMenu";
             this.SetMenu.Size = new System.Drawing.Size(43, 20);
             this.SetMenu.Text = "设置";
             // 
             // FontSizeMenu
             // 
+            this.FontSizeMenu.Image = global::KnowledgeManager.Properties.Resources.style;
             this.FontSizeMenu.Name = "FontSizeMenu";
             this.FontSizeMenu.Size = new System.Drawing.Size(122, 22);
             this.FontSizeMenu.Text = "字体大小";
@@ -154,6 +160,7 @@
             // 
             this.theme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bg_Line});
+            this.theme.ForeColor = System.Drawing.Color.Silver;
             this.theme.Name = "theme";
             this.theme.Size = new System.Drawing.Size(43, 20);
             this.theme.Text = "主题";
@@ -166,12 +173,14 @@
             this.lightGreen,
             this.yellow,
             this.bone});
+            this.bg_Line.Image = global::KnowledgeManager.Properties.Resources.@__TemplateIcon;
             this.bg_Line.Name = "bg_Line";
             this.bg_Line.Size = new System.Drawing.Size(122, 22);
             this.bg_Line.Text = "主题纹理";
             // 
             // roseRed
             // 
+            this.roseRed.Image = global::KnowledgeManager.Properties.Resources.h;
             this.roseRed.Name = "roseRed";
             this.roseRed.Size = new System.Drawing.Size(110, 22);
             this.roseRed.Text = "玫瑰红";
@@ -179,6 +188,7 @@
             // 
             // stoneBlue
             // 
+            this.stoneBlue.Image = global::KnowledgeManager.Properties.Resources.b;
             this.stoneBlue.Name = "stoneBlue";
             this.stoneBlue.Size = new System.Drawing.Size(110, 22);
             this.stoneBlue.Text = "宝石蓝";
@@ -186,6 +196,7 @@
             // 
             // lightGreen
             // 
+            this.lightGreen.Image = global::KnowledgeManager.Properties.Resources.g;
             this.lightGreen.Name = "lightGreen";
             this.lightGreen.Size = new System.Drawing.Size(110, 22);
             this.lightGreen.Text = "青葱绿";
@@ -193,6 +204,7 @@
             // 
             // yellow
             // 
+            this.yellow.Image = global::KnowledgeManager.Properties.Resources.y;
             this.yellow.Name = "yellow";
             this.yellow.Size = new System.Drawing.Size(110, 22);
             this.yellow.Text = "小鸭黄";
@@ -200,6 +212,7 @@
             // 
             // bone
             // 
+            this.bone.Image = global::KnowledgeManager.Properties.Resources.q;
             this.bone.Name = "bone";
             this.bone.Size = new System.Drawing.Size(110, 22);
             this.bone.Text = "青花瓷";
@@ -207,12 +220,14 @@
             // 
             // HelpMenu
             // 
+            this.HelpMenu.ForeColor = System.Drawing.Color.Silver;
             this.HelpMenu.Name = "HelpMenu";
             this.HelpMenu.Size = new System.Drawing.Size(43, 20);
             this.HelpMenu.Text = "帮助";
             // 
             // AboutMenu
             // 
+            this.AboutMenu.ForeColor = System.Drawing.Color.Silver;
             this.AboutMenu.Name = "AboutMenu";
             this.AboutMenu.Size = new System.Drawing.Size(43, 20);
             this.AboutMenu.Text = "关于";
@@ -235,9 +250,10 @@
             this.tv_Folder.ImageList = this.images;
             this.tv_Folder.Indent = 19;
             this.tv_Folder.LabelEdit = true;
+            this.tv_Folder.LineColor = System.Drawing.Color.Maroon;
             this.tv_Folder.Location = new System.Drawing.Point(3, 3);
             this.tv_Folder.Name = "tv_Folder";
-            this.tv_Folder.SelectedImageIndex = 1;
+            this.tv_Folder.SelectedImageKey = "TextFile.ico";
             this.tv_Folder.Size = new System.Drawing.Size(166, 422);
             this.tv_Folder.TabIndex = 0;
             this.tv_Folder.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tv_Folder_AfterLabelEdit);
@@ -257,6 +273,8 @@
             this.images.Images.SetKeyName(6, "cross.png");
             this.images.Images.SetKeyName(7, "book.png");
             this.images.Images.SetKeyName(8, "note.png");
+            this.images.Images.SetKeyName(9, "TextFile.ico");
+            this.images.Images.SetKeyName(10, "XmlToSchema.ico");
             // 
             // btn_Add
             // 
@@ -611,6 +629,13 @@
             this.txt_Title.WaterColor = System.Drawing.Color.Maroon;
             this.txt_Title.WaterText = "请输入标题";
             // 
+            // extends
+            // 
+            this.extends.ForeColor = System.Drawing.Color.Silver;
+            this.extends.Name = "extends";
+            this.extends.Size = new System.Drawing.Size(43, 20);
+            this.extends.Text = "扩展";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -709,6 +734,7 @@
         private Controls.TextBoxEx txt_Title;
         private Controls.TextBoxEx txt_Content;
         private TX.Framework.WindowUI.Controls.TXPanel rectlblContainer;
+        private System.Windows.Forms.ToolStripMenuItem extends;
     }
 }
 

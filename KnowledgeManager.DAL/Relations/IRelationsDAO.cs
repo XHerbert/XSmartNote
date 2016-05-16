@@ -8,6 +8,9 @@ namespace KnowledgeManager.DAL.Relations
 {
     public interface IRelationsDAO
     {
+        bool Save(Model.Relations.Relation relation);
+
+        bool Delete(Model.Relations.Relation relation);
 
     }
 }

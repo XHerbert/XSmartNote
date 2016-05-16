@@ -10,6 +10,8 @@ using KnowledgeManager.Model;
 using KnowledgeManager.Properties;
 using KnowledgeManager.DAL.PostContents;
 using KnowledgeManager.DAL.Tags;
+using KnowledgeManager.DAL.Relations;
+using KnowledgeManager.Model.Relations;
 
 namespace KnowledgeManager
 {
@@ -24,12 +26,16 @@ namespace KnowledgeManager
         private const int LOCATION_X = 0x0003;
 
         private static int flagForPanelEdit = 0;
+        private static bool CallBack = false;
+
         private static string currentNode = string.Empty;
         private static string labels = string.Empty;
+        private static Guid guidFlag = Guid.Empty;
         private static Guid labelsId;
         private static List<string> labelList = new List<string>();
         private static TreeNode curNode;
-        private static Dictionary<Guid, string> labelDic = new Dictionary<Guid, string>();
+        private static Dictionary<Guid, Guid> labelDic = new Dictionary<Guid, Guid>();
+        private Relation removeRelation = new Relation();
         #endregion
 
         #region CONSTRUCTOR
@@ -218,7 +224,8 @@ namespace KnowledgeManager
 
             //Panel_Article
             panel_Article.Height = this.Height - Constant.KM_ARTICLE_LESS_MAIN;
-            txt_Content.Height = panel_Article.Height - txt_Content.Location.Y - panel_SeleSave.Height - Constant.KM_ARTICLE_ADJUST_CONTENT;
+            txt_Content.Height = panel_Article.Height - txt_Content.Location.Y - panel_SeleSave.Height - Constant.KM_ARTICLE_ADJUST_CONTENT ;
+            panel_SeleSave.Height = 166;
             panel_SeleSave.Location = new Point(Constant.KM_PANELSELECTSAVE_X, txt_Content.Height + txt_Content.Location.Y + Constant.KM_PANELSELECTSAVE_Y);
 
             //Panel_Main
@@ -288,13 +295,14 @@ namespace KnowledgeManager
                 return;
             }
 
-           
             object tmpObj = this.tv_Folder.GetNodeAt(me.Location);
             if (tmpObj != null)
             {
                 TreeNode node = tmpObj as TreeNode;
                 if ((tmpObj as TreeNode).Bounds.Contains(me.Location))
                 {
+                    #region RIGHT BUTTON CLICK
+
                     if (me.Button == MouseButtons.Right)
                     {
                         tv_Folder.SelectedNode = node;
@@ -321,6 +329,10 @@ namespace KnowledgeManager
                         }
                     }
 
+                    #endregion
+
+                    #region LEFT BUTTON CLICK
+
                     //如果是单击左键，显示该目录下的所有文章
                     else if (me.Button == MouseButtons.Left)
                     {
@@ -334,7 +346,7 @@ namespace KnowledgeManager
                             this.lbl_CurrentNode.Text = "当前节点：" + node.Text;
                             ClearControls(panel_List);
                             ClearControls(flowLayoutPanel1);//清除Labels
-                            txt_SelectedLabel.ControlText = string.Empty;
+                            //txt_SelectedLabel.ControlText = string.Empty;
 
                             //原方案
                             //int id = node.Name.ToInt();
@@ -360,9 +372,10 @@ namespace KnowledgeManager
 
                             //新方案
                             Guid parentId = Guid.Parse(node.Name);
+                            Model.PostContents.PostContent post = PostContentsDAO.CreatePostContentsDAO().GetEntityById(parentId);
                             //根据当前父节点Id获取子节点
                             //IList<Model.PostContents.PostContent> postList = PostContentsDAO.CreatePostContentsDAO().GetEntityByCondition("select P.Id,P.ParentId,P.Title,P.Content,P.Type,P.LineNum,P.ModifyDate,P.CreateDate,P.Enable from PostContent P where ParentId=:fn", parentId.ToString());
-                            IList<Model.PostContents.PostContent> postList = PostContentsDAO.CreatePostContentsDAO().GetEntityByExample(parentId);
+                            IList<Model.PostContents.PostContent> postList = PostContentsDAO.CreatePostContentsDAO().GetEntitiesByParentId(parentId,true);
                             ShowListOnPanel(postList, this.panel_List);
                         }
                         if (node.Tag.ToString() == Enums.LEAVES.ToString())
@@ -389,18 +402,27 @@ namespace KnowledgeManager
                             //        AddLabelToLocation(flowLayoutPanel1, Constant.KM_PANELLIST_COLUMN, aticle["tagContent"].ToString(), aticle["tagId"].ToInt(), true,false);
                             //    }
                             //}
-
+                            SetReadOnly(true);
+                            
                         }
                     }
+                    #endregion
                 }
                 else
                 {
                     //isClickOnNode = false;
                 }
             }
+            tv_Folder_DoubleClick(sender, e);
             KeepSizeWithMainForm(this.panel_List);
         }
-       
+
+        private void SetReadOnly(bool IsReadOnly)
+        {
+            this.txt_Content.Enabled = !IsReadOnly;
+            this.txt_Title.Enabled = !IsReadOnly;
+        }
+
         /// <summary>
         /// 双击结构树并将数据显示在文本域中
         /// </summary>
@@ -465,6 +487,7 @@ namespace KnowledgeManager
         {
             //添加文章，直接在文本框中输入标题内容，再选择节点（右侧直接出现该节点下所有文章）和标签
             //点击添加后，右侧尾部追加该文章
+            /*
             if (string.IsNullOrEmpty(txt_Content.Text) || string.IsNullOrEmpty(txt_Title.Text))
             {
                 MessageBoxEx.Show(Constant.KM_WN_TITLE_OR_CONTENT_NOT_NULL, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
@@ -480,7 +503,7 @@ namespace KnowledgeManager
             AddLabelToLocation(panel_List, this.txt_Content.Text);
             this.txt_Title.Text = string.Empty;
             this.txt_Content.Text = string.Empty;
-
+            */
         }
       
         /// <summary>
@@ -510,17 +533,36 @@ namespace KnowledgeManager
                 post.ModifyDate = DateTime.Now;
                 IsSuccess= PostContentsDAO.CreatePostContentsDAO().Update(post);
 
-                //同时更新文章标签
-                if (!string.IsNullOrEmpty(txt_SelectedLabel.ControlText))
-                {
+                //重要！同时更新文章标签，此处需要设计一个额外的控件，圆角矩形来存储Relation对象
 
+                if (rectlblContainer.Controls.Count > 0)
+                {
+                    //循环添加Tag和Post的关系Relation
+                    foreach (Control rectLbl in rectlblContainer.Controls)
+                    {
+                        Model.PostContents.PostContent currentPost = PostContentsDAO.CreatePostContentsDAO().GetEntityById(node.Name.ToGuid());//Guid.NewGuid 临时替代真正的ID
+                        Model.Tags.Tag currentag = TagsDAO.CreateTagsDAO().GetTagById(rectLbl.Tag.ToGuid());//Guid.NewGuid 临时替代真正的ID
+                        Model.Relations.Relation relation = new Model.Relations.Relation();
+                        relation.RelationId = Guid.NewGuid();
+                        relation.Post = currentPost;
+                        relation.TagId = currentag.TagId;
+                        bool IsSaved = RelationsDAO.CreateRelationsDAO().Save(relation);
+                    }
                 }
+
                 //同时重新加载Treeview。已注掉，暂时没有必要Reload
                 //BuildTree(this.tv_Folder, GetFolderSet());
                 if (IsSuccess)
                 {
+                    SetReadOnly(true);
                     MessageBoxEx.Show(Constant.KM_INFO_SAVE_OK,Constant.KM_TYPE_INFO , MessageBoxButtons.OK);
+                    tv_Folder.SelectedNode = node;
+
                 }
+            }
+            else
+            {
+                MessageBoxEx.Show("请选择要保存的文章",Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
             }
         }
       
@@ -618,6 +660,19 @@ namespace KnowledgeManager
             }
         }
        
+        public void AddLabelToLocation(TX.Framework.WindowUI.Controls.TXPanel panel,int column, RectangleLabel label)
+        {
+            int labelCount = panel.Controls.Count;
+            int lines = labelCount / column;
+            int left = labelCount % column;
+            int X = (left * WIDTH) + (left + 1) * (MARGIN*3);
+            int Y = lines * HEIGHT + (lines + 1) * (MARGIN*3);
+            //LabelWithCheck label = new LabelWithCheck();
+
+            label.Location = new Point(X,Y);
+            panel.Controls.Add(label);
+        }
+
         /// <summary>
         /// 选择标签，用于“选中标签”并同步到数据库
         /// </summary>
@@ -625,20 +680,45 @@ namespace KnowledgeManager
         /// <param name="e"></param>
         private void Label_LabelCheckedEvent(object sender, LabelWithCheckEventArgs e)
         {
+            if (CallBack)
+            {
+                return;
+            }
+            
             CheckBox lc = (CheckBox)sender;
             CheckState cs = lc.CheckState;
+            curNode = tv_Folder.SelectedNode;
+            if (curNode == null)
+            {
+                MessageBoxEx.Show(Constant.KM_WN_NODE_NOT_SELECTED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
+                return;
+            }
+
             if (cs.ToString() == "Checked")
             {
-                labels = e.LabelText;
-                labelsId = e.Id;
-                if (labelDic.ContainsValue(labels))
+                
+                //removeRelation = null;
+                //labels = e.LabelText;
+                labelsId = e.Id;//tagId
+                guidFlag = Guid.NewGuid();
+                bool exist = CheckExistTag(curNode.Name.ToGuid(), e.Id);
+                if (exist)
+                {
+                    MessageBoxEx.Show(Constant.KM_WN_ADD_EXIST_LABEL_NOT_ALLOWED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
+                    CallBack = true;
+                    lc.CheckState = CheckState.Unchecked;
+                    CallBack = false;
+                    return;
+                }
+
+
+                if (labelDic.ContainsValue(labelsId))
                 {
                     MessageBoxEx.Show(Constant.KM_WN_ADD_EXIST_LABEL_NOT_ALLOWED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                     return;
                 }
-                labelDic.Add(labelsId, labels);
+                labelDic.Add(labelsId, guidFlag);
                 //将关联存入数据库
-                curNode = tv_Folder.SelectedNode;
                 if (curNode == null)
                 {
                     MessageBoxEx.Show(Constant.KM_WN_NODE_NOT_SELECTED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
@@ -646,16 +726,13 @@ namespace KnowledgeManager
                 }
                 if (curNode.Tag.ToString() == Enums.LEAVES.ToString())
                 {
-                    int i = SQLHelper.AddRelations(curNode.Name.ToInt(), e.Id);
-                    if (i < 0)
-                    {
-                        MessageBoxEx.Show(Constant.KM_ER_REFERENCE_ID_WRONG, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
-                    }
+                    //int i = SQLHelper.AddRelations(curNode.Name.ToInt(), e.Id);
+                    removeRelation=AddRelation(curNode.Name.ToGuid(), e.Id, guidFlag,removeRelation);
                 }
             }
             else if (cs.ToString() == "Unchecked")
             {
-                labelDic.Remove(e.Id);
+                //guidFlag = Guid.Empty;
                 //将关联移出数据库
                 curNode = tv_Folder.SelectedNode;
                 if (curNode == null)
@@ -665,14 +742,82 @@ namespace KnowledgeManager
                 }
                 if (curNode.Tag.ToString() == Enums.LEAVES.ToString())
                 {
-                    int i = SQLHelper.RemoveRelations(curNode.Name.ToInt(), e.Id);
-                    if (i < 0)
+                    bool Nothing;
+                    Relation i = RelationsDAO.CreateRelationsDAO().IsExistTag(curNode.Name.ToGuid(),e.Id,out  Nothing);
+                    if (removeRelation != null)
                     {
-                        MessageBoxEx.Show(Constant.KM_REMOVE_REFERENCE_WRONG, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
+                        removeRelation = i;
+                        RemoveRelation(removeRelation, labelDic[e.Id]);
+                        labelDic.Remove(e.Id);
                     }
                 }
             }
-            txt_SelectedLabel.ControlText = ShowLabel(labelDic);
+            //txt_SelectedLabel.ControlText = ShowLabel(labelDic);
+            //变更为 向Panel中添加Rectanglelabel  重点
+        }
+
+
+                
+        private Relation AddRelation(Guid postId,Guid tagId, Guid guidFlag,Relation removeRelation)
+        {
+            //加非空校验;
+            removeRelation.RelationId = Guid.NewGuid();
+            removeRelation.PostId = postId;
+            removeRelation.TagId = tagId;
+            bool IsSucess = RelationsDAO.CreateRelationsDAO().Save(removeRelation);
+            Model.Tags.Tag tag = TagsDAO.CreateTagsDAO().GetTagById(tagId);
+            //removeRelation = relation;
+            if (IsSucess)
+            {
+                RectangleLabel label = new RectangleLabel();
+                label.ControlText = tag.TagContent;
+                label.BorderColor = Color.Purple;
+                label.BorderWidth = 1;
+                label.InnerColor = Color.Transparent;
+                label.Tag = guidFlag;
+                //计算位置
+                AddLabelToLocation(rectlblContainer, 2, label);
+                //rectlblContainer.Controls.Add(label);//添加一个事件，E区显示已添加标签
+            }
+            if (!IsSucess)
+            {
+                MessageBoxEx.Show(Constant.KM_ER_REFERENCE_ID_WRONG, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
+            }
+            return removeRelation;
+        }
+
+
+        private void RemoveRelation(Relation removeRelation,Guid guidFlag)
+        {
+            bool IsRemoved = RelationsDAO.CreateRelationsDAO().Delete(removeRelation);
+            if (!IsRemoved)
+            {
+                MessageBoxEx.Show(Constant.KM_REMOVE_REFERENCE_WRONG, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
+            }
+            else
+            {
+                //rectlblContainer.Controls.RemoveAt(0);
+                RectangleLabel removeLabel = null;
+                foreach (RectangleLabel rlbl in rectlblContainer.Controls)
+                {
+                    if (rlbl.Tag.ToString() == guidFlag.ToString())
+                    {
+                        removeLabel = rlbl;
+                    }
+                }
+                if (removeLabel != null)
+                {
+                    rectlblContainer.Controls.Remove(removeLabel);
+                }
+            }
+        }
+
+
+        private bool CheckExistTag(Guid postId,Guid tagId)
+        {
+            bool IsExist;
+            RelationsDAO.CreateRelationsDAO().IsExistTag(postId, tagId, out IsExist);
+            return IsExist;
         }
 
         /// <summary>
@@ -702,7 +847,7 @@ namespace KnowledgeManager
         {
             foreach (Model.PostContents.PostContent post in posts)
             {
-                AddLabelToLocation(flp, post.Content);
+                AddLabelToLocation(flp, post);
             }
         }
 
@@ -711,7 +856,7 @@ namespace KnowledgeManager
         /// </summary>
         /// <param name="flp"></param>
         /// <param name="text"></param>
-        public static void AddLabelToLocation(FlowLayoutPanel flp, string text)
+        public static void AddLabelToLocation(FlowLayoutPanel flp, Model.PostContents.PostContent post)
         {
             int labelCount = flp.Controls.Count;
             LabelExSolidBorder le = new LabelExSolidBorder();//此处可变更LabelEx样式，可配置
@@ -737,7 +882,8 @@ namespace KnowledgeManager
             }
 
             le.Location = new Point(X, Y);
-            le.Text = text;
+            le.Text = post.Content;
+            le.Tag = post;
             flp.Controls.Add(le);
             flp.ScrollControlIntoView(le);
         }
@@ -769,29 +915,35 @@ namespace KnowledgeManager
         /// </summary>
         /// <param name="dic"></param>
         /// <returns></returns>
-        private static string ShowLabel(Dictionary<Guid, string> dic)
-        {
-            StringBuilder labels = new StringBuilder();
-            foreach (KeyValuePair<Guid, string> item in dic)
-            {
-                labels.Append(item.Value);
-                labels.Append(',');
-            }
-            return labels.ToString();
-        }
+        //private static string ShowLabel(Dictionary<Guid, string> dic)
+        //{
+        //    StringBuilder labels = new StringBuilder();
+        //    foreach (KeyValuePair<Guid, string> item in dic)
+        //    {
+        //        labels.Append(item.Value);
+        //        labels.Append(',');
+        //    }
+        //    return labels.ToString();
+        //}
 
         /// <summary>
-        /// 打开标签库
+        /// 初始化标签库
         /// </summary>
         /// <param name="isRegisterEvent"></param>
         private void ShowLabelsList(bool isRegisterEvent)
         {
             TagSelector tag = new TagSelector();
-            DataTable dt = SQLHelper.GetAllTags();
-            foreach (DataRow item in dt.Rows)
+            //DataTable dt = SQLHelper.GetAllTags();
+            //foreach (DataRow item in dt.Rows)
+            //{
+            //    //AddLabelToLocation(tag.panel_Tags, 4, item["tagContent"].ToString(), item["tagId"].ToInt(), false, isRegisterEvent);
+            //    AddLabelToLocation(tag.panel_Tags, 4, item["tagContent"].ToString(), Guid.NewGuid(), false, isRegisterEvent);
+            //}
+            IList<Model.Tags.Tag> list = TagsDAO.CreateTagsDAO().GetAllTags();
+            foreach (Model.Tags.Tag item in list)
             {
                 //AddLabelToLocation(tag.panel_Tags, 4, item["tagContent"].ToString(), item["tagId"].ToInt(), false, isRegisterEvent);
-                AddLabelToLocation(tag.panel_Tags, 4, item["tagContent"].ToString(), Guid.NewGuid(), false, isRegisterEvent);
+                AddLabelToLocation(tag.panel_Tags, 4, item.TagContent, item.TagId, false, isRegisterEvent);
             }
             tag.Show();
         }
@@ -844,7 +996,7 @@ namespace KnowledgeManager
             this.tv_Folder.BackColor =color;
             this.txt_Title.BoxBackColor = color;
             this.txt_Content.BoxBackColor =color;
-            this.txt_SelectedLabel.BoxBackColor = color;
+            //this.txt_SelectedLabel.BoxBackColor = color;
         }
 
         /// <summary>
@@ -856,6 +1008,22 @@ namespace KnowledgeManager
         {
             this.txt_Content.ControlText = text;
             this.txt_Title.ControlText = title;
+            SetReadOnly(true);
+        }
+
+
+        /// <summary>
+        /// 单击右侧Note时，选中与之对应的Node
+        /// </summary>
+        /// <param name="post"></param>
+        public void SetSelectedNode(Model.PostContents.PostContent post)
+        {
+            tv_Folder.Focus();
+            TreeNode node = null;
+            //此处暂未实现，需要遍历所有的Node，耗费性能，暂时不做
+            node = tv_Folder.Nodes[0].Nodes[0];
+            tv_Folder.SelectedNode = node;
+            this.lbl_CurrentNode.Text= "当前节点：" + node.Text;
         }
 
         public void SetTheme(ThemeManager.ThemeEnums.ThemeEnum enums)
@@ -936,6 +1104,8 @@ namespace KnowledgeManager
 
         #endregion
 
+        #region MENU OPERATIONS
+
         private void Tree_NewSubFolderMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode tn = tv_Folder.SelectedNode;
@@ -980,7 +1150,7 @@ namespace KnowledgeManager
                 {
                     post.ParentId = tn.Name.ToGuid();
                     //flag = SQLHelper.InsertFolder(post, false);
-                    flag=(bool)PostContentsDAO.CreatePostContentsDAO().Save(post);
+                    flag = (bool)PostContentsDAO.CreatePostContentsDAO().Save(post);
                     node.ForeColor = Color.Maroon;
                     tn.Expand();
                 }
@@ -994,15 +1164,41 @@ namespace KnowledgeManager
                 {
                     MessageBoxEx.Show(Constant.KM_ER_DATA_SAVE_FAILED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                 }
-                
+
             }
         }
 
         private void Tree_DeleteFolderMenuItem_Click(object sender, EventArgs e)
         {
-            //暂时只写删除树，不是几删除数据
-            TreeNode node= tv_Folder.SelectedNode;
-            node.Remove();
+            //删除实际数据
+            TreeNode tn = tv_Folder.SelectedNode;
+            if (null == tn)
+                return;
+            IList<Model.PostContents.PostContent> posts = PostContentsDAO.CreatePostContentsDAO().GetEntitiesByParentId(tn.Name.ToGuid(), false);
+
+            //删除前提示框警告
+
+            DialogResult dr = MessageBoxEx.Show(Constant.KM_CONFIRM_REMOVE, Constant.KM_TYPE_WARN, MessageBoxButtons.OKCancel);
+            if (dr == DialogResult.OK)
+            {
+                bool IsSuccess = PostContentsDAO.CreatePostContentsDAO().Delete(posts);
+                bool ParentRemoved = PostContentsDAO.CreatePostContentsDAO().Delete(PostContentsDAO.CreatePostContentsDAO().GetEntityById(tn.Name.ToGuid()));
+                //暂时只写删除树，不是几删除数据
+                if (IsSuccess && ParentRemoved)
+                {
+                    //删除当前节点前，把右侧的区域清空
+                    if (panel_List.Controls.Count > 0)
+                    {
+                        panel_List.Controls.Clear();
+                    }
+                    this.txt_Title.ControlText = txt_Title.WaterText;
+                    this.txt_Content.ControlText = txt_Content.WaterText;
+                    tn.Remove();
+                    MessageBoxEx.Show(Constant.KM_REMOVE_OK, Constant.KM_TYPE_INFO);
+                }
+                //状态栏  日志
+            }
+
         }
 
         private void Tree_NewNoteMenuItem_Click(object sender, EventArgs e)
@@ -1025,7 +1221,7 @@ namespace KnowledgeManager
                 //PostContentsDAO.CreatePostContentsDAO().QueryAll(out lineNum);
                 //node.Name = (lineNum+1).ToString();
                 post = new Model.PostContents.PostContent();
-                post.Id = Guid.NewGuid();   
+                post.Id = Guid.NewGuid();
                 post.Title = node.Text;
                 post.Type = true;//非目录 文章
                 post.Enable = true;
@@ -1047,14 +1243,14 @@ namespace KnowledgeManager
                 {
                     //这里需要改进，对文件夹和Note区分下，所有文件夹在所有的Note之上
                     tn.Nodes.Insert(tn.Nodes.Count, node);
-                    tn.Expand();
                     node.ForeColor = Color.Maroon;
+                    tn.Expand();
                 }
                 else
                 {
                     MessageBoxEx.Show(Constant.KM_ER_NOTE_SAVE_FAILED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                 }
-                
+
             }
         }
 
@@ -1077,17 +1273,23 @@ namespace KnowledgeManager
         {
             TreeNode tn = tv_Folder.SelectedNode;
             Model.PostContents.PostContent post = PostContentsDAO.CreatePostContentsDAO().GetEntityById(tn.Name.ToGuid());
-            bool HasDeleted=PostContentsDAO.CreatePostContentsDAO().Delete(post);
-
-            if (HasDeleted)
+            
+            DialogResult dr = MessageBoxEx.Show(Constant.KM_CONFIRM_REMOVE, Constant.KM_TYPE_WARN, MessageBoxButtons.OKCancel);
+            if (dr == DialogResult.OK)
             {
-                tn.Remove();
+                bool HasDeleted = PostContentsDAO.CreatePostContentsDAO().Delete(post);
+                if (HasDeleted)
+                {
+                    tn.Remove();
+                    this.txt_Content.ControlText = this.txt_Content.WaterText;
+                    this.txt_Title.ControlText = this.txt_Title.WaterText; ;
+                }
             }
         }
 
         private void Tree_EditNoteMenuItem_Click(object sender, EventArgs e)
         {
-
+            SetReadOnly(false);
         }
 
         private void FontSizeMenu_Click(object sender, EventArgs e)
@@ -1107,7 +1309,13 @@ namespace KnowledgeManager
                 }
             }
         }
+        #endregion
+
     }
+
+
+    #region 扩展
+
 
     public static class Extension
     {
@@ -1128,7 +1336,6 @@ namespace KnowledgeManager
             return i;
         }
 
-
         public static Guid ToGuid(this object obj)
         {
             Guid guid = Guid.Empty;
@@ -1146,4 +1353,6 @@ namespace KnowledgeManager
             return guid;
         }
     }
+    #endregion
+
 }

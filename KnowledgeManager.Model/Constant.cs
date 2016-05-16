@@ -74,5 +74,7 @@ namespace KnowledgeManager.Model
         public const string KM_ER_REFERENCE_ID_WRONG = "关联ID出错！";
         public const string KM_WN_NOTE_NOT_SELECTED = "尚未选择文章！";
         public const string KM_REMOVE_REFERENCE_WRONG = "移除关联ID出错！";
+        public const string KM_REMOVE_OK = "删除成功！";
+        public const string KM_CONFIRM_REMOVE = "确认删除？";
     }
 }

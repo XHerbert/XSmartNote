@@ -58,11 +58,11 @@
             // 
             // txt_Tag
             // 
-            this.txt_Tag.Location = new System.Drawing.Point(0, 5);
+            this.txt_Tag.Location = new System.Drawing.Point(3, 5);
             this.txt_Tag.Margin = new System.Windows.Forms.Padding(0);
             this.txt_Tag.Multiline = true;
             this.txt_Tag.Name = "txt_Tag";
-            this.txt_Tag.Size = new System.Drawing.Size(248, 22);
+            this.txt_Tag.Size = new System.Drawing.Size(245, 22);
             this.txt_Tag.TabIndex = 0;
             // 
             // panel_Tags

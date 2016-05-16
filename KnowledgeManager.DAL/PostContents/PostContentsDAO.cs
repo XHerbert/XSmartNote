@@ -57,12 +57,12 @@ namespace KnowledgeManager.DAL.PostContents
         /// </summary>
         /// <param name="ParentId"></param>
         /// <returns></returns>
-        public IList<PostContent> GetEntityByExample(Guid ParentId)
+        public IList<PostContent> GetEntitiesByParentId(Guid ParentId ,bool IsForlderNotContained)
         {
-            PostContent post = new PostContent()
-            {
-                ParentId = ParentId
-            };
+            //PostContent post = new PostContent()
+            //{
+            //    ParentId = ParentId
+            //};
             IList<PostContent> list = null;
             using (ISession session=sessionFactory.OpenSession())
             {
@@ -70,7 +70,21 @@ namespace KnowledgeManager.DAL.PostContents
                 try
                 {
                     //list=session.CreateCriteria(typeof(PostContent)).Add(Example.Create(post)).List<PostContent>();
-                    list = session.CreateCriteria(typeof(PostContent)).Add(Restrictions.Eq("ParentId", ParentId)).List<PostContent>();
+
+                    if (IsForlderNotContained)
+                    {
+                        list = session.CreateCriteria(typeof(PostContent))
+                                      .Add(Restrictions.Eq("ParentId", ParentId))
+                                      .Add(Restrictions.Eq("Type", IsForlderNotContained))
+                                      .List<PostContent>();
+                    }
+                    else
+                    {
+                        list = session.CreateCriteria(typeof(PostContent))
+                                     .Add(Restrictions.Eq("ParentId", ParentId))
+                                     .List<PostContent>();
+                    }
+
                 }
                 catch (Exception)
                 {
@@ -215,6 +229,21 @@ namespace KnowledgeManager.DAL.PostContents
                 }
                 return IsSuccess;
             }
+        }
+
+        public bool Delete(IList<Model.PostContents.PostContent> posts)
+        {
+            bool IsSuccess = true;//如果没有子节点直接返回True，配合删除父节点
+            if (posts.Count > 0)
+            {
+                int index = posts.Count-1;
+                while (index>=0)
+                {
+                    IsSuccess =Delete(posts[index]);
+                    index--;
+                }
+            }
+            return IsSuccess;
         }
     }
 }

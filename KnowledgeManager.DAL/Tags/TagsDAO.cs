@@ -7,6 +7,7 @@ using KnowledgeManager.Model.Tags;
 using KnowledgeManager.Model.PostContents;
 using NHibernate;
 using NHibernate.Criterion;
+using NHibernate.Linq;
 
 namespace KnowledgeManager.DAL.Tags
 {
@@ -53,6 +54,48 @@ namespace KnowledgeManager.DAL.Tags
                 }
                 return tags;
             }
+        }
+
+
+        public Tag GetTagById(Guid Id)
+        {
+            Tag tag = null;
+            using (ISession session=sessionFactory.OpenSession())
+            {
+                ITransaction trans = session.BeginTransaction();
+                try
+                {
+                    tag=session.Get<Tag>(Id);
+                    trans.Commit();
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                    throw;
+                }
+            }
+            return tag;
+        }
+
+        public IList<Tag> GetAllTags()
+        {
+            IList<Tag> tags = null;
+            using (ISession session=sessionFactory.OpenSession())
+            {
+                ITransaction trans = session.BeginTransaction();
+                try
+                {
+                    tags= session.Query<Tag>().ToList();
+                    session.Flush();
+                    trans.Commit();
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                    throw;
+                }
+            }
+            return tags;
         }
     }
 }

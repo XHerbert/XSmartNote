@@ -14,6 +14,7 @@ namespace KnowledgeManager
     {
         #region PARAMS
         public event Action<string,string> ShowNote;
+        public event Action<Model.PostContents.PostContent> SetSelectedNode;
         #endregion
 
         #region CONSTRUCTOR      
@@ -167,8 +168,14 @@ namespace KnowledgeManager
         {
             MainForm mf = (MainForm)this.TopLevelControl;
             ShowNote += mf.SetText;//绑定事件
+            SetSelectedNode += mf.SetSelectedNode;
+            
             if (ShowNote != null)
-                ShowNote(this.Text, "TITLE");//此处后续完善
+            {
+                Model.PostContents.PostContent post = (Model.PostContents.PostContent)this.Tag;
+                SetSelectedNode(post);
+                ShowNote(this.Text,post.Title);//此处后续完善
+            }
         }
     }
 }

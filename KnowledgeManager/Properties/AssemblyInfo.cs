@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("KnowledgeManager")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("XSmartNote")]
+[assembly: AssemblyDescription("xxxx")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KnowledgeManager")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("XHB")]
+[assembly: AssemblyProduct("XSmartNote")]
+[assembly: AssemblyCopyright("悠扬的牧笛 Copyright ©  2016")]
+[assembly: AssemblyTrademark("悠扬的牧笛")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: 
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("2.10.20.320")]
+[assembly: AssemblyFileVersion("2.10.20.10")]

@@ -58,6 +58,9 @@
     <Reference Include="CSkin">
       <HintPath>..\KnowledgeManager.Libs\CSkin.dll</HintPath>
     </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\XSmartNote.Libs\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -139,7 +142,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SQLHelper.cs" />
     <Compile Include="TagSelector.cs">
       <SubType>Form</SubType>
     </Compile>

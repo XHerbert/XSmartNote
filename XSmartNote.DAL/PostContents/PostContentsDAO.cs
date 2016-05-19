@@ -8,6 +8,8 @@ using XSmartNote.DAL;
 using NHibernate;
 using NHibernate.Linq;
 using NHibernate.Criterion;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace XSmartNote.DAL.PostContents
 {
@@ -253,6 +255,47 @@ namespace XSmartNote.DAL.PostContents
                 }
             }
             return IsSuccess;
+        }
+
+        /// <summary>
+        /// 填充DataSet（此方法亦可）
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public DataSet ExecuteDataset(string sql)
+        {
+            ISession session = null;
+            DataSet ds = new DataSet();
+            try
+            {
+                session = sessionFactory.OpenSession();
+                IDbCommand command = session.Connection.CreateCommand();
+                command.CommandText = sql;
+                SqlDataAdapter da = new SqlDataAdapter(command as SqlCommand);
+                da.Fill(ds);
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                //Debug.Assert(false);
+            }
+            finally
+            {
+                if (session != null)
+                {
+                    session.Close();
+                }
+            }
+            return ds;
+        }
+
+        //获取文件夹列表
+        public DataSet GetFoldersSet()
+        {
+            //StringBuilder cmd = new StringBuilder("SELECT Id,ParentId,Title,Content,Type FROM Table_Content");
+            StringBuilder cmd = new StringBuilder("SELECT LineNum,Id,ParentId,Title,Content,Type FROM T_PostContent");
+            return ExecuteDataset(cmd.ToString());
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSmartNote", "XSmartNote.csproj", "{AD769BED-116C-4B01-9960-1FEF2945D602}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSmartNote.DAL", "XSmartNote.DAL.csproj", "{AD769BED-116C-4B01-9960-1FEF2945D602}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

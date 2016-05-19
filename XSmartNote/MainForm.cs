@@ -75,7 +75,8 @@ namespace XSmartNote
 
         private DataSet GetFolderSet()
         {
-            DataSet dt = SQLHelper.GetFoldersSet();
+            //DataSet dt = SQLHelper.GetFoldersSet();
+            DataSet dt=PostContentsDAO.CreatePostContentsDAO().GetFoldersSet();
             return dt;
         }
 

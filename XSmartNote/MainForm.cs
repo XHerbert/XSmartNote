@@ -1000,6 +1000,15 @@ namespace XSmartNote
             //this.txt_SelectedLabel.BoxBackColor = color;
         }
 
+        private void SetTextAndBarColor(Color color,Color tColor)
+        {
+            this.menuStrip1.BackColor = color;
+            this.menuStrip1.ForeColor = tColor;
+            foreach (ToolStripMenuItem item in this.menuStrip1.Items)
+            {
+                item.ForeColor = tColor;
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -1034,19 +1043,23 @@ namespace XSmartNote
                 case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_MISTYROSE:
                     this.BackgroundImage = Resources.bg_10_03;
                     SetThemeColor(Color.MistyRose);
+                    SetTextAndBarColor(Color.Maroon,Color.Silver);
                     this.Invalidate();
                     break;
                 case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_ALICEBLUE:
                     this.BackgroundImage = Resources.bg_10_04;
                     SetThemeColor(Color.AliceBlue);
+                    SetTextAndBarColor(Color.LightBlue,Color.Black);
                     break;
                 case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_HONEYDEW:
                     this.BackgroundImage = Resources.bg_10_02;
                     SetThemeColor(Color.Honeydew);
+                    SetTextAndBarColor(Color.LightGreen, Color.Black);
                     break;
                 case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_LEMONCHIFFON:
                     this.BackgroundImage = Resources.bg_10_01;
                     SetThemeColor(Color.LemonChiffon);
+                    SetTextAndBarColor(Color.Orange, Color.Black);
                     break;
                 default:
                     break;

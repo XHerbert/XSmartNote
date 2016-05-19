@@ -61,6 +61,10 @@
     <Reference Include="Iesi.Collections">
       <HintPath>..\XSmartNote.Libs\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\XSmartNote.Libs\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />

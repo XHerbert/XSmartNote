@@ -13,7 +13,12 @@ namespace XSmartNote.ThemeManager
             KM_THEME_MISTYROSE=0,
             KM_THEME_ALICEBLUE=1,
             KM_THEME_HONEYDEW=2,
-            KM_THEME_LEMONCHIFFON=3
+            KM_THEME_LEMONCHIFFON=3,
+
+            KM_THEME_D_MISTYROSE=4,
+            KM_THEME_D_ALICEBLUE = 5,
+            KM_THEME_D_HONEYDEW = 6,
+            KM_THEME_D_LEMONCHIFFON = 7
         }
 
         public enum ColorTable

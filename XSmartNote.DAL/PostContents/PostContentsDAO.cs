@@ -15,6 +15,7 @@ namespace XSmartNote.DAL.PostContents
     {
         private ISessionFactory sessionFactory;
         private static PostContentsDAO PostContentsDao;
+        private static object _lock = new object();
         private PostContentsDAO()
         {
             //在构造函数中获取配置，并产生SessionFactory
@@ -24,9 +25,17 @@ namespace XSmartNote.DAL.PostContents
 
         public static PostContentsDAO CreatePostContentsDAO()
         {
+            PostContentsDAO _PostContentsDao;
             if (null == PostContentsDao)
             {
-                PostContentsDao = new PostContentsDAO();
+                lock (_lock)
+                {
+                    if (null == PostContentsDao)
+                    {
+                        _PostContentsDao = new PostContentsDAO();
+                        PostContentsDao = _PostContentsDao;
+                    }
+                }
             }
             return PostContentsDao;
         }

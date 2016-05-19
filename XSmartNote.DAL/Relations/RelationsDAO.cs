@@ -14,6 +14,7 @@ namespace XSmartNote.DAL.Relations
 
         private ISessionFactory sessionFactory;
         private static RelationsDAO RelationsDao;
+        private static object _lock = new object();
         private  RelationsDAO()
         {
             var cfg = new NHibernate.Cfg.Configuration().Configure("../../Config/hibernate.cfg.xml");
@@ -22,9 +23,17 @@ namespace XSmartNote.DAL.Relations
 
         public static RelationsDAO CreateRelationsDAO()
         {
+            RelationsDAO _RelationsDao;
             if (null == RelationsDao)
             {
-                RelationsDao = new RelationsDAO();
+                lock (_lock)
+                {
+                    if (null == RelationsDao)
+                    {
+                        _RelationsDao = new RelationsDAO();
+                        RelationsDao = _RelationsDao;
+                    }
+                }
             }
             return RelationsDao;
         }

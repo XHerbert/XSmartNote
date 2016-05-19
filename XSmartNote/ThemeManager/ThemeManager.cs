@@ -11,6 +11,7 @@ namespace XSmartNote.ThemeManager
         private static ThemeManager themeManager;
         private MainForm mainForm;
         private event Action<ThemeEnums.ThemeEnum> ThemeChangeEvent;
+        private static object _lock = new object();
         private ThemeManager(MainForm mainForm)
         {
             this.mainForm = mainForm;
@@ -19,9 +20,17 @@ namespace XSmartNote.ThemeManager
 
         public static ThemeManager CreateThemeManager(MainForm form)
         {
+            ThemeManager _themeManager;
             if (themeManager == null)
             {
-                themeManager = new ThemeManager(form);
+                lock (_lock)
+                {
+                    if (themeManager == null)
+                    {
+                        _themeManager = new ThemeManager(form);
+                        themeManager = _themeManager;
+                    }
+                }
             }
             return themeManager;
         }

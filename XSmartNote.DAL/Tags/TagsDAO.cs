@@ -16,6 +16,7 @@ namespace XSmartNote.DAL.Tags
 
         private ISessionFactory sessionFactory;
         private static TagsDAO tagsDAO;
+        private static object _lock = new object();
         private TagsDAO()
         {
             //在构造函数中获取配置，并产生SessionFactory
@@ -26,9 +27,17 @@ namespace XSmartNote.DAL.Tags
 
         public static TagsDAO CreateTagsDAO()
         {
+            TagsDAO _TagsDao;
             if (null == tagsDAO)
             {
-                tagsDAO = new TagsDAO();
+                lock (_lock)
+                {
+                    if (null == tagsDAO)
+                    {
+                        _TagsDao = new TagsDAO();
+                        tagsDAO = _TagsDao;
+                    }
+                }
             }
             return tagsDAO;
         }

@@ -74,6 +74,7 @@ namespace XSmartNote
         private void LabelExSolidBorder_MouseEnter(object sender, EventArgs e)
         {
             State = 1;
+            base.ForeColor = Color.Orange;
             base.HighLightBorderColor = Color.Orange;// ★可配置
             //Console.WriteLine("Enter");
             this.Invalidate();
@@ -153,6 +154,7 @@ namespace XSmartNote
         private void LabelExSolidBorder_MouseLeave(object sender, EventArgs e)
         {
             State = 0;
+            base.ForeColor = Color.Brown;
             base.NormalBorderColor = Color.White;// ★可配置
             //Console.Write("Leave");
             this.Invalidate();

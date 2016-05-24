@@ -23,13 +23,11 @@ namespace XSmartNote
         public LabelEx()
            : base()
         {
-            
+            this.Font = new Font(new FontFamily("微软雅黑"), 10.0f);
+            InitializeComponent();
             this.AutoSize = false;
             //设置内边距
             this.Padding = new Padding(5);
-            //this.Font = new Font(,FontStyle.Bold);
-            this.Font = new Font(new FontFamily("微软雅黑"), 10.0f);
-            InitializeComponent();
             //设置外边距
             this.Margin = new Padding(5);
             this.Width = WIDTH;
@@ -43,16 +41,15 @@ namespace XSmartNote
         public Color NormalBorderColor { get; set; }
         public Color HighLightBorderColor { get; set; }
         #endregion
-        private int State { get; set; }
+        
         #region EVENTS
         private void LabelEx_TextChanged(object sender, EventArgs e)
         {
-            //文字变化了，那就改变一下当前的大小
+            //文字变化后改变一下当前的大小
             System.Drawing.Size ps = GetPreferredSize(this.Size);
-            //这里构造一个新的Size对象，目的是使用原始的宽度。原因嘛，见上面
-            if (ps.Height < 47)
+            if (ps.Height < HEIGHT)
             {
-                ps.Height = 47;
+                ps.Height = HEIGHT;
             }
             this.Size = new System.Drawing.Size(this.Width, ps.Height);
         }

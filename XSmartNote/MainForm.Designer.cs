@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStripHeader = new System.Windows.Forms.MenuStrip();
             this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.NewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,7 +79,7 @@
             this.txt_Content = new XSmartNote.Controls.TextBoxEx();
             this.txt_Title = new XSmartNote.Controls.TextBoxEx();
             this.extends = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.menuStripHeader.SuspendLayout();
             this.panel_Tree.SuspendLayout();
             this.panel_Article.SuspendLayout();
             this.panel_SeleSave.SuspendLayout();
@@ -90,22 +90,22 @@
             this.tree_article.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // menuStripHeader
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Maroon;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripHeader.BackColor = System.Drawing.Color.Maroon;
+            this.menuStripHeader.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStripHeader.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenu,
             this.SetMenu,
             this.theme,
             this.extends,
             this.HelpMenu,
             this.AboutMenu});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(358, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStripHeader.Location = new System.Drawing.Point(0, 0);
+            this.menuStripHeader.Name = "menuStripHeader";
+            this.menuStripHeader.Size = new System.Drawing.Size(358, 24);
+            this.menuStripHeader.TabIndex = 0;
+            this.menuStripHeader.Text = "menuStripHeader";
             // 
             // FileMenu
             // 
@@ -648,13 +648,13 @@
             this.Controls.Add(this.panel_Main);
             this.Controls.Add(this.panel_Article);
             this.Controls.Add(this.panel_Tree);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStripHeader);
             this.EffectBack = System.Drawing.Color.DarkRed;
             this.EffectCaption = CCWin.TitleType.EffectTitle;
             this.EffectWidth = 4;
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStripHeader;
             this.MdiBorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Name = "MainForm";
             this.Radius = 10;
@@ -669,8 +669,8 @@
             this.TitleOffset = new System.Drawing.Point(10, 2);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStripHeader.ResumeLayout(false);
+            this.menuStripHeader.PerformLayout();
             this.panel_Tree.ResumeLayout(false);
             this.panel_Article.ResumeLayout(false);
             this.panel_SeleSave.ResumeLayout(false);
@@ -686,7 +686,13 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStripHeader;
+
+        public System.Windows.Forms.MenuStrip MenuStripHeader
+        {
+            get { return menuStripHeader; }
+            set { menuStripHeader = value; }
+        }
         private System.Windows.Forms.ToolStripMenuItem FileMenu;
         private System.Windows.Forms.ToolStripMenuItem NewMenu;
         private System.Windows.Forms.ToolStripMenuItem OpenMenu;
@@ -696,7 +702,19 @@
         private System.Windows.Forms.Panel panel_Tree;
         private System.Windows.Forms.Panel panel_Article;
         private System.Windows.Forms.Panel panel_Main;
+
+        public System.Windows.Forms.Panel Panel_Main
+        {
+            get { return panel_Main; }
+            set { panel_Main = value; }
+        }
         private System.Windows.Forms.TreeView tv_Folder;
+
+        public System.Windows.Forms.TreeView Tv_Folder
+        {
+            get { return tv_Folder; }
+            set { tv_Folder = value; }
+        }
         private System.Windows.Forms.Panel panel_LabelFixed;
         private System.Windows.Forms.Panel panel_Label;
         private System.Windows.Forms.Panel panel_SeleSave;
@@ -732,7 +750,19 @@
         private System.Windows.Forms.ToolStripMenuItem yellow;
         private System.Windows.Forms.ToolStripMenuItem bone;
         private Controls.TextBoxEx txt_Title;
+
+        public Controls.TextBoxEx Txt_Title
+        {
+            get { return txt_Title; }
+            set { txt_Title = value; }
+        }
         private Controls.TextBoxEx txt_Content;
+
+        public Controls.TextBoxEx Txt_Content
+        {
+            get { return txt_Content; }
+            set { txt_Content = value; }
+        }
         private TX.Framework.WindowUI.Controls.TXPanel rectlblContainer;
         private System.Windows.Forms.ToolStripMenuItem extends;
     }

@@ -12,6 +12,7 @@ using XSmartNote.DAL.PostContents;
 using XSmartNote.DAL.Tags;
 using XSmartNote.DAL.Relations;
 using XSmartNote.Model.Relations;
+using XSmartNote.ThemeManager;
 
 namespace XSmartNote
 {
@@ -991,24 +992,24 @@ namespace XSmartNote
             this.Height = Y;
         }
         
-        private void SetThemeColor(Color color)
-        {
-            this.panel_Main.BackColor = color;
-            this.tv_Folder.BackColor =color;
-            this.txt_Title.BoxBackColor = color;
-            this.txt_Content.BoxBackColor =color;
-            //this.txt_SelectedLabel.BoxBackColor = color;
-        }
+        //private void SetThemeColor(Color color)
+        //{
+        //    this.panel_Main.BackColor = color;
+        //    this.tv_Folder.BackColor =color;
+        //    this.txt_Title.BoxBackColor = color;
+        //    this.txt_Content.BoxBackColor =color;
+        //    //this.txt_SelectedLabel.BoxBackColor = color;
+        //}
 
-        private void SetTextAndBarColor(Color color,Color tColor)
-        {
-            this.menuStrip1.BackColor = color;
-            this.menuStrip1.ForeColor = tColor;
-            foreach (ToolStripMenuItem item in this.menuStrip1.Items)
-            {
-                item.ForeColor = tColor;
-            }
-        }
+        //private void SetTextAndBarColor(Color color,Color tColor)
+        //{
+        //    this.menuStripHeader.BackColor = color;
+        //    this.menuStripHeader.ForeColor = tColor;
+        //    foreach (ToolStripMenuItem item in this.menuStripHeader.Items)
+        //    {
+        //        item.ForeColor = tColor;
+        //    }
+        //}
         /// <summary>
         /// 
         /// </summary>
@@ -1036,35 +1037,35 @@ namespace XSmartNote
             this.lbl_CurrentNode.Text= "当前节点：" + node.Text;
         }
 
-        public void SetTheme(ThemeManager.ThemeEnums.ThemeEnum enums)
-        {
-            switch (enums)
-            {
-                case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_MISTYROSE:
-                    this.BackgroundImage = Resources.bg_10_03;
-                    SetThemeColor(Color.MistyRose);
-                    SetTextAndBarColor(Color.Maroon,Color.Silver);
-                    this.Invalidate();
-                    break;
-                case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_ALICEBLUE:
-                    this.BackgroundImage = Resources.bg_10_04;
-                    SetThemeColor(Color.AliceBlue);
-                    SetTextAndBarColor(Color.LightBlue,Color.Black);
-                    break;
-                case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_HONEYDEW:
-                    this.BackgroundImage = Resources.bg_10_02;
-                    SetThemeColor(Color.Honeydew);
-                    SetTextAndBarColor(Color.LightGreen, Color.Black);
-                    break;
-                case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_LEMONCHIFFON:
-                    this.BackgroundImage = Resources.bg_10_01;
-                    SetThemeColor(Color.LemonChiffon);
-                    SetTextAndBarColor(Color.Orange, Color.Black);
-                    break;
-                default:
-                    break;
-            }
-        }
+        //public void SetTheme(ThemeManager.ThemeEnums.ThemeEnum enums)
+        //{
+        //    switch (enums)
+        //    {
+        //        case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_MISTYROSE:
+        //            this.BackgroundImage = Resources.bg_10_03;
+        //            SetThemeColor(Color.MistyRose);
+        //            SetTextAndBarColor(Color.Maroon,Color.Silver);
+        //            this.Invalidate();
+        //            break;
+        //        case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_ALICEBLUE:
+        //            this.BackgroundImage = Resources.bg_10_04;
+        //            SetThemeColor(Color.AliceBlue);
+        //            SetTextAndBarColor(Color.LightBlue,Color.Black);
+        //            break;
+        //        case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_HONEYDEW:
+        //            this.BackgroundImage = Resources.bg_10_02;
+        //            SetThemeColor(Color.Honeydew);
+        //            SetTextAndBarColor(Color.LightGreen, Color.Black);
+        //            break;
+        //        case ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_LEMONCHIFFON:
+        //            this.BackgroundImage = Resources.bg_10_01;
+        //            SetThemeColor(Color.LemonChiffon);
+        //            SetTextAndBarColor(Color.Orange, Color.Black);
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
 
         #endregion
 
@@ -1089,26 +1090,41 @@ namespace XSmartNote
         #region THEMES
         private void roseRed_Click(object sender, EventArgs e)
         {
-            ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
-            manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_MISTYROSE);
+            //ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
+            //manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_MISTYROSE);
+
+            ITheme theme=new MistyRose(this);
+            ThemeContext themeContext = new ThemeContext(theme);
+            themeContext.SetTheme();
         }
 
         private void stoneBlue_Click(object sender, EventArgs e)
         {
-            ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
-            manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_ALICEBLUE);
+            //ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
+            //manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_ALICEBLUE);
+
+            ITheme theme = new AliceBlue(this);
+            ThemeContext themeContext = new ThemeContext(theme);
+            themeContext.SetTheme();
         }
 
         private void lightGreen_Click(object sender, EventArgs e)
         {
-            ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
-            manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_HONEYDEW);
+            //ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
+            //manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_HONEYDEW);
+            ITheme theme = new Honeydew(this);
+            ThemeContext themeContext = new ThemeContext(theme);
+            themeContext.SetTheme();
         }
 
         private void yellow_Click(object sender, EventArgs e)
         {
-            ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
-            manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_LEMONCHIFFON);
+            //ThemeManager.IThemeManager manager = ThemeManager.ThemeManager.CreateThemeManager(this);
+            //manager.ChangeFormTheme(ThemeManager.ThemeEnums.ThemeEnum.KM_THEME_LEMONCHIFFON);
+
+            ITheme theme = new LemonChiffon(this);
+            ThemeContext themeContext = new ThemeContext(theme);
+            themeContext.SetTheme();
         }
 
         private void bone_Click(object sender, EventArgs e)

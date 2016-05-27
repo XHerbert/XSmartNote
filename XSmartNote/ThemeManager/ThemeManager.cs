@@ -15,7 +15,7 @@ namespace XSmartNote.ThemeManager
         private ThemeManager(MainForm mainForm)
         {
             this.mainForm = mainForm;
-            ThemeChangeEvent += mainForm.SetTheme;
+            //ThemeChangeEvent += mainForm.SetTheme;
         }
 
         public static ThemeManager CreateThemeManager(MainForm form)

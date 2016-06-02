@@ -243,6 +243,36 @@ namespace XSmartNote.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap SPLASHALT {
+            get {
+                object obj = ResourceManager.GetObject("SPLASHALT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap SPLASHALT1 {
+            get {
+                object obj = ResourceManager.GetObject("SPLASHALT1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap SPLASHEXTENDEDBACKGROUND {
+            get {
+                object obj = ResourceManager.GetObject("SPLASHEXTENDEDBACKGROUND", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap style {
             get {
                 object obj = ResourceManager.GetObject("style", resourceCulture);

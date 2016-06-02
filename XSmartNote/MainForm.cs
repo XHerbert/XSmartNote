@@ -13,6 +13,8 @@ using XSmartNote.DAL.Tags;
 using XSmartNote.DAL.Relations;
 using XSmartNote.Model.Relations;
 using XSmartNote.ThemeManager;
+using XSmartNote.ThemeManager.Themes.Splash;
+using System.Threading;
 
 namespace XSmartNote
 {
@@ -47,7 +49,7 @@ namespace XSmartNote
             //this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             //this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             //this.SetStyle(ControlStyles.DoubleBuffer, true);// 双缓冲
-            
+            SplashScreen.Show(typeof(SplashForm));
             InitializeComponent();
             
             SetStyle(ControlStyles.OptimizedDoubleBuffer |
@@ -64,6 +66,8 @@ namespace XSmartNote
             this.Resize += Form1_Resize;
             this.RenameFolder += UpdateFolder;
             FitScreen();
+
+            LoadMessage.Load();
         }
         #endregion
 

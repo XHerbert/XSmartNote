@@ -66,7 +66,7 @@ namespace XSmartNote
                     return;
                 }
                     
-                new MainForm().AddLabelToLocation(this.panel_Tags, 4, txt_Tag.Text,tag.TagId,false,true);
+                new MainForm(false).AddLabelToLocation(this.panel_Tags, 4, txt_Tag.Text,tag.TagId,false,true);
                 this.txt_Tag.Text = string.Empty;
                 //SQLHelper.InsertTag(txt_Tag.Text);
             }

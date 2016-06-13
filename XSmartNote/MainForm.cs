@@ -45,30 +45,20 @@ namespace XSmartNote
 
         public MainForm()
         {
-            //this.SetStyle(ControlStyles.UserPaint, true);
-            //this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            //this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            //this.SetStyle(ControlStyles.DoubleBuffer, true);// 双缓冲
-            SplashScreen.Show(typeof(SplashForm));
             InitializeComponent();
-            
-            SetStyle(ControlStyles.OptimizedDoubleBuffer |
-                ControlStyles.ResizeRedraw |
-                ControlStyles.UserPaint |
-                ControlStyles.DoubleBuffer |
-                ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.Selectable, false);
-            //this.SetStyle(ControlStyles.UserPaint, true);
-            //this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            //this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            //this.SetStyle(ControlStyles.DoubleBuffer, true);// 双缓冲
-            //当窗体大小发生改变时，Panel自动变化
-            this.Resize += Form1_Resize;
-            this.RenameFolder += UpdateFolder;
-            FitScreen();
-
-            LoadMessage.Load();
+            SetStyles();
         }
+
+        public MainForm(bool splash)
+        {
+            InitializeComponent();
+            SetStyles();
+            if (splash)
+            {
+                SetSplash();
+            }
+        }
+
         #endregion
 
         #region BUILD TREE FOLDER
@@ -388,6 +378,7 @@ namespace XSmartNote
                         {
                             this.lbl_CurrentNode.Text = "当前节点：" + node.Text;
                             ClearControls(flowLayoutPanel1);
+                            curNode = this.tv_Folder.SelectedNode;
                             //int cid = node.Name.ToInt();
                             //DataTable labels = SQLHelper.GetTagsByPostId(cid);
 
@@ -780,7 +771,8 @@ namespace XSmartNote
                 label.BorderColor = Color.Purple;
                 label.BorderWidth = 1;
                 label.InnerColor = Color.Transparent;
-                label.Tag = guidFlag;
+                //label.Tag = guidFlag;
+                label.Tag = tagId;
                 //计算位置
                 AddLabelToLocation(rectlblContainer, 2, label);
                 //rectlblContainer.Controls.Add(label);//添加一个事件，E区显示已添加标签
@@ -979,8 +971,8 @@ namespace XSmartNote
         {
             x = Screen.PrimaryScreen.Bounds.Width;
             y = Screen.PrimaryScreen.Bounds.Height;
-            x = x * 9/10;
-            y = y * 9/10;
+            x = x * 95/100;
+            y = y * 95/100;
             //Console.WriteLine(string.Format("X:{0}", x));
             //Console.WriteLine(string.Format("Y:{0}", y));
         }
@@ -1070,6 +1062,25 @@ namespace XSmartNote
         //            break;
         //    }
         //}
+
+        private void SetStyles()
+        {
+            SetStyle(ControlStyles.OptimizedDoubleBuffer |
+                     ControlStyles.ResizeRedraw |
+                     ControlStyles.UserPaint |
+                     ControlStyles.DoubleBuffer |
+                     ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.Selectable, false);
+            this.Resize += Form1_Resize;
+            this.RenameFolder += UpdateFolder;
+            FitScreen();
+        }
+
+        private void SetSplash()
+        {
+            SplashScreen.Show(typeof(SplashForm));
+            LoadMessage.Load();
+        }
 
         #endregion
 

@@ -158,7 +158,8 @@ namespace XSmartNote.DAL.Tags
                 try
                 {
                     //tag = session.CreateCriteria(typeof(Tag)).Add(Restrictions.Eq("TagContent", text.Trim())).List<Tag>();
-                    id=(Guid)session.Save(tag);//数据没有进数据库？
+                    id=(Guid)session.Save(tag);//数据没有进数据库，没有Commit
+                    trans.Commit();
                 }
                 catch (Exception)
                 {

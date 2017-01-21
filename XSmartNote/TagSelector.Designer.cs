@@ -41,7 +41,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btn_Add);
             this.panel1.Controls.Add(this.txt_Tag);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(4, 35);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(339, 32);
             this.panel1.TabIndex = 0;
@@ -69,21 +69,24 @@
             // 
             this.panel_Tags.AutoScroll = true;
             this.panel_Tags.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_Tags.Location = new System.Drawing.Point(0, 35);
+            this.panel_Tags.Location = new System.Drawing.Point(4, 73);
             this.panel_Tags.Name = "panel_Tags";
-            this.panel_Tags.Size = new System.Drawing.Size(339, 223);
+            this.panel_Tags.Size = new System.Drawing.Size(339, 332);
             this.panel_Tags.TabIndex = 1;
+            this.panel_Tags.Click += new System.EventHandler(this.panel_Tags_Click);
             // 
             // TagSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 262);
+            this.ClientSize = new System.Drawing.Size(346, 412);
             this.Controls.Add(this.panel_Tags);
             this.Controls.Add(this.panel1);
             this.EffectBack = System.Drawing.Color.DarkRed;
             this.EffectWidth = 3;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TagSelector";
             this.Text = "标签选择器";
             this.TitleColor = System.Drawing.Color.Maroon;

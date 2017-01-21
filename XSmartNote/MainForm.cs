@@ -58,6 +58,7 @@ namespace XSmartNote
                 SetSplash();
             }
         }
+        
 
         #endregion
 
@@ -147,7 +148,8 @@ namespace XSmartNote
                 }
             }
             AddImages(root);
-            root.Expand();            
+            root.Expand();
+            root.Nodes[0].Expand();           
         }
 
         private void AddImages(TreeNode tn)
@@ -332,6 +334,7 @@ namespace XSmartNote
                     //如果是单击左键，显示该目录下的所有文章
                     else if (me.Button == MouseButtons.Left)
                     {
+                        ClearLabel();
                         if (node.Tag.ToString() == Enums.ROOT.ToString())
                         {
                             this.lbl_CurrentNode.Text = "当前节点：" + node.Text;
@@ -623,7 +626,8 @@ namespace XSmartNote
         /// <param name="registerEvent"></param>
         public void AddLabelToLocation(FlowLayoutPanel flp, int column, string tag, Guid Id, bool ischecked,bool registerEvent)
         {
-            //int flag = 0;
+            GlobalParam.GlobalNode = tv_Folder.SelectedNode;
+            curNode = tv_Folder.SelectedNode;
             int labelCount = flp.Controls.Count;
             int lines = labelCount / column;
             int left = labelCount % column;
@@ -685,7 +689,9 @@ namespace XSmartNote
             CheckBox lc = (CheckBox)sender;
             CheckState cs = lc.CheckState;
             curNode = tv_Folder.SelectedNode;
-            if (curNode == null)
+            GlobalParam.GlobalNode = tv_Folder.SelectedNode;
+            
+            if (curNode == null) 
             {
                 MessageBoxEx.Show(Constant.KM_WN_NODE_NOT_SELECTED, Constant.KM_TYPE_WARN, MessageBoxButtons.OK);
                 return;
@@ -1082,6 +1088,19 @@ namespace XSmartNote
             LoadMessage.Load();
         }
 
+
+        private void ClearLabel()
+        {
+            
+            for (int i = rectlblContainer.Controls.Count - 1; i >= 0; i--)
+            {
+
+                if (rectlblContainer.Controls[i] is RectangleLabel)
+                {
+                    rectlblContainer.Controls.RemoveAt(i);
+                }
+            }
+        }
         #endregion
 
         #region CONTEXTMENUTRIPS

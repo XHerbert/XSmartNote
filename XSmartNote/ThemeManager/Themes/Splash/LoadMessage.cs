@@ -18,14 +18,6 @@ namespace XSmartNote.ThemeManager.Themes.Splash
             SplashScreen.ChangeTitle("正在加载主题插件 ... ...");
             Thread.Sleep(1000);
             SplashScreen.ChangeTitle("正在加载主界面 ... ...");
-            Thread.Sleep(5000);
-            SplashScreen.ChangeTitle("正在加载UI组件 ... ...");
-            Thread.Sleep(1000);
-            SplashScreen.ChangeTitle("正在加载Data组件 ... ...");
-            Thread.Sleep(5000);
-            SplashScreen.ChangeTitle("正在加载主题插件 ... ...");
-            Thread.Sleep(1000);
-            SplashScreen.ChangeTitle("正在加载主界面 ... ...");
             SplashScreen.Close();
         }
     }

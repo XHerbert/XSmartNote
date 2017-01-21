@@ -44,6 +44,7 @@
             this.lightGreen = new System.Windows.Forms.ToolStripMenuItem();
             this.yellow = new System.Windows.Forms.ToolStripMenuItem();
             this.bone = new System.Windows.Forms.ToolStripMenuItem();
+            this.extends = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Tree = new System.Windows.Forms.Panel();
@@ -51,6 +52,8 @@
             this.images = new System.Windows.Forms.ImageList(this.components);
             this.btn_Add = new CCWin.SkinControl.SkinButton();
             this.panel_Article = new System.Windows.Forms.Panel();
+            this.txt_Content = new XSmartNote.Controls.TextBoxEx();
+            this.txt_Title = new XSmartNote.Controls.TextBoxEx();
             this.panel_SeleSave = new System.Windows.Forms.Panel();
             this.btn_ChooseLabel = new CCWin.SkinControl.SkinButton();
             this.btn_Save = new CCWin.SkinControl.SkinButton();
@@ -76,9 +79,6 @@
             this.Tree_RenameNoteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_CurrentNode = new System.Windows.Forms.Label();
             this.skinLine2 = new CCWin.SkinControl.SkinLine();
-            this.txt_Content = new XSmartNote.Controls.TextBoxEx();
-            this.txt_Title = new XSmartNote.Controls.TextBoxEx();
-            this.extends = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripHeader.SuspendLayout();
             this.panel_Tree.SuspendLayout();
             this.panel_Article.SuspendLayout();
@@ -103,7 +103,7 @@
             this.AboutMenu});
             this.menuStripHeader.Location = new System.Drawing.Point(0, 0);
             this.menuStripHeader.Name = "menuStripHeader";
-            this.menuStripHeader.Size = new System.Drawing.Size(358, 24);
+            this.menuStripHeader.Size = new System.Drawing.Size(272, 25);
             this.menuStripHeader.TabIndex = 0;
             this.menuStripHeader.Text = "menuStripHeader";
             // 
@@ -115,28 +115,28 @@
             this.SaveMenu});
             this.FileMenu.ForeColor = System.Drawing.Color.Silver;
             this.FileMenu.Name = "FileMenu";
-            this.FileMenu.Size = new System.Drawing.Size(43, 20);
+            this.FileMenu.Size = new System.Drawing.Size(44, 21);
             this.FileMenu.Text = "文件";
             // 
             // NewMenu
             // 
             this.NewMenu.Image = ((System.Drawing.Image)(resources.GetObject("NewMenu.Image")));
             this.NewMenu.Name = "NewMenu";
-            this.NewMenu.Size = new System.Drawing.Size(98, 22);
+            this.NewMenu.Size = new System.Drawing.Size(100, 22);
             this.NewMenu.Text = "新建";
             // 
             // OpenMenu
             // 
             this.OpenMenu.Image = ((System.Drawing.Image)(resources.GetObject("OpenMenu.Image")));
             this.OpenMenu.Name = "OpenMenu";
-            this.OpenMenu.Size = new System.Drawing.Size(98, 22);
+            this.OpenMenu.Size = new System.Drawing.Size(100, 22);
             this.OpenMenu.Text = "打开";
             // 
             // SaveMenu
             // 
             this.SaveMenu.Image = ((System.Drawing.Image)(resources.GetObject("SaveMenu.Image")));
             this.SaveMenu.Name = "SaveMenu";
-            this.SaveMenu.Size = new System.Drawing.Size(98, 22);
+            this.SaveMenu.Size = new System.Drawing.Size(100, 22);
             this.SaveMenu.Text = "保存";
             // 
             // SetMenu
@@ -145,14 +145,14 @@
             this.FontSizeMenu});
             this.SetMenu.ForeColor = System.Drawing.Color.Silver;
             this.SetMenu.Name = "SetMenu";
-            this.SetMenu.Size = new System.Drawing.Size(43, 20);
+            this.SetMenu.Size = new System.Drawing.Size(44, 21);
             this.SetMenu.Text = "设置";
             // 
             // FontSizeMenu
             // 
             this.FontSizeMenu.Image = global::XSmartNote.Properties.Resources.style;
             this.FontSizeMenu.Name = "FontSizeMenu";
-            this.FontSizeMenu.Size = new System.Drawing.Size(122, 22);
+            this.FontSizeMenu.Size = new System.Drawing.Size(124, 22);
             this.FontSizeMenu.Text = "字体大小";
             this.FontSizeMenu.Click += new System.EventHandler(this.FontSizeMenu_Click);
             // 
@@ -162,7 +162,7 @@
             this.bg_Line});
             this.theme.ForeColor = System.Drawing.Color.Silver;
             this.theme.Name = "theme";
-            this.theme.Size = new System.Drawing.Size(43, 20);
+            this.theme.Size = new System.Drawing.Size(44, 21);
             this.theme.Text = "主题";
             // 
             // bg_Line
@@ -175,14 +175,14 @@
             this.bone});
             this.bg_Line.Image = global::XSmartNote.Properties.Resources.@__TemplateIcon;
             this.bg_Line.Name = "bg_Line";
-            this.bg_Line.Size = new System.Drawing.Size(122, 22);
+            this.bg_Line.Size = new System.Drawing.Size(124, 22);
             this.bg_Line.Text = "主题纹理";
             // 
             // roseRed
             // 
             this.roseRed.Image = global::XSmartNote.Properties.Resources.h;
             this.roseRed.Name = "roseRed";
-            this.roseRed.Size = new System.Drawing.Size(110, 22);
+            this.roseRed.Size = new System.Drawing.Size(112, 22);
             this.roseRed.Text = "玫瑰红";
             this.roseRed.Click += new System.EventHandler(this.roseRed_Click);
             // 
@@ -190,7 +190,7 @@
             // 
             this.stoneBlue.Image = global::XSmartNote.Properties.Resources.b;
             this.stoneBlue.Name = "stoneBlue";
-            this.stoneBlue.Size = new System.Drawing.Size(110, 22);
+            this.stoneBlue.Size = new System.Drawing.Size(112, 22);
             this.stoneBlue.Text = "宝石蓝";
             this.stoneBlue.Click += new System.EventHandler(this.stoneBlue_Click);
             // 
@@ -198,7 +198,7 @@
             // 
             this.lightGreen.Image = global::XSmartNote.Properties.Resources.g;
             this.lightGreen.Name = "lightGreen";
-            this.lightGreen.Size = new System.Drawing.Size(110, 22);
+            this.lightGreen.Size = new System.Drawing.Size(112, 22);
             this.lightGreen.Text = "青葱绿";
             this.lightGreen.Click += new System.EventHandler(this.lightGreen_Click);
             // 
@@ -206,7 +206,7 @@
             // 
             this.yellow.Image = global::XSmartNote.Properties.Resources.y;
             this.yellow.Name = "yellow";
-            this.yellow.Size = new System.Drawing.Size(110, 22);
+            this.yellow.Size = new System.Drawing.Size(112, 22);
             this.yellow.Text = "小鸭黄";
             this.yellow.Click += new System.EventHandler(this.yellow_Click);
             // 
@@ -214,22 +214,29 @@
             // 
             this.bone.Image = global::XSmartNote.Properties.Resources.q;
             this.bone.Name = "bone";
-            this.bone.Size = new System.Drawing.Size(110, 22);
+            this.bone.Size = new System.Drawing.Size(112, 22);
             this.bone.Text = "青花瓷";
             this.bone.Click += new System.EventHandler(this.bone_Click);
+            // 
+            // extends
+            // 
+            this.extends.ForeColor = System.Drawing.Color.Silver;
+            this.extends.Name = "extends";
+            this.extends.Size = new System.Drawing.Size(44, 21);
+            this.extends.Text = "扩展";
             // 
             // HelpMenu
             // 
             this.HelpMenu.ForeColor = System.Drawing.Color.Silver;
             this.HelpMenu.Name = "HelpMenu";
-            this.HelpMenu.Size = new System.Drawing.Size(43, 20);
+            this.HelpMenu.Size = new System.Drawing.Size(44, 21);
             this.HelpMenu.Text = "帮助";
             // 
             // AboutMenu
             // 
             this.AboutMenu.ForeColor = System.Drawing.Color.Silver;
             this.AboutMenu.Name = "AboutMenu";
-            this.AboutMenu.Size = new System.Drawing.Size(43, 20);
+            this.AboutMenu.Size = new System.Drawing.Size(44, 21);
             this.AboutMenu.Text = "关于";
             // 
             // panel_Tree
@@ -307,6 +314,36 @@
             this.panel_Article.Size = new System.Drawing.Size(240, 423);
             this.panel_Article.TabIndex = 2;
             // 
+            // txt_Content
+            // 
+            this.txt_Content.BackColor = System.Drawing.Color.MistyRose;
+            this.txt_Content.BorderColor = System.Drawing.Color.Empty;
+            this.txt_Content.BoxBackColor = System.Drawing.Color.MistyRose;
+            this.txt_Content.ControlText = "请输入内容...";
+            this.txt_Content.Location = new System.Drawing.Point(2, 40);
+            this.txt_Content.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_Content.Name = "txt_Content";
+            this.txt_Content.Padding = new System.Windows.Forms.Padding(5);
+            this.txt_Content.Size = new System.Drawing.Size(234, 286);
+            this.txt_Content.TabIndex = 0;
+            this.txt_Content.WaterColor = System.Drawing.Color.Maroon;
+            this.txt_Content.WaterText = "请输入内容...";
+            // 
+            // txt_Title
+            // 
+            this.txt_Title.BackColor = System.Drawing.Color.White;
+            this.txt_Title.BorderColor = System.Drawing.Color.Empty;
+            this.txt_Title.BoxBackColor = System.Drawing.Color.MistyRose;
+            this.txt_Title.ControlText = "请输入标题";
+            this.txt_Title.Location = new System.Drawing.Point(2, 3);
+            this.txt_Title.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_Title.Name = "txt_Title";
+            this.txt_Title.Padding = new System.Windows.Forms.Padding(5);
+            this.txt_Title.Size = new System.Drawing.Size(234, 31);
+            this.txt_Title.TabIndex = 0;
+            this.txt_Title.WaterColor = System.Drawing.Color.Maroon;
+            this.txt_Title.WaterText = "请输入标题";
+            // 
             // panel_SeleSave
             // 
             this.panel_SeleSave.BackColor = System.Drawing.Color.Transparent;
@@ -364,6 +401,7 @@
             this.rectlblContainer.BackColor = System.Drawing.Color.Transparent;
             this.rectlblContainer.BackEndColor = System.Drawing.Color.Transparent;
             this.rectlblContainer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(168)))), ((int)(((byte)(192)))));
+            this.rectlblContainer.BorderWidth = 0;
             this.rectlblContainer.Location = new System.Drawing.Point(1, 30);
             this.rectlblContainer.Name = "rectlblContainer";
             this.rectlblContainer.Size = new System.Drawing.Size(232, 90);
@@ -508,14 +546,14 @@
             this.Tree_NewNoteMenuItem,
             this.Tree_RenameFolderMenuItem});
             this.tree_folder.Name = "tree_MenuStrip";
-            this.tree_folder.Size = new System.Drawing.Size(147, 92);
+            this.tree_folder.Size = new System.Drawing.Size(149, 92);
             // 
             // Tree_NewSubFolderMenuItem
             // 
             this.Tree_NewSubFolderMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_NewSubFolderMenuItem.Image")));
             this.Tree_NewSubFolderMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.Tree_NewSubFolderMenuItem.Name = "Tree_NewSubFolderMenuItem";
-            this.Tree_NewSubFolderMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.Tree_NewSubFolderMenuItem.Size = new System.Drawing.Size(148, 22);
             this.Tree_NewSubFolderMenuItem.Text = "新建子文件夹";
             this.Tree_NewSubFolderMenuItem.Click += new System.EventHandler(this.Tree_NewSubFolderMenuItem_Click);
             // 
@@ -523,7 +561,7 @@
             // 
             this.Tree_DeleteFolderMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_DeleteFolderMenuItem.Image")));
             this.Tree_DeleteFolderMenuItem.Name = "Tree_DeleteFolderMenuItem";
-            this.Tree_DeleteFolderMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.Tree_DeleteFolderMenuItem.Size = new System.Drawing.Size(148, 22);
             this.Tree_DeleteFolderMenuItem.Text = "删除该文件夹";
             this.Tree_DeleteFolderMenuItem.Click += new System.EventHandler(this.Tree_DeleteFolderMenuItem_Click);
             // 
@@ -531,7 +569,7 @@
             // 
             this.Tree_NewNoteMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_NewNoteMenuItem.Image")));
             this.Tree_NewNoteMenuItem.Name = "Tree_NewNoteMenuItem";
-            this.Tree_NewNoteMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.Tree_NewNoteMenuItem.Size = new System.Drawing.Size(148, 22);
             this.Tree_NewNoteMenuItem.Text = "添加新文章";
             this.Tree_NewNoteMenuItem.Click += new System.EventHandler(this.Tree_NewNoteMenuItem_Click);
             // 
@@ -539,7 +577,7 @@
             // 
             this.Tree_RenameFolderMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_RenameFolderMenuItem.Image")));
             this.Tree_RenameFolderMenuItem.Name = "Tree_RenameFolderMenuItem";
-            this.Tree_RenameFolderMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.Tree_RenameFolderMenuItem.Size = new System.Drawing.Size(148, 22);
             this.Tree_RenameFolderMenuItem.Text = "重命名文件夹";
             this.Tree_RenameFolderMenuItem.Click += new System.EventHandler(this.Tree_RenameFolderMenuItem_Click);
             // 
@@ -550,13 +588,13 @@
             this.Tree_DeleteNoteMenuItem,
             this.Tree_RenameNoteMenuItem});
             this.tree_article.Name = "tree_article";
-            this.tree_article.Size = new System.Drawing.Size(123, 70);
+            this.tree_article.Size = new System.Drawing.Size(125, 70);
             // 
             // Tree_EditNoteMenuItem
             // 
             this.Tree_EditNoteMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_EditNoteMenuItem.Image")));
             this.Tree_EditNoteMenuItem.Name = "Tree_EditNoteMenuItem";
-            this.Tree_EditNoteMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.Tree_EditNoteMenuItem.Size = new System.Drawing.Size(124, 22);
             this.Tree_EditNoteMenuItem.Text = "编辑文章";
             this.Tree_EditNoteMenuItem.Click += new System.EventHandler(this.Tree_EditNoteMenuItem_Click);
             // 
@@ -564,7 +602,7 @@
             // 
             this.Tree_DeleteNoteMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_DeleteNoteMenuItem.Image")));
             this.Tree_DeleteNoteMenuItem.Name = "Tree_DeleteNoteMenuItem";
-            this.Tree_DeleteNoteMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.Tree_DeleteNoteMenuItem.Size = new System.Drawing.Size(124, 22);
             this.Tree_DeleteNoteMenuItem.Text = "删除文章";
             this.Tree_DeleteNoteMenuItem.Click += new System.EventHandler(this.Tree_DeleteNoteMenuItem_Click);
             // 
@@ -572,7 +610,7 @@
             // 
             this.Tree_RenameNoteMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Tree_RenameNoteMenuItem.Image")));
             this.Tree_RenameNoteMenuItem.Name = "Tree_RenameNoteMenuItem";
-            this.Tree_RenameNoteMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.Tree_RenameNoteMenuItem.Size = new System.Drawing.Size(124, 22);
             this.Tree_RenameNoteMenuItem.Text = "重命名";
             this.Tree_RenameNoteMenuItem.Click += new System.EventHandler(this.Tree_RenameNoteMenuItem_Click);
             // 
@@ -598,43 +636,6 @@
             this.skinLine2.Size = new System.Drawing.Size(539, 1);
             this.skinLine2.TabIndex = 7;
             this.skinLine2.Text = "skinLine2";
-            // 
-            // txt_Content
-            // 
-            this.txt_Content.BackColor = System.Drawing.Color.MistyRose;
-            this.txt_Content.BorderColor = System.Drawing.Color.Empty;
-            this.txt_Content.BoxBackColor = System.Drawing.Color.MistyRose;
-            this.txt_Content.ControlText = "请输入内容...";
-            this.txt_Content.Location = new System.Drawing.Point(2, 40);
-            this.txt_Content.Margin = new System.Windows.Forms.Padding(0);
-            this.txt_Content.Name = "txt_Content";
-            this.txt_Content.Padding = new System.Windows.Forms.Padding(5);
-            this.txt_Content.Size = new System.Drawing.Size(234, 286);
-            this.txt_Content.TabIndex = 0;
-            this.txt_Content.WaterColor = System.Drawing.Color.Maroon;
-            this.txt_Content.WaterText = "请输入内容...";
-            // 
-            // txt_Title
-            // 
-            this.txt_Title.BackColor = System.Drawing.Color.White;
-            this.txt_Title.BorderColor = System.Drawing.Color.Empty;
-            this.txt_Title.BoxBackColor = System.Drawing.Color.MistyRose;
-            this.txt_Title.ControlText = "请输入标题";
-            this.txt_Title.Location = new System.Drawing.Point(2, 3);
-            this.txt_Title.Margin = new System.Windows.Forms.Padding(0);
-            this.txt_Title.Name = "txt_Title";
-            this.txt_Title.Padding = new System.Windows.Forms.Padding(5);
-            this.txt_Title.Size = new System.Drawing.Size(234, 31);
-            this.txt_Title.TabIndex = 0;
-            this.txt_Title.WaterColor = System.Drawing.Color.Maroon;
-            this.txt_Title.WaterText = "请输入标题";
-            // 
-            // extends
-            // 
-            this.extends.ForeColor = System.Drawing.Color.Silver;
-            this.extends.Name = "extends";
-            this.extends.Size = new System.Drawing.Size(43, 20);
-            this.extends.Text = "扩展";
             // 
             // MainForm
             // 

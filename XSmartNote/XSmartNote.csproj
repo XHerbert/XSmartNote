@@ -133,6 +133,7 @@
     <Compile Include="FormMaster.Designer.cs">
       <DependentUpon>FormMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalParam.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

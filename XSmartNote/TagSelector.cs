@@ -68,7 +68,6 @@ namespace XSmartNote
                     
                 new MainForm(false).AddLabelToLocation(this.panel_Tags, 4, txt_Tag.Text,tag.TagId,false,true);
                 this.txt_Tag.Text = string.Empty;
-                //SQLHelper.InsertTag(txt_Tag.Text);
             }
             else
             {
@@ -80,7 +79,7 @@ namespace XSmartNote
 
         private void TagSelector_Resize(object sender, EventArgs e)
         {
-            this.panel_Tags.Height = this.ClientSize.Height - 38;
+            this.panel_Tags.Height = this.ClientSize.Height - 80;            
         }
 
         private void TagSelector_MouseClick(object sender, MouseEventArgs e)
@@ -97,5 +96,15 @@ namespace XSmartNote
             return isContain;
         }
         #endregion
+
+        private void panel_Tags_Click(object sender, EventArgs e)
+        {
+            //if (e.Button == MouseButtons.Right)
+            //{
+            //    this.Dispose();
+            //    this.Close();
+            //}
+
+        }
     }
 }

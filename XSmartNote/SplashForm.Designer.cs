@@ -158,9 +158,9 @@
             this.label9.Location = new System.Drawing.Point(70, 410);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(185, 12);
+            this.label9.Size = new System.Drawing.Size(191, 12);
             this.label9.TabIndex = 5;
-            this.label9.Text = "2016 Xuhb , All Right Reserved";
+            this.label9.Text = "2016 Xuhbd , All Right Reserved";
             // 
             // label10
             // 
